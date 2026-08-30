@@ -1,0 +1,850 @@
+BTC-BLAKE2B SITE COPY
+=====================
+Edit the text under each [id] line. Keep the [id] lines themselves.
+Leave HTML tags such as <a>, <strong>, and <code> in place unless you are changing a link.
+Shared chrome (nav, footer) is listed once at the top; it applies to every page.
+When you are done, give this file back and say to apply it.
+
+================================================================================
+SHARED
+================================================================================
+
+[shared.brand_name]
+Bitcoin
+
+[shared.brand_tag]
+Peer-to-peer cash
+
+[shared.nav_introduction]
+Introduction
+
+[shared.nav_resources]
+Resources
+
+[shared.nav_participate]
+Participate
+
+[shared.nav_faq]
+FAQ
+
+[shared.nav_menu]
+Menu
+
+[shared.skip]
+Skip to content
+
+[shared.footer_blurb]
+Open source P2P money. Bitcoin with the BLAKE2b algorithm keeps Bitcoin as money only.
+
+[shared.footer_note]
+© Bitcoin Project from 2009 to 2026. btc-blake2b.org and btc-blake2b.com serve the same site.
+
+[shared.footer_intro_heading]
+Introduction
+
+[shared.footer_resources_heading]
+Resources
+
+[shared.footer_other_heading]
+Other
+
+[shared.link_individuals]
+Individuals
+
+[shared.link_businesses]
+Businesses
+
+[shared.link_developers]
+Developers
+
+[shared.link_getting_started]
+Getting started
+
+[shared.link_how_it_works]
+How it works
+
+[shared.link_you_need_to_know]
+You need to know
+
+[shared.link_release]
+Release notes
+
+[shared.link_nodes]
+Node operators
+
+[shared.link_miners]
+Miners and DATUM
+
+[shared.link_knots]
+Bitcoin Knots
+
+[shared.link_knots_source]
+Knots source
+
+[shared.link_faq]
+FAQ
+
+[shared.link_privacy]
+Privacy
+
+[shared.link_whitepaper]
+White paper
+
+[shared.link_datum]
+DATUM Gateway
+
+
+================================================================================
+HOME  /
+FILE: index.html
+================================================================================
+
+[home.title]
+Bitcoin - Open source P2P money
+
+[home.description]
+Bitcoin is an innovative payment network and a new kind of money. Bitcoin with the BLAKE2b algorithm keeps Bitcoin as money only by rejecting arbitrary data storage.
+
+[home.h1]
+Bitcoin: Peer-to-Peer Electronic Cash System
+
+[home.lede]
+Bitcoin is an innovative payment network and a new kind of money. Running your own node is how anyone can participate and verify for themselves. Bitcoin with the BLAKE2b algorithm keeps Bitcoin as money only by rejecting use of the network for arbitrary data storage.
+
+[home.button_get_started]
+Get started
+
+[home.button_release]
+Release notes
+
+[home.button_miners]
+Miners and DATUM
+
+[home.what_h2]
+What is Bitcoin?
+
+[home.what_intro]
+Bitcoin is money that uses peer-to-peer technology to operate with no central authority or banks. Transactions and the issuing of bitcoins are carried out collectively by the network. Its design is public. Nobody owns or controls Bitcoin, and everyone can take part.
+
+[home.card_individuals_h3]
+Individuals
+
+[home.card_individuals_p]
+Your coins, keys, and addresses are unchanged. Run a node if you want to participate and verify for yourself.
+
+[home.card_learn_more]
+Learn more
+
+[home.card_businesses_h3]
+Businesses
+
+[home.card_businesses_p]
+Exchanges, wallets, and merchants should follow the BLAKE2b chain they intend to credit and list.
+
+[home.card_developers_h3]
+Developers
+
+[home.card_developers_p]
+After the hardfork, new blocks must use the BLAKE2b algorithm. That keeps Bitcoin as money only by rejecting arbitrary data storage. Miners should use Knots and DATUM.
+
+[home.card_miners_link]
+Miners
+
+[home.why_h2]
+Why this hardfork exists
+
+[home.why_p1]
+Bitcoin is an innovative payment network and a new kind of money, and running a full node is how anyone can participate and verify for themselves. BIP-110, in alignment with the vast majority of node policy, attempted to reject use of the network for arbitrary data storage while leaving ordinary payments alone. That was a softfork: a tighter rule that old software can still follow, and it is not this hardfork. A hardfork is a break away from abuse of the Bitcoin network, and software that does not upgrade will not accept the new blocks.
+
+[home.why_p2]
+Large mining firms refused those limits and kept producing blocks that used transactions most nodes would not relay as a matter of policy. Anyone can still verify that chain, but following it means accepting use of the network for arbitrary data storage, which every node operator on that chain must store at their own expense and most importantly, risk.
+
+[home.why_p3]
+On August 8, 2026, nodes enforcing BIP-110 stopped accepting blocks that did not support it, while most SHA256d mining power kept producing those blocks, so the money-only rules could not activate. This hardfork changes proof of work from the legacy SHA256d algorithm to the stronger BLAKE2b algorithm, so today's SHA256d miners cannot add blocks here. Temporary limits on arbitrary data storage begin at the same moment and last until 1 September 2027, 00:00 UTC (when nodes vote to continue enforcement), using the previous block's median time past; the BLAKE2b algorithm remains after those limits end.
+
+[home.button_read_release]
+Read the release notes
+
+[home.button_how]
+How it works
+
+[home.fact1_dt]
+Proof of work
+
+[home.fact1_dd]
+SHA256d → BLAKE2b, permanent
+
+[home.fact2_dt]
+Data limits
+
+[home.fact2_dd]
+Temporary, until 1 Sep 2027
+
+[home.fact3_dt]
+Block size while limits last
+
+[home.fact3_dd]
+~300 kB (800,000 weight)
+
+[home.overview_h2]
+Get a quick overview
+
+[home.feature1_h3]
+Fast peer-to-peer transactions
+
+[home.feature1_p]
+Send value across the network without a central operator. Bitcoin is money only.
+
+[home.feature2_h3]
+Worldwide payments
+
+[home.feature2_p]
+Bitcoin remains a global settlement network. Coins created before the fork stay spendable after it.
+
+[home.feature3_h3]
+Money, and nothing else
+
+[home.feature3_p]
+Bitcoin with the BLAKE2b algorithm rejects use of the network for arbitrary data storage.
+
+
+================================================================================
+HOW IT WORKS  /how-it-works
+FILE: how-it-works.html
+================================================================================
+
+[how.title]
+How the BLAKE2b proof-of-work hardfork works
+
+[how.description]
+How Bitcoin with the BLAKE2b algorithm keeps Bitcoin as money only by rejecting arbitrary data storage.
+
+[how.kicker]
+Introduction
+
+[how.h1]
+How it works
+
+[how.header_p]
+Running your own node is how anyone can participate and verify for themselves. BIP-110, in alignment with the vast majority of node policy, attempted to reject use of the network for arbitrary data storage. This hardfork is a break away from abuse of the Bitcoin network. Bitcoin with the BLAKE2b algorithm keeps Bitcoin as money only.
+
+[how.p1]
+Bitcoin is an innovative payment network and a new kind of money, and a node is a copy of the ledger you run yourself. A block only counts if it matches the rules that software enforces: miners can offer work, but they cannot rewrite those rules for people who decline them.
+
+[how.p2]
+BIP-110, in alignment with the vast majority of node policy, attempted to reject use of the network for arbitrary data storage while leaving ordinary payments alone. That was a softfork: a tighter rule that old software can still follow, and it is not this hardfork. A hardfork is a break away from abuse of the Bitcoin network. Large mining firms refused those limits and kept producing blocks that used transactions most nodes would not relay as a matter of policy. Anyone can still verify that chain, but following it means accepting use of the network for arbitrary data storage, which every node operator on that chain must store at their own expense and, most importantly, risk.
+
+[how.p3]
+On August 8, 2026, nodes enforcing BIP-110 stopped accepting blocks that did not support it, while most SHA256d mining power kept producing those blocks, so the money-only rules could not activate. This hardfork changes proof of work from the legacy SHA256d algorithm to the stronger BLAKE2b algorithm, so today's SHA256d miners cannot add blocks here. New miners can follow the ledger people chose.
+
+[how.p4]
+Temporary limits on arbitrary data storage begin at the same moment and last until 1 September 2027, 00:00 UTC, using the previous block's median time past. During that time a block is also capped at about 300 kB (800,000 weight units). Continuing those limits after that date is a later choice for node operators; the BLAKE2b algorithm remains.
+
+
+================================================================================
+INDIVIDUALS  /individuals
+FILE: individuals.html
+================================================================================
+
+[individuals.title]
+Bitcoin for individuals
+
+[individuals.description]
+What the BLAKE2b proof-of-work hardfork means for people who hold and spend bitcoin.
+
+[individuals.kicker]
+Introduction
+
+[individuals.h1]
+Bitcoin for individuals
+
+[individuals.header_p]
+If you hold bitcoin to save or spend, this is still Bitcoin. The hardfork changes the proof-of-work algorithm, not who owns your coins.
+
+[individuals.p1]
+Bitcoin is an innovative payment network and a new kind of money, and running your own node is how anyone can participate and verify for themselves. Large miners kept producing blocks that used transactions most nodes would not relay as a matter of policy. Following that chain means accepting use of the network for arbitrary data storage, which every node operator on that chain must store at their own expense and, most importantly, risk.
+
+[individuals.p2]
+BIP-110, in alignment with the vast majority of node policy, attempted to reject use of the network for arbitrary data storage while leaving ordinary payments alone. That was a softfork: a tighter rule that old software can still follow, and it is not this hardfork. A hardfork is a break away from abuse of the Bitcoin network. Industrial mining firms blocked BIP-110 so they could keep selling block space for that use, then kept mining with those same transactions. Bitcoin with the BLAKE2b algorithm keeps Bitcoin as money only.
+
+[individuals.h2]
+What you should do
+
+[individuals.li1]
+You do not need to move your bitcoin before the fork. Coins created before the fork remain spendable.
+
+[individuals.li2]
+If you use a hosted wallet or exchange, ask which chain they will credit after the hardfork.
+
+[individuals.li3]
+If you run your own node, <a href="/getting-started">upgrade before the hardfork</a> and set the announced <code>blake2b_headline</code>, which is a short phrase the first new-style block must include.
+
+[individuals.li4]
+After the BIP-110 softfork, if you stay on Bitcoin Core or an older <a href="https://bitcoinknots.org/" rel="noopener">Bitcoin Knots</a> release, you will follow a different blockchain. You need a Knots version with the BLAKE2b change, from <a href="https://bitcoinknots.org/" rel="noopener">bitcoinknots.org</a> when it is published.
+
+[individuals.footer_p]
+For common objections, see the <a href="/faq">FAQ</a>. For the events that led here, see the <a href="/release">release notes</a>.
+
+
+================================================================================
+BUSINESSES  /businesses
+FILE: businesses.html
+================================================================================
+
+[businesses.title]
+Bitcoin for businesses
+
+[businesses.description]
+Guidance for exchanges, wallets, merchants, and other businesses after the BLAKE2b proof-of-work hardfork.
+
+[businesses.kicker]
+Introduction
+
+[businesses.h1]
+Bitcoin for businesses
+
+[businesses.header_p]
+If you credit, custody, or accept bitcoin, you need a clear policy for the BLAKE2b chain and the SHA256d chain that continued after the BIP-110 softfork.
+
+[businesses.p1]
+After the BIP-110 softfork, software that still uses the legacy SHA256d algorithm follows a different blockchain. If you intend to support this chain, run a <a href="https://bitcoinknots.org/" rel="noopener">Bitcoin Knots</a> version that includes the BLAKE2b change, set the announced <code>blake2b_headline</code>, and say so publicly. Bitcoin with the BLAKE2b algorithm keeps Bitcoin as money only by rejecting use of the network for arbitrary data storage.
+
+[businesses.h2_exchanges]
+Exchanges and custodians
+
+[businesses.li1]
+Halt deposits and withdrawals across the fork until your node is on the intended chain and your accounting is settled.
+
+[businesses.li2]
+Announce which chain you will credit. Do not assume tickers will stay unambiguous.
+
+[businesses.li3]
+Treat pre-fork balances as valid on the BLAKE2b chain you support. Post-fork coins on the other chain are a separate asset.
+
+[businesses.li4]
+A payment made with pre-fork coins can be copied onto the other chain (replay). Wallets that spend on both chains should use the opt-in <code>SIGHASH_UNIFIED</code> format so that copy does not happen by default.
+
+[businesses.h2_wallets]
+Wallets and merchants
+
+[businesses.p2]
+Wallets and processors that only understand the old 80-byte SHA256d block header will not see this chain. The new header is 164 bytes and is hashed with BLAKE2b. Point your software at a BLAKE2b node. A device that only signs payments does not need new keys. Anything that checks proof of work or the header, including Electrum-style light clients, must understand the new format.
+
+[businesses.p3]
+See <a href="/faq">What should exchanges do?</a> and the <a href="/release">release notes</a>.
+
+
+================================================================================
+DEVELOPERS  /developers
+FILE: developers.html
+================================================================================
+
+[developers.title]
+Bitcoin for developers
+
+[developers.description]
+Consensus, node, and integration notes for the BLAKE2b proof-of-work hardfork inspired by BIP-110.
+
+[developers.kicker]
+Introduction
+
+[developers.h1]
+Bitcoin for developers
+
+[developers.header_p]
+This is a consensus change. Nodes that do not enforce BLAKE2b proof of work and the announced headline will not follow this chain.
+
+[developers.p1]
+This hardfork is not BIP-110. BIP-110, in alignment with the vast majority of node policy, was a softfork, later rejected, that would have rejected use of the network for arbitrary data storage. A hardfork is a break away from abuse of the Bitcoin network. This hardfork changes proof of work from the legacy SHA256d algorithm to the stronger BLAKE2b algorithm, so today's SHA256d miners cannot produce valid blocks here.
+
+[developers.p2]
+Limits on arbitrary data storage start at that same block height as a flag day, not a leftover versionbits vote, and apply to v2-header blocks until the previous block's median time past reaches 1 September 2027, 00:00 UTC. During that window, blocks are also limited to 800,000 weight units, about 300 kB of typical payments. Inputs that spend coins created before the fork are exempt from the new script and data rules.
+
+[developers.p3]
+Each BLAKE2b block uses a 164-byte header v2, not the classic 80-byte SHA256d header. Light-client protocols that hash an 80-byte header with SHA256d will not validate this chain until they learn the new format and BLAKE2b.
+
+[developers.h2]
+Integration checklist
+
+[developers.li1]
+Use a BLAKE2b node, not Bitcoin Core or a pre-hardfork <a href="https://bitcoinknots.org/" rel="noopener">Bitcoin Knots</a> release, if you intend to follow this chain. Source: <a href="https://github.com/bitcoinknots/bitcoin" rel="noopener">bitcoinknots/bitcoin</a>.
+
+[developers.li2]
+Set the announced <code>blake2b_headline</code>. A node with a different value will not accept the first BLAKE2b block.
+
+[developers.li3]
+If a node followed post-fork SHA256d blocks, this release usually walks back to the fork and downloads the BLAKE2b chain. That pass uses headers only. A BLAKE2b-era block that breaks the weight cap, output sizes, or script rules still needs <code>-reindex</code>. A pruned node that has already deleted the walk-back blocks must resync.
+
+[developers.li4]
+After the previous block's median time past reaches 1 September 2027, 00:00 UTC, the data limits and the weight cap are removed unless node operators later choose to continue them. BLAKE2b proof of work is not temporary.
+
+[developers.li5]
+<code>getdeploymentinfo</code> reports <code>reduced_data</code> as a flag-day deployment. <code>getblocktemplate</code> advertises BLAKE2b as <code>!blake2b</code> in <code>rules</code>, and lists <code>reduced_data</code> there only while the window is open. There is no miner signaling bit.
+
+[developers.li6]
+Wallets that spend on both this chain and the SHA256d chain should use the opt-in <code>SIGHASH_UNIFIED</code> format so a payment is not copied across by default. Ordinary signatures stay valid. See <a href="https://github.com/bitcoinknots/bitcoin/pull/357" rel="noopener">Knots PR 357</a>.
+
+[developers.p4]
+Miners constructing their own templates should use the <a href="https://github.com/innerhat-dev/datum_gateway" rel="noopener">DATUM Gateway</a> with Knots. See <a href="/miners">miners and DATUM</a>.
+
+[developers.p5]
+The proof-of-work change is specified in <a href="https://github.com/bitcoinknots/bitcoin/pull/359" rel="noopener">Knots PR 359</a>. The reduced-data flag day and MTP expiry ride that block height in <a href="https://github.com/bitcoinknots/bitcoin/pull/358" rel="noopener">PR 358</a>. The opt-in unified signature hash is <a href="https://github.com/bitcoinknots/bitcoin/pull/357" rel="noopener">PR 357</a>.
+
+[developers.p6]
+Read the <a href="/release">release notes</a>, <a href="/nodes">node operator guide</a>, and <a href="/faq">FAQ</a>.
+
+
+================================================================================
+GETTING STARTED  /getting-started
+FILE: getting-started.html
+================================================================================
+
+[started.title]
+Getting started with Bitcoin after the hardfork
+
+[started.description]
+How to upgrade a Bitcoin node for the BLAKE2b proof-of-work hardfork, and what to do if you waited until after the fork.
+
+[started.kicker]
+Introduction
+
+[started.h1]
+Getting started
+
+[started.header_p]
+Upgrade before the hardfork if you can. You can keep your existing data directory. You do not need to move funds.
+
+[started.h2_before]
+If you upgrade before the hardfork
+
+[started.p_before]
+Install a Bitcoin Knots version that includes the BLAKE2b change. Downloads will be on <a href="https://bitcoinknots.org/" rel="noopener">bitcoinknots.org</a> when that version is published; source is at <a href="https://github.com/bitcoinknots/bitcoin" rel="noopener">github.com/bitcoinknots/bitcoin</a>. Keep your existing Bitcoin data folder. Set the announced <code>blake2b_headline</code> in your config. You do not need to download the chain again or move your coins.
+
+[started.h2_after]
+If you switch after the hardfork
+
+[started.p_after]
+Your current node software may have followed the legacy SHA256d chain. On startup, this release usually notices those extra blocks, walks back to the fork, and then downloads the BLAKE2b chain.
+
+[started.p_pruned]
+A <strong>pruned node</strong> deletes old blocks to save disk space. If you waited so long that those walk-back blocks are already gone, or the node followed invalid blocks after a late upgrade, rebuild the node and download the chain again. This release may ask at startup whether that resync is required.
+
+[started.h2_everyone]
+Everyone
+
+[started.li1]
+You do <strong>not</strong> need to move your bitcoin before the fork. Coins created before the fork remain spendable.
+
+[started.li2]
+After the BIP-110 softfork, Bitcoin Core and older <a href="https://bitcoinknots.org/" rel="noopener">Bitcoin Knots</a> still use the legacy SHA256d algorithm and follow a different blockchain. Today's ordinary Knots download is not enough; you need the BLAKE2b version.
+
+[started.li3]
+Miners should use <a href="/miners">DATUM</a> against a Knots node. Wallets and exchanges have additional work; see the <a href="/faq">FAQ</a> and <a href="/businesses">businesses</a> page.
+
+
+================================================================================
+YOU NEED TO KNOW  /you-need-to-know
+FILE: you-need-to-know.html
+================================================================================
+
+[yntk.title]
+You need to know about the Bitcoin hardfork
+
+[yntk.description]
+The facts that matter before, during, and after the BLAKE2b proof-of-work change.
+
+[yntk.kicker]
+Introduction
+
+[yntk.h1]
+You need to know
+
+[yntk.header_p]
+A short list of things that are easy to get wrong.
+
+[yntk.li1]
+<strong>This is still Bitcoin.</strong> The history, coins, and keys through the fork are the same ledger. Running a node is how anyone can participate and verify for themselves. Bitcoin with the BLAKE2b algorithm keeps Bitcoin as money only by rejecting use of the network for arbitrary data storage.
+
+[yntk.li2]
+<strong>You do not need to move coins</strong> to keep them. Coins you already have remain spendable. If you spend the same coins on both chains, that payment can be copied across unless the wallet uses the opt-in <code>SIGHASH_UNIFIED</code> format; see the <a href="/faq#q11">FAQ</a>.
+
+[yntk.li3]
+<strong>Staying on Core is a different chain.</strong> After the BIP-110 softfork, Bitcoin Core and older <a href="https://bitcoinknots.org/" rel="noopener">Bitcoin Knots</a> still use the legacy SHA256d algorithm. You need a Knots version with the BLAKE2b change, from <a href="https://bitcoinknots.org/" rel="noopener">bitcoinknots.org</a> when it is published.
+
+[yntk.li4]
+<strong>BIP-110 is not the hardfork.</strong> BIP-110 was a softfork, in alignment with the vast majority of node policy, and it was later rejected. A hardfork is a break away from abuse of the Bitcoin network. This hardfork is the switch to the BLAKE2b algorithm.
+
+[yntk.li5]
+<strong>Data limits are temporary. BLAKE2b is not.</strong> Limits on arbitrary data storage, and the ~300 kB (800,000 weight) block cap, last until 1 September 2027, 00:00 UTC (previous block's median time past). Continuing those limits after that date is a later choice for node operators. The BLAKE2b algorithm does not revert to SHA256d.
+
+[yntk.li6]
+<strong>The headline must match.</strong> The first new-style block includes a short agreed phrase, <code>blake2b_headline</code>. Your node must be set to the same phrase or it will reject that block.
+
+[yntk.li7]
+<strong>Pruned nodes can get stuck</strong> if they delete old blocks to save space and then switch late, or if they followed invalid blocks after a late upgrade. You may have to download the chain again. This release may ask at startup whether that resync is required.
+
+[yntk.li8]
+<strong>Purpose-built BLAKE2b hardware is supported from the first block.</strong> Today's SHA256d machines cannot mine this chain. If hashpower is lower than the old SHA256d network, difficulty will fall to match. The alternative was leaving SHA256d pools able to keep a chain that uses the network for arbitrary data storage, which every node operator on that chain must store at their own expense and, most importantly, risk.
+
+[yntk.p]
+The <a href="/faq">FAQ</a> covers objections and edge cases without burying the main point.
+
+
+================================================================================
+RELEASE  /release
+FILE: release.html
+================================================================================
+
+[release.title]
+Proof-of-work hardfork release notes
+
+[release.description]
+Why the BLAKE2b hardfork exists after BIP-110 was blocked, and what node operators should do.
+
+[release.kicker]
+Resources
+
+[release.h1]
+Proof-of-work hardfork, inspired by BIP-110
+
+[release.header_p]
+What happened, and what you should do.
+
+[release.p1]
+BIP-110, in alignment with the vast majority of node policy, attempted to reject use of the network for arbitrary data storage while leaving ordinary payments alone. It was a user-activated softfork: a tighter rule that old software can still follow, and that nodes could enforce even if miners did not want it. It is not this hardfork. A hardfork is a break away from abuse of the Bitcoin network. The change to the BLAKE2b algorithm exists because that softfork was blocked, and because the reason it was blocked still matters.
+
+[release.p2]
+Industrial mining groups that answer to shareholders, not node operators, rejected the cap and kept producing blocks that used transactions most nodes would not relay as a matter of policy. Anyone can still verify that history, but following it means accepting use of the network for arbitrary data storage, which every node operator on that chain must store at their own expense and, most importantly, risk.
+
+[release.p3]
+On August 8, 2026, nodes enforcing BIP-110 stopped accepting blocks that did not support it, while most SHA256d mining power kept producing those blocks, so the money-only rules could not activate.
+
+[release.p4]
+This hardfork changes proof of work from the legacy SHA256d algorithm to the stronger BLAKE2b algorithm, so today's SHA256d miners cannot add blocks here. The pools that buried BIP-110 lose their lock on this chain. In that sense the hardfork "fires" the incumbent miners and lets a new market form around a ledger that is money only.
+
+[release.callout]
+People asked for Bitcoin as money only. The mining power that refused them also stalled the chain. A new proof-of-work algorithm takes that mining power off the board.
+
+[release.p5]
+Temporary limits on arbitrary data storage begin at the same block height as BLAKE2b. They are not a leftover BIP-110 miner-vote schedule. They apply to the new-style blocks until 1 September 2027, 00:00 UTC, using the previous block's median time past. That clock only moves forward, so the cutoff cannot flicker. While those limits are on, a block may also be no larger than about 300 kB (800,000 weight units). Coins created before the fork can still be spent under the old script rules. Continuing those limits after that date is a later choice for node operators; the BLAKE2b algorithm remains.
+
+[release.h2]
+What this means for node operators
+
+[release.li1]
+<strong>If you upgrade before the hardfork:</strong> You can continue using your existing Bitcoin data directory normally. No blockchain re-download or movement of funds is required.
+
+[release.li2]
+<strong>If you switch from Bitcoin Core or an older <a href="https://bitcoinknots.org/" rel="noopener">Bitcoin Knots</a> after the hardfork:</strong> That software may have followed the SHA256d chain. On startup, this release usually notices those extra blocks, walks back to the fork, and then downloads the BLAKE2b chain. That automatic walk-back is only for SHA256d blocks at or after the fork. If a BLAKE2b block itself breaks the data or size rules, you still need <code>-reindex</code> to rebuild the database from blocks you already have.
+
+[release.li3]
+A <strong>pruned node</strong> deletes old blocks to save disk space. If you waited so long that the walk-back blocks are already gone, or the node followed invalid blocks after a late upgrade, rebuild the node and download the chain again. This release may ask at startup whether that resync is required.
+
+[release.li4]
+You do <strong>not</strong> need to move your bitcoin before the fork. Coins created before the fork remain spendable.
+
+[release.li5]
+The first BLAKE2b block includes a short agreed phrase, <code>blake2b_headline</code>. Set the announced value or your node will reject that block.
+
+[release.li6]
+After the BIP-110 softfork, Bitcoin Core and older <a href="https://bitcoinknots.org/" rel="noopener">Bitcoin Knots</a> still require SHA256d and follow a different blockchain. You need a Knots version that includes the BLAKE2b change, published at <a href="https://bitcoinknots.org/" rel="noopener">bitcoinknots.org</a> when it is available. Source: <a href="https://github.com/bitcoinknots/bitcoin" rel="noopener">github.com/bitcoinknots/bitcoin</a>.
+
+[release.p6]
+For background on BIP-110, why this hardfork is not BIP-110, frequently asked questions, and guidance for miners, wallets, exchanges, and other users, see the <a href="/faq">common questions</a> and <a href="/miners">miners and DATUM</a>.
+
+
+================================================================================
+NODES  /nodes
+FILE: nodes.html
+================================================================================
+
+[nodes.title]
+What this means for Bitcoin node operators
+
+[nodes.description]
+Upgrade, rewind, prune, and blake2b_headline instructions for BLAKE2b node operators.
+
+[nodes.kicker]
+Resources
+
+[nodes.h1]
+What this means for node operators
+
+[nodes.header_p]
+Keep your existing data folder if you upgrade in time. Set the announced headline. If you delete old blocks to save space and then switch late, you may have to download the chain again.
+
+[nodes.li1]
+<strong>If you upgrade before the hardfork:</strong> You can continue using your existing Bitcoin data directory normally. No blockchain re-download or movement of funds is required.
+
+[nodes.li2]
+<strong>If you switch from Bitcoin Core or older <a href="https://bitcoinknots.org/" rel="noopener">Bitcoin Knots</a> after the hardfork:</strong> That software may have followed the SHA256d chain. On startup, this release usually notices those extra blocks, walks back to the fork, and then downloads the BLAKE2b chain. That walk-back is only for SHA256d blocks at or after the fork. If a BLAKE2b block itself breaks the data or size rules, run <code>-reindex</code> to rebuild the database from blocks you already have. Knots versions with the BLAKE2b change will be on <a href="https://bitcoinknots.org/" rel="noopener">bitcoinknots.org</a> when published; source is <a href="https://github.com/bitcoinknots/bitcoin" rel="noopener">github.com/bitcoinknots/bitcoin</a>.
+
+[nodes.li3]
+A <strong>pruned node</strong> deletes old blocks to save disk space. If you waited so long that the walk-back blocks are already gone, or the node followed invalid blocks after a late upgrade, rebuild the node and download the chain again. This release may ask at startup whether that resync is required.
+
+[nodes.li4]
+You do <strong>not</strong> need to move your bitcoin before the fork. Coins created before the fork remain spendable.
+
+[nodes.li5]
+The first BLAKE2b block includes a short agreed phrase, <code>blake2b_headline</code>. Set the announced value or your node will reject that block.
+
+[nodes.li6]
+After the BIP-110 softfork, Bitcoin Core and older <a href="https://bitcoinknots.org/" rel="noopener">Bitcoin Knots</a> still require the legacy SHA256d algorithm and follow a different blockchain.
+
+[nodes.p]
+See the <a href="/release">release notes</a> for what happened, and the <a href="/faq">FAQ</a> if you are pruned or unsure which software you are running. Miners using their own templates should read <a href="/miners">DATUM and Knots</a>.
+
+
+================================================================================
+MINERS  /miners
+FILE: miners.html
+================================================================================
+
+[miners.title]
+Mining Bitcoin with DATUM and Knots
+
+[miners.description]
+How DATUM returns block-template construction to the miner after the BLAKE2b proof-of-work hardfork, using Knots and the DATUM Gateway.
+
+[miners.kicker]
+Resources
+
+[miners.h1]
+Miners and DATUM
+
+[miners.header_p]
+This hardfork changes proof of work from the legacy SHA256d algorithm to the stronger BLAKE2b algorithm, so today's SHA256d miners cannot add blocks here. Purpose-built BLAKE2b machines are supported from the first block. DATUM puts the choice of transactions back on the miner who runs the node.
+
+[miners.h2_knots]
+Bitcoin Knots
+
+[miners.p1]
+Run a BLAKE2b node if you intend to mine this chain. <a href="https://bitcoinknots.org/" rel="noopener">Bitcoin Knots</a> is highly recommended: it combines a full node and wallet, and it gives miners fine control over how block templates are constructed. Other software that supports <code>getblocktemplate</code> can be used for SHA256d, including Bitcoin Core, but it gives the miner much less control. For this chain you need a Knots version that includes the BLAKE2b change. Source is at <a href="https://github.com/bitcoinknots/bitcoin" rel="noopener">github.com/bitcoinknots/bitcoin</a>.
+
+[miners.p2]
+After the BIP-110 softfork, Bitcoin Core and older Knots releases still use the legacy SHA256d algorithm and follow a different blockchain. You need a Knots version that includes the BLAKE2b change. See <a href="/nodes">what this means for node operators</a>.
+
+[miners.h2_datum]
+What DATUM is
+
+[miners.p3]
+DATUM stands for <strong>Decentralized Alternative Templates for Universal Mining</strong>. Early Bitcoin treated the person running a node as the miner: that machine chose the payments and submitted the block. Pools later started building the block themselves so many miners could share luck and get steadier pay. The hardware still hashes. The pool decides what goes in the block. When a handful of pools pick every payment, they can stall or drop ones they dislike.
+
+[miners.p4]
+DATUM reverses that. The <a href="https://github.com/innerhat-dev/datum_gateway" rel="noopener">DATUM Gateway</a> asks your local node for a block template, sends work to your hardware, and submits a found block to the network from that node. The person running the node is the miner. The gateway and the node can share one machine.
+
+[miners.p5]
+You can still smooth income through a DATUM-supporting pool. The pool coordinates how the block reward is split based on work done. It does not create the work or the block template, and the DATUM protocol has no way for the pool to hand you the information needed to build one. The pool does send the generation payout split for a template you construct locally. In the current protocol the pool also checks that a found block is valid, so miners do not accidentally publish a bad block while the software is still in testing; that check is not meant to last. The work your hardware sees comes only from your node, which is why Knots matters: you choose transactions there.
+
+[miners.li1]
+Talks to a local node over RPC using <code>getblocktemplate</code>.
+
+[miners.li2]
+Talks to hardware over Stratum v1, including version rolling (ASICBoost).
+
+[miners.li3]
+Talks to a pool, if you use one, over the DATUM protocol, an encrypted custom link between the Gateway and the pool, not a Stratum v2 add-on.
+
+[miners.li4]
+Supports Bitcoin only. Choose transactions on the node; the pool does not hand you a ready-made block.
+
+[miners.p6]
+While limits on arbitrary data storage are in effect, a block may also be no larger than about 300 kB (800,000 weight units). <code>getblocktemplate</code> reports that as <code>weightlimit</code>. Do not point the gateway at a 4,000,000-weight policy and expect those templates to be valid.
+
+[miners.h2_mining]
+BLAKE2b mining
+
+[miners.p7]
+SHA256d mining against an ordinary <code>getblocktemplate</code> node needs no node source changes. The Gateway uses standard GBT. BLAKE2b header-v2 mining is supported from the first block, including Antminer A3 and other Sia-style BLAKE2b hashers such as the Goldshell SC5 Pro and SC Lite, and needs a Knots node built with the BLAKE2b proof-of-work change. That node's <code>getblocktemplate</code> still looks like ordinary BIP22 GBT. It advertises BLAKE2b as <code>!blake2b</code> in <code>rules</code>, so the Gateway default (<code>auto</code>) selects blake2b. You can still set <code>mining.pow_algorithm</code> to <code>blake2b</code>. Keep hasher time rolling off:
+
+[miners.config]
+"mining": {
+    "pow_algorithm": "blake2b",
+    "allow_hasher_time_rolling": false
+}
+
+[miners.p8]
+This software is still in public beta. Build and configuration details are in the <a href="https://github.com/innerhat-dev/datum_gateway" rel="noopener">DATUM Gateway repository</a>.
+
+[miners.button_datum]
+DATUM Gateway on GitHub
+
+[miners.button_knots]
+Bitcoin Knots
+
+[miners.button_source]
+Knots source
+
+
+================================================================================
+FAQ  /faq
+FILE: faq.html
+================================================================================
+
+[faq.title]
+Bitcoin common questions
+
+[faq.description]
+FAQ for Bitcoin with the BLAKE2b algorithm: why it is still Bitcoin, why it is not BIP-110, and how it keeps Bitcoin as money only.
+
+[faq.kicker]
+FAQ
+
+[faq.h1]
+Common questions
+
+[faq.header_p]
+Why this is still Bitcoin, why it is not BIP-110, what happened on August 8, and what to do about nodes, coins, Lightning, and exchanges.
+
+[faq.q_bip110]
+Is this hardfork the same as BIP-110?
+
+[faq.a_bip110]
+No. BIP-110, in alignment with the vast majority of node policy, attempted to reject use of the network for arbitrary data storage while leaving ordinary payments alone. That was a softfork: a tighter rule that old software can still follow, and it is not this hardfork. A hardfork is a break away from abuse of the Bitcoin network. This hardfork changes proof of work from the legacy SHA256d algorithm to the stronger BLAKE2b algorithm. Temporary limits on arbitrary data storage begin at the same moment and then expire on their own. They are not BIP-110's old miner-vote schedule.
+
+[faq.q1]
+Why isn't this an altcoin?
+
+[faq.a1]
+Bitcoin is the ledger your node accepts: the same history, coins, and keys through the fork. An altcoin starts a new book. This release continues the existing book and changes how the next pages are proven. Running a node is how anyone can participate and verify for themselves. The algorithm changed because large miners kept producing blocks that used transactions most nodes would not relay as a matter of policy, leaving every node operator on that chain to store arbitrary data at their own expense and, most importantly, risk.
+
+[faq.q2]
+Why change SHA256d?
+
+[faq.a2]
+SHA256d mining power blocked a cap on arbitrary data storage. Firms that mine at scale profit when they sell block space for that use. After August 8, 2026, nodes enforcing BIP-110 stopped accepting blocks that did not support it, while most SHA256d miners kept producing those blocks, so the money-only rules could not activate. Anyone can still verify that chain, but every node operator who follows it must store that data at their own expense and, most importantly, risk. This hardfork changes proof of work from the legacy SHA256d algorithm to the stronger BLAKE2b algorithm, so today's SHA256d miners cannot add blocks here. Bitcoin with the BLAKE2b algorithm keeps Bitcoin as money only.
+
+[faq.q3]
+What exactly happened on August 8?
+
+[faq.a3]
+BIP-110 was scheduled as a user-activated softfork in 2026. On August 8, nodes enforcing it stopped accepting blocks that did not support it, while most SHA256d mining power, including large public-company style pools, kept producing those blocks, so the money-only rules could not activate. People who wanted Bitcoin as money only were left without enough work to produce blocks. The change to the BLAKE2b algorithm came later, as a way out of that bind, and not as a rename of BIP-110.
+
+[faq.q4]
+Were the miners attacking Bitcoin or simply rejecting BIP-110?
+
+[faq.a4]
+They declined BIP-110 and kept producing blocks that used transactions most nodes would not relay as a matter of policy. Arbitrary data storage is a product those miners can sell. After August 8, nodes enforcing the softfork also stopped accepting blocks that did not support it, so the money-only rules could not activate. That was mining power against the policy most nodes were already running, and every node operator on that chain must store that data at their own expense and, most importantly, risk. Changing the proof-of-work algorithm is the answer to that veto.
+
+[faq.q5]
+What does “fire the miners” mean?
+
+[faq.a5]
+People tried to keep Bitcoin as money only. The mining power that said no also stopped the money-only rules from activating. A new proof-of-work algorithm means those machines cannot make valid blocks here. They lose the ability to impose arbitrary data storage on every node operator.
+
+[faq.q6]
+Who will mine after the fork?
+
+[faq.a6]
+Purpose-built BLAKE2b machines are supported from the first block, including Antminer A3 and other Sia-style BLAKE2b hashers such as the Goldshell SC5 Pro and SC Lite. Today's SHA256d miners are not the mining market for this chain. Miners who want to choose their own transactions, including when they share rewards with a pool, should run <a href="https://bitcoinknots.org/" rel="noopener">Bitcoin Knots</a> and the <a href="https://github.com/innerhat-dev/datum_gateway" rel="noopener">DATUM Gateway</a>. See <a href="/miners">miners and DATUM</a>.
+
+[faq.q7]
+Does changing PoW affect my coins or private keys?
+
+[faq.a7]
+No. Your addresses, keys, and coins stay the same. You do not need to move bitcoin before the fork. Sending still uses the same signatures. What changes is the proof-of-work algorithm a new block must satisfy.
+
+[faq.q8]
+What happens if I stay on Core?
+
+[faq.a8]
+Bitcoin Core, and older <a href="https://bitcoinknots.org/" rel="noopener">Bitcoin Knots</a>, still use the legacy SHA256d algorithm. After the BIP-110 softfork they follow a different blockchain. If you want this chain, you need a Knots version with the BLAKE2b change and the announced <code>blake2b_headline</code>. That version will be published at <a href="https://bitcoinknots.org/" rel="noopener">bitcoinknots.org</a> when it is available; source is at <a href="https://github.com/bitcoinknots/bitcoin" rel="noopener">github.com/bitcoinknots/bitcoin</a>.
+
+[faq.q9]
+What happens to Lightning?
+
+[faq.a9]
+Lightning follows the chain your node and your counterparties follow. Channels opened before the fork still exist on the BLAKE2b chain, but both sides need software that understands the new rules, and both must be on the same chain. Software that stays on SHA256d is on a different ledger. Close or move channels with counterparties before they diverge if you need a clean split.
+
+[faq.q10]
+What should exchanges do?
+
+[faq.a10]
+Run this release, set the announced <code>blake2b_headline</code>, pause deposits and withdrawals across the fork, and say which chain you will credit. Treat the SHA256d chain as a separate asset if you list it at all. A spend of pre-fork coins can be copied onto the other chain unless it uses the opt-in <code>SIGHASH_UNIFIED</code> format.
+
+[faq.q11]
+Can I claim coins on both chains?
+
+[faq.a11]
+If you had coins before the fork, those coins exist on both chains if both keep going. You do not have to move them to keep them here. If you spend them on one chain, that same spend might also work on the other unless the wallet uses the opt-in <code>SIGHASH_UNIFIED</code> format. New coins created after the fork are separate.
+
+[faq.q12]
+Why BLAKE2b?
+
+[faq.a12]
+This hardfork changes proof of work from the legacy SHA256d algorithm to the stronger BLAKE2b algorithm, so today's SHA256d miners cannot take this chain by default. Purpose-built BLAKE2b machines are supported from the first block. That keeps the old machines from imposing use of the network for arbitrary data storage.
+
+[faq.q13]
+Is the BLAKE2b change temporary too?
+
+[faq.a13]
+No. This matters. The BLAKE2b algorithm is permanent. Temporary limits on arbitrary data storage begin at the same moment and then end on their own. Continuing those limits after that date is a later choice for node operators. BIP-110 itself was a softfork; it was never this hardfork.
+
+[faq.q_expiry]
+When do the data limits expire?
+
+[faq.a_expiry]
+Temporary limits on arbitrary data storage begin when BLAKE2b begins, and they last until 1 September 2027, 00:00 UTC. They are not a leftover BIP-110 miner-vote schedule. The technical clock is the previous block's median time past. That clock only moves forward, so the next block is either still inside the window or past it. The ~300 kB cap (800,000 weight units) ends with that window. During the window, coins created before the fork can still be spent under the old script rules. Continuing those limits after that date is a later choice for node operators. The BLAKE2b algorithm remains.
+
+[faq.q14]
+What if the BLAKE2b chain initially has very little mining power?
+
+[faq.a14]
+Purpose-built BLAKE2b machines are supported from the first block. If hashpower is still lower than the old SHA256d network, difficulty will fall to match. Staying on the legacy SHA256d algorithm left the old pools able to keep a chain built from transactions most nodes would not relay, so every node operator on that chain would keep storing arbitrary data at their own expense and, most importantly, risk. Starting BLAKE2b with less hashpower is preferable to leaving that veto in place.
+
+[faq.q15]
+Do hardware wallets need updates?
+
+[faq.a15]
+Private keys do not change, and ordinary payment signing still works. Wallets that spend on both this chain and the SHA256d chain should support the opt-in <code>SIGHASH_UNIFIED</code> format. Firmware needs an update if the device checks proof of work, block headers, or which chain it is on. Watch-only checking against the BLAKE2b chain needs compatible software. Ask your vendor.
+
+[faq.q16]
+I'm pruned; exactly when do I need to resync?
+
+[faq.a16]
+If you upgrade before the hardfork, you do not need to resync. If you switch after the fork and your node still has the blocks needed to walk back to the fork, this release does that and then downloads the BLAKE2b chain. If you already deleted those blocks to save space, or the node followed invalid blocks after a late upgrade, rebuild the node and download the chain again. This release may ask at startup whether that resync is required. A BLAKE2b block that breaks the data or size rules is a <code>-reindex</code> job, not that automatic walk-back.
+
+
+================================================================================
+PRIVACY  /privacy
+FILE: privacy.html
+================================================================================
+
+[privacy.title]
+Privacy Policy
+
+[privacy.description]
+Privacy policy for the informational Bitcoin site at btc-blake2b.org and btc-blake2b.com.
+
+[privacy.kicker]
+Legal
+
+[privacy.h1]
+Privacy Policy
+
+[privacy.header_p]
+This is a static informational site. It does not create accounts, take payments, or set advertising cookies.
+
+[privacy.dates]
+Effective August 20, 2026. Last updated August 20, 2026.
+
+[privacy.p1]
+btc-blake2b.org and btc-blake2b.com serve the same pages. They explain Bitcoin with the BLAKE2b algorithm, and the BIP-110 events that inspired this hardfork.
+
+[privacy.h2_1]
+1. Information we collect
+
+[privacy.p2]
+The web server may record standard request logs such as IP address, user agent, requested path, referrer, and timestamps. Those logs are used to operate the site, diagnose failures, and protect against abuse. This site does not use third-party advertising or analytics SDKs.
+
+[privacy.h2_2]
+2. Cookies
+
+[privacy.p3]
+These pages do not set tracking cookies. If your browser stores a cookie from a previous visit to another site on the same machine, that is outside this site's control.
+
+[privacy.h2_3]
+3. Links
+
+[privacy.p4]
+Pages may link to the Bitcoin white paper and to other operators' documentation. Those sites have their own policies.

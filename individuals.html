@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitcoin for individuals</title>
+    <meta name="description" content="What the BLAKE2b proof-of-work hardfork means for people who hold and spend bitcoin.">
+    <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="theme-color" content="#f7931a">
+    <link rel="canonical" href="https://btc-blake2b.org/individuals">
+    <meta property="og:title" content="Bitcoin for individuals">
+    <meta property="og:description" content="What the BLAKE2b proof-of-work hardfork means for people who hold and spend bitcoin.">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Bitcoin">
+    <meta property="og:url" content="https://btc-blake2b.org/individuals">
+    <meta property="og:image" content="https://btc-blake2b.org/media/og-image.png?v=2">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Bitcoin for individuals">
+    <meta name="twitter:description" content="What the BLAKE2b proof-of-work hardfork means for people who hold and spend bitcoin.">
+    <meta name="twitter:image" content="https://btc-blake2b.org/media/og-image.png?v=2">
+    <link rel="icon" href="/media/logo.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/static/style.css?v=8">
+</head>
+<body>
+    <a class="skip-link" href="#content">Skip to content</a>
+    <header class="site-header">
+        <div class="wrap header-bar">
+            <a class="brand" href="/">
+                <img src="/media/header-logo.png?v=2" alt="Bitcoin">
+            </a>
+            <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="site-nav">Menu</button>
+            <nav class="site-nav" id="site-nav" data-site-nav aria-label="Primary">
+                <div class="nav-item" data-dropdown>
+                    <button type="button" data-dropdown-button aria-expanded="false">Introduction</button>
+                    <div class="dropdown-menu">
+                        <a href="/individuals">Individuals</a>
+                        <a href="/businesses">Businesses</a>
+                        <a href="/developers">Developers</a>
+                        <a href="/getting-started">Getting started</a>
+                        <a href="/how-it-works">How it works</a>
+                        <a href="/you-need-to-know">You need to know</a>
+                    </div>
+                </div>
+                <div class="nav-item" data-dropdown>
+                    <button type="button" data-dropdown-button aria-expanded="false">Resources</button>
+                    <div class="dropdown-menu">
+                        <a href="/release">Release notes</a>
+                        <a href="/nodes">Node operators</a>
+                        <a href="/miners">Miners and DATUM</a>
+                        <a href="https://bitcoinknots.org/" rel="noopener">Bitcoin Knots</a>
+                        <a href="https://github.com/bitcoinknots/bitcoin" rel="noopener">Knots source</a>
+                    </div>
+                </div>
+                <a href="/getting-started">Participate</a>
+                <a href="/faq">FAQ</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="content">
+        <header class="page-header">
+            <div class="wrap">
+                <p class="kicker">Introduction</p>
+                <h1>Bitcoin for individuals</h1>
+                <p>If you hold bitcoin to save or spend, this is still Bitcoin. The hardfork changes the proof-of-work algorithm, not who owns your coins.</p>
+            </div>
+        </header>
+        <article class="wrap prose">
+
+            <p>Bitcoin is an innovative payment network and a new kind of money, and running your own node is how anyone can participate and verify for themselves. Large miners kept producing blocks that used transactions most nodes would not relay as a matter of policy. Following that chain means accepting use of the network for arbitrary data storage, which every node operator on that chain must store at their own expense and, most importantly, risk.</p>
+            <p>BIP-110, in alignment with the vast majority of node policy, attempted to reject use of the network for arbitrary data storage while leaving ordinary payments alone. That was a softfork: a tighter rule that old software can still follow, and it is not this hardfork. A hardfork is a break away from abuse of the Bitcoin network. Industrial mining firms blocked BIP-110 so they could keep selling block space for that use, then kept mining with those same transactions. Bitcoin with the BLAKE2b algorithm keeps Bitcoin as money only.</p>
+            <h2>What you should do</h2>
+            <ul>
+                <li>You do not need to move your bitcoin before the fork. Coins created before the fork remain spendable.</li>
+                <li>If you use a hosted wallet or exchange, ask which chain they will credit after the hardfork.</li>
+                <li>If you run your own node, <a href="/getting-started">upgrade before the hardfork</a> and set the announced <code>blake2b_headline</code>, which is a short phrase the first new-style block must include.</li>
+                <li>After the BIP-110 softfork, if you stay on Bitcoin Core or an older <a href="https://bitcoinknots.org/" rel="noopener">Bitcoin Knots</a> release, you will follow a different blockchain. You need a Knots version with the BLAKE2b change, from <a href="https://bitcoinknots.org/" rel="noopener">bitcoinknots.org</a> when it is published.</li>
+            </ul>
+            <p>For common objections, see the <a href="/faq">FAQ</a>. For the events that led here, see the <a href="/release">release notes</a>.</p>
+
+        </article>
+    </main>
+    <footer class="site-footer">
+        <div class="wrap">
+            <div class="footer-grid">
+                <div>
+                    <a class="footer-brand" href="/">
+                        <img src="/media/logo.svg" alt="">
+                        Bitcoin
+                    </a>
+                    <p>Open source P2P money. Bitcoin with the BLAKE2b algorithm keeps Bitcoin as money only.</p>
+                </div>
+                <div>
+                    <h2>Introduction</h2>
+                    <ul>
+                        <li><a href="/individuals">Individuals</a></li>
+                        <li><a href="/businesses">Businesses</a></li>
+                        <li><a href="/developers">Developers</a></li>
+                        <li><a href="/getting-started">Getting started</a></li>
+                        <li><a href="/how-it-works">How it works</a></li>
+                        <li><a href="/you-need-to-know">You need to know</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h2>Resources</h2>
+                    <ul>
+                        <li><a href="/release">Release notes</a></li>
+                        <li><a href="/nodes">Node operators</a></li>
+                        <li><a href="/miners">Miners and DATUM</a></li>
+                        <li><a href="https://bitcoinknots.org/" rel="noopener">Bitcoin Knots</a></li>
+                        <li><a href="https://github.com/bitcoinknots/bitcoin" rel="noopener">Knots source</a></li>
+                        <li><a href="/faq">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h2>Other</h2>
+                    <ul>
+                        <li><a href="/privacy">Privacy</a></li>
+                        <li><a href="https://bitcoin.org/bitcoin.pdf" rel="noopener">White paper</a></li>
+                        <li><a href="https://github.com/innerhat-dev/datum_gateway" rel="noopener">DATUM Gateway</a></li>
+                    </ul>
+                </div>
+            </div>
+            <p class="footer-note">© Bitcoin Project from 2009 to 2026. btc-blake2b.org and btc-blake2b.com serve the same site.</p>
+        </div>
+    </footer>
+    <script src="/static/site.js?v=4"></script>
+
+</body>
+</html>

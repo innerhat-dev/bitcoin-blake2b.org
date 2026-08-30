@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitcoin for businesses</title>
+    <meta name="description" content="Guidance for exchanges, wallets, merchants, and other businesses after the BLAKE2b proof-of-work hardfork.">
+    <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="theme-color" content="#f7931a">
+    <link rel="canonical" href="https://btc-blake2b.org/businesses">
+    <meta property="og:title" content="Bitcoin for businesses">
+    <meta property="og:description" content="Guidance for exchanges, wallets, merchants, and other businesses after the BLAKE2b proof-of-work hardfork.">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Bitcoin">
+    <meta property="og:url" content="https://btc-blake2b.org/businesses">
+    <meta property="og:image" content="https://btc-blake2b.org/media/og-image.png?v=2">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Bitcoin for businesses">
+    <meta name="twitter:description" content="Guidance for exchanges, wallets, merchants, and other businesses after the BLAKE2b proof-of-work hardfork.">
+    <meta name="twitter:image" content="https://btc-blake2b.org/media/og-image.png?v=2">
+    <link rel="icon" href="/media/logo.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/static/style.css?v=8">
+</head>
+<body>
+    <a class="skip-link" href="#content">Skip to content</a>
+    <header class="site-header">
+        <div class="wrap header-bar">
+            <a class="brand" href="/">
+                <img src="/media/header-logo.png?v=2" alt="Bitcoin">
+            </a>
+            <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="site-nav">Menu</button>
+            <nav class="site-nav" id="site-nav" data-site-nav aria-label="Primary">
+                <div class="nav-item" data-dropdown>
+                    <button type="button" data-dropdown-button aria-expanded="false">Introduction</button>
+                    <div class="dropdown-menu">
+                        <a href="/individuals">Individuals</a>
+                        <a href="/businesses">Businesses</a>
+                        <a href="/developers">Developers</a>
+                        <a href="/getting-started">Getting started</a>
+                        <a href="/how-it-works">How it works</a>
+                        <a href="/you-need-to-know">You need to know</a>
+                    </div>
+                </div>
+                <div class="nav-item" data-dropdown>
+                    <button type="button" data-dropdown-button aria-expanded="false">Resources</button>
+                    <div class="dropdown-menu">
+                        <a href="/release">Release notes</a>
+                        <a href="/nodes">Node operators</a>
+                        <a href="/miners">Miners and DATUM</a>
+                        <a href="https://bitcoinknots.org/" rel="noopener">Bitcoin Knots</a>
+                        <a href="https://github.com/bitcoinknots/bitcoin" rel="noopener">Knots source</a>
+                    </div>
+                </div>
+                <a href="/getting-started">Participate</a>
+                <a href="/faq">FAQ</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="content">
+        <header class="page-header">
+            <div class="wrap">
+                <p class="kicker">Introduction</p>
+                <h1>Bitcoin for businesses</h1>
+                <p>If you credit, custody, or accept bitcoin, you need a clear policy for the BLAKE2b chain and the SHA256d chain that continued after the BIP-110 softfork.</p>
+            </div>
+        </header>
+        <article class="wrap prose">
+
+            <p>After the BIP-110 softfork, software that still uses the legacy SHA256d algorithm follows a different blockchain. If you intend to support this chain, run a <a href="https://bitcoinknots.org/" rel="noopener">Bitcoin Knots</a> version that includes the BLAKE2b change, set the announced <code>blake2b_headline</code>, and say so publicly. Bitcoin with the BLAKE2b algorithm keeps Bitcoin as money only by rejecting use of the network for arbitrary data storage.</p>
+            <h2>Exchanges and custodians</h2>
+            <ul>
+                <li>Halt deposits and withdrawals across the fork until your node is on the intended chain and your accounting is settled.</li>
+                <li>Announce which chain you will credit. Do not assume tickers will stay unambiguous.</li>
+                <li>Treat pre-fork balances as valid on the BLAKE2b chain you support. Post-fork coins on the other chain are a separate asset.</li>
+                <li>A payment made with pre-fork coins can be copied onto the other chain (replay). Wallets that spend on both chains should use the opt-in <code>SIGHASH_UNIFIED</code> format so that copy does not happen by default.</li>
+            </ul>
+            <h2>Wallets and merchants</h2>
+            <p>Wallets and processors that only understand the old 80-byte SHA256d block header will not see this chain. The new header is 164 bytes and is hashed with BLAKE2b. Point your software at a BLAKE2b node. A device that only signs payments does not need new keys. Anything that checks proof of work or the header, including Electrum-style light clients, must understand the new format.</p>
+            <p>See <a href="/faq">What should exchanges do?</a> and the <a href="/release">release notes</a>.</p>
+
+        </article>
+    </main>
+    <footer class="site-footer">
+        <div class="wrap">
+            <div class="footer-grid">
+                <div>
+                    <a class="footer-brand" href="/">
+                        <img src="/media/logo.svg" alt="">
+                        Bitcoin
+                    </a>
+                    <p>Open source P2P money. Bitcoin with the BLAKE2b algorithm keeps Bitcoin as money only.</p>
+                </div>
+                <div>
+                    <h2>Introduction</h2>
+                    <ul>
+                        <li><a href="/individuals">Individuals</a></li>
+                        <li><a href="/businesses">Businesses</a></li>
+                        <li><a href="/developers">Developers</a></li>
+                        <li><a href="/getting-started">Getting started</a></li>
+                        <li><a href="/how-it-works">How it works</a></li>
+                        <li><a href="/you-need-to-know">You need to know</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h2>Resources</h2>
+                    <ul>
+                        <li><a href="/release">Release notes</a></li>
+                        <li><a href="/nodes">Node operators</a></li>
+                        <li><a href="/miners">Miners and DATUM</a></li>
+                        <li><a href="https://bitcoinknots.org/" rel="noopener">Bitcoin Knots</a></li>
+                        <li><a href="https://github.com/bitcoinknots/bitcoin" rel="noopener">Knots source</a></li>
+                        <li><a href="/faq">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h2>Other</h2>
+                    <ul>
+                        <li><a href="/privacy">Privacy</a></li>
+                        <li><a href="https://bitcoin.org/bitcoin.pdf" rel="noopener">White paper</a></li>
+                        <li><a href="https://github.com/innerhat-dev/datum_gateway" rel="noopener">DATUM Gateway</a></li>
+                    </ul>
+                </div>
+            </div>
+            <p class="footer-note">© Bitcoin Project from 2009 to 2026. btc-blake2b.org and btc-blake2b.com serve the same site.</p>
+        </div>
+    </footer>
+    <script src="/static/site.js?v=4"></script>
+
+</body>
+</html>

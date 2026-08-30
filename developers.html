@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitcoin for developers</title>
+    <meta name="description" content="Consensus, node, and integration notes for the BLAKE2b proof-of-work hardfork inspired by BIP-110.">
+    <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="theme-color" content="#f7931a">
+    <link rel="canonical" href="https://btc-blake2b.org/developers">
+    <meta property="og:title" content="Bitcoin for developers">
+    <meta property="og:description" content="Consensus, node, and integration notes for the BLAKE2b proof-of-work hardfork inspired by BIP-110.">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Bitcoin">
+    <meta property="og:url" content="https://btc-blake2b.org/developers">
+    <meta property="og:image" content="https://btc-blake2b.org/media/og-image.png?v=2">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Bitcoin for developers">
+    <meta name="twitter:description" content="Consensus, node, and integration notes for the BLAKE2b proof-of-work hardfork inspired by BIP-110.">
+    <meta name="twitter:image" content="https://btc-blake2b.org/media/og-image.png?v=2">
+    <link rel="icon" href="/media/logo.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/static/style.css?v=8">
+</head>
+<body>
+    <a class="skip-link" href="#content">Skip to content</a>
+    <header class="site-header">
+        <div class="wrap header-bar">
+            <a class="brand" href="/">
+                <img src="/media/header-logo.png?v=2" alt="Bitcoin">
+            </a>
+            <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="site-nav">Menu</button>
+            <nav class="site-nav" id="site-nav" data-site-nav aria-label="Primary">
+                <div class="nav-item" data-dropdown>
+                    <button type="button" data-dropdown-button aria-expanded="false">Introduction</button>
+                    <div class="dropdown-menu">
+                        <a href="/individuals">Individuals</a>
+                        <a href="/businesses">Businesses</a>
+                        <a href="/developers">Developers</a>
+                        <a href="/getting-started">Getting started</a>
+                        <a href="/how-it-works">How it works</a>
+                        <a href="/you-need-to-know">You need to know</a>
+                    </div>
+                </div>
+                <div class="nav-item" data-dropdown>
+                    <button type="button" data-dropdown-button aria-expanded="false">Resources</button>
+                    <div class="dropdown-menu">
+                        <a href="/release">Release notes</a>
+                        <a href="/nodes">Node operators</a>
+                        <a href="/miners">Miners and DATUM</a>
+                        <a href="https://bitcoinknots.org/" rel="noopener">Bitcoin Knots</a>
+                        <a href="https://github.com/bitcoinknots/bitcoin" rel="noopener">Knots source</a>
+                    </div>
+                </div>
+                <a href="/getting-started">Participate</a>
+                <a href="/faq">FAQ</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="content">
+        <header class="page-header">
+            <div class="wrap">
+                <p class="kicker">Introduction</p>
+                <h1>Bitcoin for developers</h1>
+                <p>This is a consensus change. Nodes that do not enforce BLAKE2b proof of work and the announced headline will not follow this chain.</p>
+            </div>
+        </header>
+        <article class="wrap prose">
+
+            <p>This hardfork is not BIP-110. BIP-110, in alignment with the vast majority of node policy, was a softfork, later rejected, that would have rejected use of the network for arbitrary data storage. A hardfork is a break away from abuse of the Bitcoin network. This hardfork changes proof of work from the legacy SHA256d algorithm to the stronger BLAKE2b algorithm, so today's SHA256d miners cannot produce valid blocks here.</p>
+            <p>Limits on arbitrary data storage start at that same block height as a flag day, not a leftover versionbits vote, and apply to v2-header blocks until the previous block's median time past reaches 1 September 2027, 00:00 UTC. During that window, blocks are also limited to 800,000 weight units, about 300 kB of typical payments. Inputs that spend coins created before the fork are exempt from the new script and data rules.</p>
+            <p>Each BLAKE2b block uses a 164-byte header v2, not the classic 80-byte SHA256d header. Light-client protocols that hash an 80-byte header with SHA256d will not validate this chain until they learn the new format and BLAKE2b.</p>
+            <h2>Integration checklist</h2>
+            <ul>
+                <li>Use a BLAKE2b node, not Bitcoin Core or a pre-hardfork <a href="https://bitcoinknots.org/" rel="noopener">Bitcoin Knots</a> release, if you intend to follow this chain. Source: <a href="https://github.com/bitcoinknots/bitcoin" rel="noopener">bitcoinknots/bitcoin</a>.</li>
+                <li>Set the announced <code>blake2b_headline</code>. A node with a different value will not accept the first BLAKE2b block.</li>
+                <li>If a node followed post-fork SHA256d blocks, this release usually walks back to the fork and downloads the BLAKE2b chain. That pass uses headers only. A BLAKE2b-era block that breaks the weight cap, output sizes, or script rules still needs <code>-reindex</code>. A pruned node that has already deleted the walk-back blocks must resync.</li>
+                <li>After the previous block's median time past reaches 1 September 2027, 00:00 UTC, the data limits and the weight cap are removed unless node operators later choose to continue them. BLAKE2b proof of work is not temporary.</li>
+                <li><code>getdeploymentinfo</code> reports <code>reduced_data</code> as a flag-day deployment. <code>getblocktemplate</code> advertises BLAKE2b as <code>!blake2b</code> in <code>rules</code>, and lists <code>reduced_data</code> there only while the window is open. There is no miner signaling bit.</li>
+                <li>Wallets that spend on both this chain and the SHA256d chain should use the opt-in <code>SIGHASH_UNIFIED</code> format so a payment is not copied across by default. Ordinary signatures stay valid. See <a href="https://github.com/bitcoinknots/bitcoin/pull/357" rel="noopener">Knots PR 357</a>.</li>
+            </ul>
+            <p>Miners constructing their own templates should use the <a href="https://github.com/innerhat-dev/datum_gateway" rel="noopener">DATUM Gateway</a> with Knots. See <a href="/miners">miners and DATUM</a>.</p>
+            <p>The proof-of-work change is specified in <a href="https://github.com/bitcoinknots/bitcoin/pull/359" rel="noopener">Knots PR 359</a>. The reduced-data flag day and MTP expiry ride that block height in <a href="https://github.com/bitcoinknots/bitcoin/pull/358" rel="noopener">PR 358</a>. The opt-in unified signature hash is <a href="https://github.com/bitcoinknots/bitcoin/pull/357" rel="noopener">PR 357</a>.</p>
+            <p>Read the <a href="/release">release notes</a>, <a href="/nodes">node operator guide</a>, and <a href="/faq">FAQ</a>.</p>
+
+        </article>
+    </main>
+    <footer class="site-footer">
+        <div class="wrap">
+            <div class="footer-grid">
+                <div>
+                    <a class="footer-brand" href="/">
+                        <img src="/media/logo.svg" alt="">
+                        Bitcoin
+                    </a>
+                    <p>Open source P2P money. Bitcoin with the BLAKE2b algorithm keeps Bitcoin as money only.</p>
+                </div>
+                <div>
+                    <h2>Introduction</h2>
+                    <ul>
+                        <li><a href="/individuals">Individuals</a></li>
+                        <li><a href="/businesses">Businesses</a></li>
+                        <li><a href="/developers">Developers</a></li>
+                        <li><a href="/getting-started">Getting started</a></li>
+                        <li><a href="/how-it-works">How it works</a></li>
+                        <li><a href="/you-need-to-know">You need to know</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h2>Resources</h2>
+                    <ul>
+                        <li><a href="/release">Release notes</a></li>
+                        <li><a href="/nodes">Node operators</a></li>
+                        <li><a href="/miners">Miners and DATUM</a></li>
+                        <li><a href="https://bitcoinknots.org/" rel="noopener">Bitcoin Knots</a></li>
+                        <li><a href="https://github.com/bitcoinknots/bitcoin" rel="noopener">Knots source</a></li>
+                        <li><a href="/faq">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h2>Other</h2>
+                    <ul>
+                        <li><a href="/privacy">Privacy</a></li>
+                        <li><a href="https://bitcoin.org/bitcoin.pdf" rel="noopener">White paper</a></li>
+                        <li><a href="https://github.com/innerhat-dev/datum_gateway" rel="noopener">DATUM Gateway</a></li>
+                    </ul>
+                </div>
+            </div>
+            <p class="footer-note">© Bitcoin Project from 2009 to 2026. btc-blake2b.org and btc-blake2b.com serve the same site.</p>
+        </div>
+    </footer>
+    <script src="/static/site.js?v=4"></script>
+
+</body>
+</html>

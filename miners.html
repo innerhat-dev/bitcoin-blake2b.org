@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mining Bitcoin with DATUM and Knots</title>
+    <meta name="description" content="How DATUM returns block-template construction to the miner after the BLAKE2b proof-of-work hardfork, using Knots and the DATUM Gateway.">
+    <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="theme-color" content="#f7931a">
+    <link rel="canonical" href="https://btc-blake2b.org/miners">
+    <meta property="og:title" content="Mining Bitcoin with DATUM and Knots">
+    <meta property="og:description" content="How DATUM returns block-template construction to the miner after the BLAKE2b proof-of-work hardfork, using Knots and the DATUM Gateway.">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Bitcoin">
+    <meta property="og:url" content="https://btc-blake2b.org/miners">
+    <meta property="og:image" content="https://btc-blake2b.org/media/og-image.png?v=2">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Mining Bitcoin with DATUM and Knots">
+    <meta name="twitter:description" content="How DATUM returns block-template construction to the miner after the BLAKE2b proof-of-work hardfork, using Knots and the DATUM Gateway.">
+    <meta name="twitter:image" content="https://btc-blake2b.org/media/og-image.png?v=2">
+    <link rel="icon" href="/media/logo.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/static/style.css?v=8">
+</head>
+<body>
+    <a class="skip-link" href="#content">Skip to content</a>
+    <header class="site-header">
+        <div class="wrap header-bar">
+            <a class="brand" href="/">
+                <img src="/media/header-logo.png?v=2" alt="Bitcoin">
+            </a>
+            <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="site-nav">Menu</button>
+            <nav class="site-nav" id="site-nav" data-site-nav aria-label="Primary">
+                <div class="nav-item" data-dropdown>
+                    <button type="button" data-dropdown-button aria-expanded="false">Introduction</button>
+                    <div class="dropdown-menu">
+                        <a href="/individuals">Individuals</a>
+                        <a href="/businesses">Businesses</a>
+                        <a href="/developers">Developers</a>
+                        <a href="/getting-started">Getting started</a>
+                        <a href="/how-it-works">How it works</a>
+                        <a href="/you-need-to-know">You need to know</a>
+                    </div>
+                </div>
+                <div class="nav-item" data-dropdown>
+                    <button type="button" data-dropdown-button aria-expanded="false">Resources</button>
+                    <div class="dropdown-menu">
+                        <a href="/release">Release notes</a>
+                        <a href="/nodes">Node operators</a>
+                        <a href="/miners">Miners and DATUM</a>
+                        <a href="https://bitcoinknots.org/" rel="noopener">Bitcoin Knots</a>
+                        <a href="https://github.com/bitcoinknots/bitcoin" rel="noopener">Knots source</a>
+                    </div>
+                </div>
+                <a href="/getting-started">Participate</a>
+                <a href="/faq">FAQ</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="content">
+        <header class="page-header">
+            <div class="wrap">
+                <p class="kicker">Resources</p>
+                <h1>Miners and DATUM</h1>
+                <p>This hardfork changes proof of work from the legacy SHA256d algorithm to the stronger BLAKE2b algorithm, so today's SHA256d miners cannot add blocks here. Purpose-built BLAKE2b machines are supported from the first block. DATUM puts the choice of transactions back on the miner who runs the node.</p>
+            </div>
+        </header>
+        <article class="wrap prose">
+
+            <h2>RC4 on mainnet</h2>
+            <p>Run Knots 29.4.1 RC4 and the DATUM Gateway fork on mainnet. The announced hardfork block height is not published yet. The announced headline is not published yet; the examples use <code>PLACEHOLDER</code> until it is. The RC4 binaries are not published yet either. SHA256d hardware is useful before the hardfork. BLAKE2b and BLAKE2b-sia miners are useful after it.</p>
+            <p><a href="/mining">Read the mainnet solo mining guide</a> for Knots config, DATUM settings, GBT checks, and what a working setup looks like. For testnet4, use the <a href="/testnet4-mining">testnet4 solo mining guide</a>.</p>
+
+            <h2>Bitcoin Knots</h2>
+            <p>Run a BLAKE2b node if you intend to mine this chain. <a href="https://bitcoinknots.org/" rel="noopener">Bitcoin Knots</a> is highly recommended: it combines a full node and wallet, and it gives miners fine control over how block templates are constructed. Other software that supports <code>getblocktemplate</code> can be used for SHA256d, including Bitcoin Core, but it gives the miner much less control. For this chain you need a Knots version that includes the BLAKE2b change. Source is at <a href="https://github.com/bitcoinknots/bitcoin" rel="noopener">github.com/bitcoinknots/bitcoin</a>.</p>
+            <p>After the BIP-110 softfork, Bitcoin Core and older Knots releases still use the legacy SHA256d algorithm and follow a different blockchain. You need a Knots version that includes the BLAKE2b change. See <a href="/nodes">what this means for node operators</a>.</p>
+
+            <h2>What DATUM is</h2>
+            <p>DATUM stands for <strong>Decentralized Alternative Templates for Universal Mining</strong>. Early Bitcoin treated the person running a node as the miner: that machine chose the payments and submitted the block. Pools later started building the block themselves so many miners could share luck and get steadier pay. The hardware still hashes. The pool decides what goes in the block. When a handful of pools pick every payment, they can stall or drop ones they dislike.</p>
+            <p>DATUM reverses that. The <a href="https://github.com/innerhat-dev/datum_gateway" rel="noopener">DATUM Gateway</a> asks your local node for a block template, sends work to your hardware, and submits a found block to the network from that node. The person running the node is the miner. The gateway and the node can share one machine.</p>
+            <p>You can still smooth income through a DATUM-supporting pool. The pool coordinates how the block reward is split based on work done. It does not create the work or the block template, and the DATUM protocol has no way for the pool to hand you the information needed to build one. The pool does send the generation payout split for a template you construct locally. In the current protocol the pool also checks that a found block is valid, so miners do not accidentally publish a bad block while the software is still in testing; that check is not meant to last. The work your hardware sees comes only from your node, which is why Knots matters: you choose transactions there.</p>
+            <ul>
+                <li>Talks to a local node over RPC using <code>getblocktemplate</code>.</li>
+                <li>Talks to hardware over Stratum v1, including version rolling (ASICBoost).</li>
+                <li>Talks to a pool, if you use one, over the DATUM protocol, an encrypted custom link between the Gateway and the pool, not a Stratum v2 add-on.</li>
+                <li>Supports Bitcoin only. Choose transactions on the node; the pool does not hand you a ready-made block.</li>
+            </ul>
+
+            <p>While limits on arbitrary data storage are in effect, a block may also be no larger than about 300 kB (800,000 weight units). <code>getblocktemplate</code> reports that as <code>weightlimit</code>. Do not point the gateway at a 4,000,000-weight policy and expect those templates to be valid.</p>
+
+            <h2>BLAKE2b mining</h2>
+            <p>SHA256d mining against an ordinary <code>getblocktemplate</code> node needs no node source changes. The Gateway uses standard GBT. BLAKE2b header-v2 mining is supported from the first block, including Antminer A3 and other Sia-style BLAKE2b hashers such as the Goldshell SC5 Pro and SC Lite, and needs a Knots node built with the BLAKE2b proof-of-work change. That node's <code>getblocktemplate</code> still looks like ordinary BIP22 GBT. It advertises BLAKE2b as <code>!blake2b</code> in <code>rules</code>, so the Gateway default (<code>auto</code>) selects blake2b. You can still set <code>mining.pow_algorithm</code> to <code>blake2b</code>. Keep hasher time rolling off:</p>
+            <pre><code>"mining": {
+    "pow_algorithm": "blake2b",
+    "allow_hasher_time_rolling": false
+}</code></pre>
+            <p>This software is still in public beta. Build and configuration details are in the <a href="https://github.com/innerhat-dev/datum_gateway" rel="noopener">DATUM Gateway repository</a>.</p>
+
+            <div class="button-row" style="margin-top:1.5rem;">
+                <a class="button button-primary" href="/mining">Solo mining guide</a>
+                <a class="button button-secondary" href="/testnet4-mining">Testnet4 mining guide</a>
+                <a class="button button-ghost" href="https://github.com/innerhat-dev/datum_gateway" rel="noopener">DATUM Gateway on GitHub</a>
+            </div>
+
+        </article>
+    </main>
+    <footer class="site-footer">
+        <div class="wrap">
+            <div class="footer-grid">
+                <div>
+                    <a class="footer-brand" href="/">
+                        <img src="/media/logo.svg" alt="">
+                        Bitcoin
+                    </a>
+                    <p>Open source P2P money. Bitcoin with the BLAKE2b algorithm keeps Bitcoin as money only.</p>
+                </div>
+                <div>
+                    <h2>Introduction</h2>
+                    <ul>
+                        <li><a href="/individuals">Individuals</a></li>
+                        <li><a href="/businesses">Businesses</a></li>
+                        <li><a href="/developers">Developers</a></li>
+                        <li><a href="/getting-started">Getting started</a></li>
+                        <li><a href="/how-it-works">How it works</a></li>
+                        <li><a href="/you-need-to-know">You need to know</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h2>Resources</h2>
+                    <ul>
+                        <li><a href="/release">Release notes</a></li>
+                        <li><a href="/nodes">Node operators</a></li>
+                        <li><a href="/miners">Miners and DATUM</a></li>
+                        <li><a href="https://bitcoinknots.org/" rel="noopener">Bitcoin Knots</a></li>
+                        <li><a href="https://github.com/bitcoinknots/bitcoin" rel="noopener">Knots source</a></li>
+                        <li><a href="/faq">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h2>Other</h2>
+                    <ul>
+                        <li><a href="/privacy">Privacy</a></li>
+                        <li><a href="https://bitcoin.org/bitcoin.pdf" rel="noopener">White paper</a></li>
+                        <li><a href="https://github.com/innerhat-dev/datum_gateway" rel="noopener">DATUM Gateway</a></li>
+                    </ul>
+                </div>
+            </div>
+            <p class="footer-note">© Bitcoin Project from 2009 to 2026. btc-blake2b.org and btc-blake2b.com serve the same site.</p>
+        </div>
+    </footer>
+    <script src="/static/site.js?v=4"></script>
+
+</body>
+</html>

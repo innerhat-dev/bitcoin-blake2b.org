@@ -1,0 +1,13 @@
+# BTC-BLAKE2B - Robots.txt
+# Updated: 2026-08-20
+
+User-agent: *
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+Sitemap: https://btc-blake2b.org/sitemap.xml
