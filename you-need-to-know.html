@@ -74,7 +74,6 @@
                 <li><strong>Staying on Core is a different chain.</strong> After the BIP-110 softfork, Bitcoin Core and older <a href="https://bitcoinknots.org/" rel="noopener">Bitcoin Knots</a> still use the legacy SHA256d algorithm. You need a Knots version with the BLAKE2b change, from <a href="https://bitcoinknots.org/" rel="noopener">bitcoinknots.org</a> when it is published.</li>
                 <li><strong>BIP-110 is not the hardfork.</strong> BIP-110 was a softfork, in alignment with the vast majority of node policy, and it was later rejected. A hardfork is a break away from abuse of the Bitcoin network. This hardfork is the switch to the BLAKE2b algorithm.</li>
                 <li><strong>Data limits are temporary. BLAKE2b is not.</strong> Limits on arbitrary data storage, and the ~300 kB (800,000 weight) block cap, last until 1 September 2027, 00:00 UTC (previous block's median time past). Continuing those limits after that date is a later choice for node operators. The BLAKE2b algorithm does not revert to SHA256d.</li>
-                <li><strong>The headline must match.</strong> The first new-style block includes a short agreed phrase, <code>blake2b_headline</code>. Your node must be set to the same phrase or it will reject that block.</li>
                 <li><strong>Pruned nodes can get stuck</strong> if they delete old blocks to save space and then switch late, or if they followed invalid blocks after a late upgrade. You may have to download the chain again. This release may ask at startup whether that resync is required.</li>
                 <li><strong>Purpose-built BLAKE2b hardware is supported from the first block.</strong> Today's SHA256d machines cannot mine this chain. If hashpower is lower than the old SHA256d network, difficulty will fall to match. The alternative was leaving SHA256d pools able to keep a chain that uses the network for arbitrary data storage, which every node operator on that chain must store at their own expense and, most importantly, risk.</li>
             </ul>
@@ -123,7 +122,7 @@
                     </ul>
                 </div>
             </div>
-            <p class="footer-note">© Bitcoin Project from 2009 to 2026. btc-blake2b.org and btc-blake2b.com serve the same site.</p>
+            <p class="footer-note">© Bitcoin Project from 2009 to 2026. btc-blake2b.org, btc-blake2b.com, and bitcoin-blake2b.be serve the same site.</p>
         </div>
     </footer>
     <script src="/static/site.js?v=4"></script>

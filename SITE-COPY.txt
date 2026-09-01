@@ -37,7 +37,7 @@ Skip to content
 Open source P2P money. Bitcoin with the BLAKE2b algorithm keeps Bitcoin as money only.
 
 [shared.footer_note]
-© Bitcoin Project from 2009 to 2026. btc-blake2b.org and btc-blake2b.com serve the same site.
+© Bitcoin Project from 2009 to 2026. btc-blake2b.org, btc-blake2b.com, and bitcoin-blake2b.be serve the same site.
 
 [shared.footer_intro_heading]
 Introduction
@@ -277,7 +277,7 @@ You do not need to move your bitcoin before the fork. Coins created before the f
 If you use a hosted wallet or exchange, ask which chain they will credit after the hardfork.
 
 [individuals.li3]
-If you run your own node, <a href="/getting-started">upgrade before the hardfork</a> and set the announced <code>blake2b_headline</code>, which is a short phrase the first new-style block must include.
+If you run your own node, <a href="/getting-started">upgrade before the hardfork</a>.
 
 [individuals.li4]
 After the BIP-110 softfork, if you stay on Bitcoin Core or an older <a href="https://bitcoinknots.org/" rel="noopener">Bitcoin Knots</a> release, you will follow a different blockchain. You need a Knots version with the BLAKE2b change, from <a href="https://bitcoinknots.org/" rel="noopener">bitcoinknots.org</a> when it is published.
@@ -307,7 +307,7 @@ Bitcoin for businesses
 If you credit, custody, or accept bitcoin, you need a clear policy for the BLAKE2b chain and the SHA256d chain that continued after the BIP-110 softfork.
 
 [businesses.p1]
-After the BIP-110 softfork, software that still uses the legacy SHA256d algorithm follows a different blockchain. If you intend to support this chain, run a <a href="https://bitcoinknots.org/" rel="noopener">Bitcoin Knots</a> version that includes the BLAKE2b change, set the announced <code>blake2b_headline</code>, and say so publicly. Bitcoin with the BLAKE2b algorithm keeps Bitcoin as money only by rejecting use of the network for arbitrary data storage.
+After the BIP-110 softfork, software that still uses the legacy SHA256d algorithm follows a different blockchain. If you intend to support this chain, run a <a href="https://bitcoinknots.org/" rel="noopener">Bitcoin Knots</a> version that includes the BLAKE2b change and say so publicly. Bitcoin with the BLAKE2b algorithm keeps Bitcoin as money only by rejecting use of the network for arbitrary data storage.
 
 [businesses.h2_exchanges]
 Exchanges and custodians
@@ -352,7 +352,7 @@ Introduction
 Bitcoin for developers
 
 [developers.header_p]
-This is a consensus change. Nodes that do not enforce BLAKE2b proof of work and the announced headline will not follow this chain.
+This is a consensus change. Nodes that do not enforce BLAKE2b proof of work will not follow this chain.
 
 [developers.p1]
 This hardfork is not BIP-110. BIP-110, in alignment with the vast majority of node policy, was a softfork, later rejected, that would have rejected use of the network for arbitrary data storage. A hardfork is a break away from abuse of the Bitcoin network. This hardfork changes proof of work from the legacy SHA256d algorithm to the stronger BLAKE2b algorithm, so today's SHA256d miners cannot produce valid blocks here.
@@ -368,9 +368,6 @@ Integration checklist
 
 [developers.li1]
 Use a BLAKE2b node, not Bitcoin Core or a pre-hardfork <a href="https://bitcoinknots.org/" rel="noopener">Bitcoin Knots</a> release, if you intend to follow this chain. Source: <a href="https://github.com/bitcoinknots/bitcoin" rel="noopener">bitcoinknots/bitcoin</a>.
-
-[developers.li2]
-Set the announced <code>blake2b_headline</code>. A node with a different value will not accept the first BLAKE2b block.
 
 [developers.li3]
 If a node followed post-fork SHA256d blocks, this release usually walks back to the fork and downloads the BLAKE2b chain. That pass uses headers only. A BLAKE2b-era block that breaks the weight cap, output sizes, or script rules still needs <code>-reindex</code>. A pruned node that has already deleted the walk-back blocks must resync.
@@ -418,7 +415,7 @@ Upgrade before the hardfork if you can. You can keep your existing data director
 If you upgrade before the hardfork
 
 [started.p_before]
-Install a Bitcoin Knots version that includes the BLAKE2b change. Downloads will be on <a href="https://bitcoinknots.org/" rel="noopener">bitcoinknots.org</a> when that version is published; source is at <a href="https://github.com/bitcoinknots/bitcoin" rel="noopener">github.com/bitcoinknots/bitcoin</a>. Keep your existing Bitcoin data folder. Set the announced <code>blake2b_headline</code> in your config. You do not need to download the chain again or move your coins.
+Install a Bitcoin Knots version that includes the BLAKE2b change. Downloads will be on <a href="https://bitcoinknots.org/" rel="noopener">bitcoinknots.org</a> when that version is published; source is at <a href="https://github.com/bitcoinknots/bitcoin" rel="noopener">github.com/bitcoinknots/bitcoin</a>. Keep your existing Bitcoin data folder. You do not need to download the chain again or move your coins.
 
 [started.h2_after]
 If you switch after the hardfork
@@ -476,9 +473,6 @@ A short list of things that are easy to get wrong.
 
 [yntk.li5]
 <strong>Data limits are temporary. BLAKE2b is not.</strong> Limits on arbitrary data storage, and the ~300 kB (800,000 weight) block cap, last until 1 September 2027, 00:00 UTC (previous block's median time past). Continuing those limits after that date is a later choice for node operators. The BLAKE2b algorithm does not revert to SHA256d.
-
-[yntk.li6]
-<strong>The headline must match.</strong> The first new-style block includes a short agreed phrase, <code>blake2b_headline</code>. Your node must be set to the same phrase or it will reject that block.
 
 [yntk.li7]
 <strong>Pruned nodes can get stuck</strong> if they delete old blocks to save space and then switch late, or if they followed invalid blocks after a late upgrade. You may have to download the chain again. This release may ask at startup whether that resync is required.
@@ -543,9 +537,6 @@ A <strong>pruned node</strong> deletes old blocks to save disk space. If you wai
 [release.li4]
 You do <strong>not</strong> need to move your bitcoin before the fork. Coins created before the fork remain spendable.
 
-[release.li5]
-The first BLAKE2b block includes a short agreed phrase, <code>blake2b_headline</code>. Set the announced value or your node will reject that block.
-
 [release.li6]
 After the BIP-110 softfork, Bitcoin Core and older <a href="https://bitcoinknots.org/" rel="noopener">Bitcoin Knots</a> still require SHA256d and follow a different blockchain. You need a Knots version that includes the BLAKE2b change, published at <a href="https://bitcoinknots.org/" rel="noopener">bitcoinknots.org</a> when it is available. Source: <a href="https://github.com/bitcoinknots/bitcoin" rel="noopener">github.com/bitcoinknots/bitcoin</a>.
 
@@ -562,7 +553,7 @@ FILE: nodes.html
 What this means for Bitcoin node operators
 
 [nodes.description]
-Upgrade, rewind, prune, and blake2b_headline instructions for BLAKE2b node operators.
+Upgrade, rewind, and prune instructions for BLAKE2b node operators.
 
 [nodes.kicker]
 Resources
@@ -571,7 +562,7 @@ Resources
 What this means for node operators
 
 [nodes.header_p]
-Keep your existing data folder if you upgrade in time. Set the announced headline. If you delete old blocks to save space and then switch late, you may have to download the chain again.
+Keep your existing data folder if you upgrade in time. If you delete old blocks to save space and then switch late, you may have to download the chain again.
 
 [nodes.li1]
 <strong>If you upgrade before the hardfork:</strong> You can continue using your existing Bitcoin data directory normally. No blockchain re-download or movement of funds is required.
@@ -584,9 +575,6 @@ A <strong>pruned node</strong> deletes old blocks to save disk space. If you wai
 
 [nodes.li4]
 You do <strong>not</strong> need to move your bitcoin before the fork. Coins created before the fork remain spendable.
-
-[nodes.li5]
-The first BLAKE2b block includes a short agreed phrase, <code>blake2b_headline</code>. Set the announced value or your node will reject that block.
 
 [nodes.li6]
 After the BIP-110 softfork, Bitcoin Core and older <a href="https://bitcoinknots.org/" rel="noopener">Bitcoin Knots</a> still require the legacy SHA256d algorithm and follow a different blockchain.
@@ -614,6 +602,12 @@ Miners and DATUM
 
 [miners.header_p]
 This hardfork changes proof of work from the legacy SHA256d algorithm to the stronger BLAKE2b algorithm, so today's SHA256d miners cannot add blocks here. Purpose-built BLAKE2b machines are supported from the first block. DATUM puts the choice of transactions back on the miner who runs the node.
+
+[miners.h2_rc5]
+RC5 on mainnet
+
+[miners.p_rc5]
+Run Knots 29.4.1 RC5 and the DATUM Gateway fork on mainnet. Block 961639 is checkpointed as the last SHA256d block. The first BLAKE2b block is 961640. RC5 binaries are in the test directory on the <a href="/mining">mainnet solo mining guide</a>. They are not the published files on bitcoinknots.org. SHA256d hardware is useful through block 961639. BLAKE2b and BLAKE2b-sia miners are useful from block 961640.
 
 [miners.h2_knots]
 Bitcoin Knots
@@ -748,7 +742,7 @@ No. Your addresses, keys, and coins stay the same. You do not need to move bitco
 What happens if I stay on Core?
 
 [faq.a8]
-Bitcoin Core, and older <a href="https://bitcoinknots.org/" rel="noopener">Bitcoin Knots</a>, still use the legacy SHA256d algorithm. After the BIP-110 softfork they follow a different blockchain. If you want this chain, you need a Knots version with the BLAKE2b change and the announced <code>blake2b_headline</code>. That version will be published at <a href="https://bitcoinknots.org/" rel="noopener">bitcoinknots.org</a> when it is available; source is at <a href="https://github.com/bitcoinknots/bitcoin" rel="noopener">github.com/bitcoinknots/bitcoin</a>.
+Bitcoin Core, and older <a href="https://bitcoinknots.org/" rel="noopener">Bitcoin Knots</a>, still use the legacy SHA256d algorithm. After the BIP-110 softfork they follow a different blockchain. If you want this chain, you need a Knots version with the BLAKE2b change. That version will be published at <a href="https://bitcoinknots.org/" rel="noopener">bitcoinknots.org</a> when it is available; source is at <a href="https://github.com/bitcoinknots/bitcoin" rel="noopener">github.com/bitcoinknots/bitcoin</a>.
 
 [faq.q9]
 What happens to Lightning?
@@ -760,7 +754,7 @@ Lightning follows the chain your node and your counterparties follow. Channels o
 What should exchanges do?
 
 [faq.a10]
-Run this release, set the announced <code>blake2b_headline</code>, pause deposits and withdrawals across the fork, and say which chain you will credit. Treat the SHA256d chain as a separate asset if you list it at all. A spend of pre-fork coins can be copied onto the other chain unless it uses the opt-in <code>SIGHASH_UNIFIED</code> format.
+Run this release, pause deposits and withdrawals across the fork, and say which chain you will credit. Treat the SHA256d chain as a separate asset if you list it at all. A spend of pre-fork coins can be copied onto the other chain unless it uses the opt-in <code>SIGHASH_UNIFIED</code> format.
 
 [faq.q11]
 Can I claim coins on both chains?
@@ -814,7 +808,7 @@ FILE: privacy.html
 Privacy Policy
 
 [privacy.description]
-Privacy policy for the informational Bitcoin site at btc-blake2b.org and btc-blake2b.com.
+Privacy policy for the informational Bitcoin site at btc-blake2b.org, btc-blake2b.com, and bitcoin-blake2b.be.
 
 [privacy.kicker]
 Legal
@@ -829,7 +823,7 @@ This is a static informational site. It does not create accounts, take payments,
 Effective August 20, 2026. Last updated August 20, 2026.
 
 [privacy.p1]
-btc-blake2b.org and btc-blake2b.com serve the same pages. They explain Bitcoin with the BLAKE2b algorithm, and the BIP-110 events that inspired this hardfork.
+btc-blake2b.org, btc-blake2b.com, and bitcoin-blake2b.be serve the same pages. They explain Bitcoin with the BLAKE2b algorithm, and the BIP-110 events that inspired this hardfork.
 
 [privacy.h2_1]
 1. Information we collect

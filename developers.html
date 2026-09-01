@@ -63,7 +63,7 @@
             <div class="wrap">
                 <p class="kicker">Introduction</p>
                 <h1>Bitcoin for developers</h1>
-                <p>This is a consensus change. Nodes that do not enforce BLAKE2b proof of work and the announced headline will not follow this chain.</p>
+                <p>This is a consensus change. Nodes that do not enforce BLAKE2b proof of work will not follow this chain.</p>
             </div>
         </header>
         <article class="wrap prose">
@@ -74,7 +74,6 @@
             <h2>Integration checklist</h2>
             <ul>
                 <li>Use a BLAKE2b node, not Bitcoin Core or a pre-hardfork <a href="https://bitcoinknots.org/" rel="noopener">Bitcoin Knots</a> release, if you intend to follow this chain. Source: <a href="https://github.com/bitcoinknots/bitcoin" rel="noopener">bitcoinknots/bitcoin</a>.</li>
-                <li>Set the announced <code>blake2b_headline</code>. A node with a different value will not accept the first BLAKE2b block.</li>
                 <li>If a node followed post-fork SHA256d blocks, this release usually walks back to the fork and downloads the BLAKE2b chain. That pass uses headers only. A BLAKE2b-era block that breaks the weight cap, output sizes, or script rules still needs <code>-reindex</code>. A pruned node that has already deleted the walk-back blocks must resync.</li>
                 <li>After the previous block's median time past reaches 1 September 2027, 00:00 UTC, the data limits and the weight cap are removed unless node operators later choose to continue them. BLAKE2b proof of work is not temporary.</li>
                 <li><code>getdeploymentinfo</code> reports <code>reduced_data</code> as a flag-day deployment. <code>getblocktemplate</code> advertises BLAKE2b as <code>!blake2b</code> in <code>rules</code>, and lists <code>reduced_data</code> there only while the window is open. There is no miner signaling bit.</li>
@@ -127,7 +126,7 @@
                     </ul>
                 </div>
             </div>
-            <p class="footer-note">© Bitcoin Project from 2009 to 2026. btc-blake2b.org and btc-blake2b.com serve the same site.</p>
+            <p class="footer-note">© Bitcoin Project from 2009 to 2026. btc-blake2b.org, btc-blake2b.com, and bitcoin-blake2b.be serve the same site.</p>
         </div>
     </footer>
     <script src="/static/site.js?v=4"></script>

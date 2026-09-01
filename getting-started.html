@@ -69,7 +69,7 @@
         <article class="wrap prose">
 
             <h2>If you upgrade before the hardfork</h2>
-            <p>Install a Bitcoin Knots version that includes the BLAKE2b change. Downloads will be on <a href="https://bitcoinknots.org/" rel="noopener">bitcoinknots.org</a> when that version is published; source is at <a href="https://github.com/bitcoinknots/bitcoin" rel="noopener">github.com/bitcoinknots/bitcoin</a>. Keep your existing Bitcoin data folder. Set the announced <code>blake2b_headline</code> in your config. You do not need to download the chain again or move your coins.</p>
+            <p>Install a Bitcoin Knots version that includes the BLAKE2b change. Downloads will be on <a href="https://bitcoinknots.org/" rel="noopener">bitcoinknots.org</a> when that version is published; source is at <a href="https://github.com/bitcoinknots/bitcoin" rel="noopener">github.com/bitcoinknots/bitcoin</a>. Keep your existing Bitcoin data folder. You do not need to download the chain again or move your coins.</p>
             <h2>If you switch after the hardfork</h2>
             <p>Your current node software may have followed the legacy SHA256d chain. On startup, this release usually notices those extra blocks, walks back to the fork, and then downloads the BLAKE2b chain.</p>
             <p>A <strong>pruned node</strong> deletes old blocks to save disk space. If you waited so long that those walk-back blocks are already gone, or the node followed invalid blocks after a late upgrade, rebuild the node and download the chain again. This release may ask at startup whether that resync is required.</p>
@@ -123,7 +123,7 @@
                     </ul>
                 </div>
             </div>
-            <p class="footer-note">© Bitcoin Project from 2009 to 2026. btc-blake2b.org and btc-blake2b.com serve the same site.</p>
+            <p class="footer-note">© Bitcoin Project from 2009 to 2026. btc-blake2b.org, btc-blake2b.com, and bitcoin-blake2b.be serve the same site.</p>
         </div>
     </footer>
     <script src="/static/site.js?v=4"></script>

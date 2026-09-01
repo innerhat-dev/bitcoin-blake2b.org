@@ -68,9 +68,9 @@
         </header>
         <article class="wrap prose">
 
-            <h2>RC4 on mainnet</h2>
-            <p>Run Knots 29.4.1 RC4 and the DATUM Gateway fork on mainnet. The announced hardfork block height is not published yet. The announced headline is not published yet; the examples use <code>PLACEHOLDER</code> until it is. The RC4 binaries are not published yet either. SHA256d hardware is useful before the hardfork. BLAKE2b and BLAKE2b-sia miners are useful after it.</p>
-            <p><a href="/mining">Read the mainnet solo mining guide</a> for Knots config, DATUM settings, GBT checks, and what a working setup looks like. For testnet4, use the <a href="/testnet4-mining">testnet4 solo mining guide</a>.</p>
+            <h2>RC5 on mainnet</h2>
+            <p>Run Knots 29.4.1 RC5 and the DATUM Gateway fork on mainnet. Block 961639 is checkpointed as the last SHA256d block. The first BLAKE2b block is 961640. RC5 binaries are in the test directory on the <a href="/mining">mainnet solo mining guide</a>. They are not the published files on bitcoinknots.org. SHA256d hardware is useful through block 961639. BLAKE2b and BLAKE2b-sia miners are useful from block 961640.</p>
+            <p><a href="/mining">Read the mainnet solo mining guide</a> for Knots config, DATUM settings, GBT checks, and what a working setup looks like.</p>
 
             <h2>Bitcoin Knots</h2>
             <p>Run a BLAKE2b node if you intend to mine this chain. <a href="https://bitcoinknots.org/" rel="noopener">Bitcoin Knots</a> is highly recommended: it combines a full node and wallet, and it gives miners fine control over how block templates are constructed. Other software that supports <code>getblocktemplate</code> can be used for SHA256d, including Bitcoin Core, but it gives the miner much less control. For this chain you need a Knots version that includes the BLAKE2b change. Source is at <a href="https://github.com/bitcoinknots/bitcoin" rel="noopener">github.com/bitcoinknots/bitcoin</a>.</p>
@@ -99,7 +99,6 @@
 
             <div class="button-row" style="margin-top:1.5rem;">
                 <a class="button button-primary" href="/mining">Solo mining guide</a>
-                <a class="button button-secondary" href="/testnet4-mining">Testnet4 mining guide</a>
                 <a class="button button-ghost" href="https://github.com/innerhat-dev/datum_gateway" rel="noopener">DATUM Gateway on GitHub</a>
             </div>
 
@@ -146,7 +145,7 @@
                     </ul>
                 </div>
             </div>
-            <p class="footer-note">© Bitcoin Project from 2009 to 2026. btc-blake2b.org and btc-blake2b.com serve the same site.</p>
+            <p class="footer-note">© Bitcoin Project from 2009 to 2026. btc-blake2b.org, btc-blake2b.com, and bitcoin-blake2b.be serve the same site.</p>
         </div>
     </footer>
     <script src="/static/site.js?v=4"></script>

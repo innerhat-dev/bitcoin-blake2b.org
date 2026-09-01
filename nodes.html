@@ -4,20 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>What this means for Bitcoin node operators</title>
-    <meta name="description" content="Upgrade, rewind, prune, and blake2b_headline instructions for BLAKE2b node operators.">
+    <meta name="description" content="Upgrade, rewind, and prune instructions for BLAKE2b node operators.">
     <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="theme-color" content="#f7931a">
     <link rel="canonical" href="https://btc-blake2b.org/nodes">
     <meta property="og:title" content="What this means for Bitcoin node operators">
-    <meta property="og:description" content="Upgrade, rewind, prune, and blake2b_headline instructions for BLAKE2b node operators.">
+    <meta property="og:description" content="Upgrade, rewind, and prune instructions for BLAKE2b node operators.">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Bitcoin">
     <meta property="og:url" content="https://btc-blake2b.org/nodes">
     <meta property="og:image" content="https://btc-blake2b.org/media/og-image.png?v=2">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="What this means for Bitcoin node operators">
-    <meta name="twitter:description" content="Upgrade, rewind, prune, and blake2b_headline instructions for BLAKE2b node operators.">
+    <meta name="twitter:description" content="Upgrade, rewind, and prune instructions for BLAKE2b node operators.">
     <meta name="twitter:image" content="https://btc-blake2b.org/media/og-image.png?v=2">
     <link rel="icon" href="/media/logo.svg" type="image/svg+xml">
     <link rel="stylesheet" href="/static/style.css?v=8">
@@ -63,7 +63,7 @@
             <div class="wrap">
                 <p class="kicker">Resources</p>
                 <h1>What this means for node operators</h1>
-                <p>Keep your existing data folder if you upgrade in time. Set the announced headline. If you delete old blocks to save space and then switch late, you may have to download the chain again.</p>
+                <p>Keep your existing data folder if you upgrade in time. If you delete old blocks to save space and then switch late, you may have to download the chain again.</p>
             </div>
         </header>
         <article class="wrap prose">
@@ -73,7 +73,6 @@
                 <li><strong>If you switch from Bitcoin Core or older <a href="https://bitcoinknots.org/" rel="noopener">Bitcoin Knots</a> after the hardfork:</strong> That software may have followed the SHA256d chain. On startup, this release usually notices those extra blocks, walks back to the fork, and then downloads the BLAKE2b chain. That walk-back is only for SHA256d blocks at or after the fork. If a BLAKE2b block itself breaks the data or size rules, run <code>-reindex</code> to rebuild the database from blocks you already have. Knots versions with the BLAKE2b change will be on <a href="https://bitcoinknots.org/" rel="noopener">bitcoinknots.org</a> when published; source is <a href="https://github.com/bitcoinknots/bitcoin" rel="noopener">github.com/bitcoinknots/bitcoin</a>.</li>
                 <li>A <strong>pruned node</strong> deletes old blocks to save disk space. If you waited so long that the walk-back blocks are already gone, or the node followed invalid blocks after a late upgrade, rebuild the node and download the chain again. This release may ask at startup whether that resync is required.</li>
                 <li>You do <strong>not</strong> need to move your bitcoin before the fork. Coins created before the fork remain spendable.</li>
-                <li>The first BLAKE2b block includes a short agreed phrase, <code>blake2b_headline</code>. Set the announced value or your node will reject that block.</li>
                 <li>After the BIP-110 softfork, Bitcoin Core and older <a href="https://bitcoinknots.org/" rel="noopener">Bitcoin Knots</a> still require the legacy SHA256d algorithm and follow a different blockchain.</li>
             </ul>
             <p>See the <a href="/release">release notes</a> for what happened, and the <a href="/faq">FAQ</a> if you are pruned or unsure which software you are running. Miners using their own templates should read <a href="/miners">DATUM and Knots</a>.</p>
@@ -121,7 +120,7 @@
                     </ul>
                 </div>
             </div>
-            <p class="footer-note">© Bitcoin Project from 2009 to 2026. btc-blake2b.org and btc-blake2b.com serve the same site.</p>
+            <p class="footer-note">© Bitcoin Project from 2009 to 2026. btc-blake2b.org, btc-blake2b.com, and bitcoin-blake2b.be serve the same site.</p>
         </div>
     </footer>
     <script src="/static/site.js?v=4"></script>

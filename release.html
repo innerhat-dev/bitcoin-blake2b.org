@@ -82,7 +82,6 @@
                 <li><strong>If you switch from Bitcoin Core or an older <a href="https://bitcoinknots.org/" rel="noopener">Bitcoin Knots</a> after the hardfork:</strong> That software may have followed the SHA256d chain. On startup, this release usually notices those extra blocks, walks back to the fork, and then downloads the BLAKE2b chain. That automatic walk-back is only for SHA256d blocks at or after the fork. If a BLAKE2b block itself breaks the data or size rules, you still need <code>-reindex</code> to rebuild the database from blocks you already have.</li>
                 <li>A <strong>pruned node</strong> deletes old blocks to save disk space. If you waited so long that the walk-back blocks are already gone, or the node followed invalid blocks after a late upgrade, rebuild the node and download the chain again. This release may ask at startup whether that resync is required.</li>
                 <li>You do <strong>not</strong> need to move your bitcoin before the fork. Coins created before the fork remain spendable.</li>
-                <li>The first BLAKE2b block includes a short agreed phrase, <code>blake2b_headline</code>. Set the announced value or your node will reject that block.</li>
                 <li>After the BIP-110 softfork, Bitcoin Core and older <a href="https://bitcoinknots.org/" rel="noopener">Bitcoin Knots</a> still require SHA256d and follow a different blockchain. You need a Knots version that includes the BLAKE2b change, published at <a href="https://bitcoinknots.org/" rel="noopener">bitcoinknots.org</a> when it is available. Source: <a href="https://github.com/bitcoinknots/bitcoin" rel="noopener">github.com/bitcoinknots/bitcoin</a>.</li>
             </ul>
             <p>For background on BIP-110, why this hardfork is not BIP-110, frequently asked questions, and guidance for miners, wallets, exchanges, and other users, see the <a href="/faq">common questions</a> and <a href="/miners">miners and DATUM</a>.</p>
@@ -130,7 +129,7 @@
                     </ul>
                 </div>
             </div>
-            <p class="footer-note">© Bitcoin Project from 2009 to 2026. btc-blake2b.org and btc-blake2b.com serve the same site.</p>
+            <p class="footer-note">© Bitcoin Project from 2009 to 2026. btc-blake2b.org, btc-blake2b.com, and bitcoin-blake2b.be serve the same site.</p>
         </div>
     </footer>
     <script src="/static/site.js?v=4"></script>

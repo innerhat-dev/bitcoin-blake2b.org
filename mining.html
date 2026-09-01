@@ -4,20 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Solo mining on mainnet</title>
-    <meta name="description" content="Run Bitcoin Knots 29.4.1 RC4 and the DATUM Gateway fork on mainnet, then mine SHA256d before the hardfork and BLAKE2b after it.">
+    <meta name="description" content="Run Bitcoin Knots 29.4.1 RC5 and the DATUM Gateway fork on mainnet, then mine SHA256d through block 961639 and BLAKE2b from block 961640.">
     <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="theme-color" content="#f7931a">
     <link rel="canonical" href="https://btc-blake2b.org/mining">
     <meta property="og:title" content="Solo mining on mainnet">
-    <meta property="og:description" content="Run Bitcoin Knots 29.4.1 RC4 and the DATUM Gateway fork on mainnet, then mine SHA256d before the hardfork and BLAKE2b after it.">
+    <meta property="og:description" content="Run Bitcoin Knots 29.4.1 RC5 and the DATUM Gateway fork on mainnet, then mine SHA256d through block 961639 and BLAKE2b from block 961640.">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Bitcoin">
     <meta property="og:url" content="https://btc-blake2b.org/mining">
     <meta property="og:image" content="https://btc-blake2b.org/media/og-image.png?v=2">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Solo mining on mainnet">
-    <meta name="twitter:description" content="Run Bitcoin Knots 29.4.1 RC4 and the DATUM Gateway fork on mainnet, then mine SHA256d before the hardfork and BLAKE2b after it.">
+    <meta name="twitter:description" content="Run Bitcoin Knots 29.4.1 RC5 and the DATUM Gateway fork on mainnet, then mine SHA256d through block 961639 and BLAKE2b from block 961640.">
     <meta name="twitter:image" content="https://btc-blake2b.org/media/og-image.png?v=2">
     <link rel="icon" href="/media/logo.svg" type="image/svg+xml">
     <link rel="stylesheet" href="/static/style.css?v=8">
@@ -63,22 +63,19 @@
             <div class="wrap">
                 <p class="kicker">Resources</p>
                 <h1>Solo mining on mainnet</h1>
-                <p>Run Bitcoin Knots 29.4.1 RC4 and the <a href="https://github.com/innerhat-dev/datum_gateway" rel="noopener">DATUM Gateway</a> fork on mainnet. The announced hardfork block height is not published yet. The announced headline is not published yet. The RC4 binaries are not published yet either. Examples below use <code>PLACEHOLDER</code> until the headline is.</p>
-                <p>For testnet4, use the <a href="/testnet4-mining">testnet4 solo mining guide</a>.</p>
+                <p>Run Bitcoin Knots 29.4.1 RC5 and the <a href="https://github.com/innerhat-dev/datum_gateway" rel="noopener">DATUM Gateway</a> fork on mainnet. Block 961639 is checkpointed as the last SHA256d block. The first BLAKE2b block is 961640. RC5 binaries are in the test directory linked below. They are not the published files on bitcoinknots.org.</p>
             </div>
         </header>
         <article class="wrap prose">
 
-            <p>The RC4 binaries are not published yet. When they are, they still will not be the published files on <a href="https://bitcoinknots.org/" rel="noopener">bitcoinknots.org</a>. Download <strong>v29.4.1.knots20260508rc4</strong> for your architecture (for example <code>x86_64-linux-gnu</code> or <code>aarch64-linux-gnu</code>) from:</p>
-            <p><a href="https://test.bitcoinknots.org/~luke-jr/programs/bitcoin/files/bitcoin-knots/29.x/29.4.1.knots20260508/test/rc4/" rel="noopener">test.bitcoinknots.org RC4 directory</a></p>
-            <p>Check the build against <code>SHA256SUMS</code> and <code>SHA256SUMS.asc</code> in that directory. Do not set <code>chain=testnet4</code>.</p>
-            <p>Install RC4 as an upgrade of a fully synced mainnet node. First run published Knots <strong>29.4.knots20260508</strong> until the tip is current, then replace that binary with RC4 and keep the same data directory. Get 29.4 from the <a href="https://bitcoinknots.org/files/29.x/29.4.knots20260508/" rel="noopener">29.4.knots20260508 files</a> or from the <a href="https://bitcoinknots.org/" rel="noopener">Bitcoin Knots download page</a>.</p>
+            <p>Download <strong>v29.4.1.knots20260508rc5</strong> for your architecture (for example <code>x86_64-linux-gnu</code> or <code>aarch64-linux-gnu</code>) from the test directory. These are not the published files on <a href="https://bitcoinknots.org/" rel="noopener">bitcoinknots.org</a>:</p>
+            <p><a href="https://test.bitcoinknots.org/~luke-jr/programs/bitcoin/files/bitcoin-knots/29.x/29.4.1.knots20260508/test/rc5/" rel="noopener">test.bitcoinknots.org RC5 directory</a></p>
+            <p>Check the build against <code>SHA256SUMS</code> and <code>SHA256SUMS.asc</code> in that directory. Do not set <code>chain=testnet4</code>. Keep the same data directory if you already have a mainnet node.</p>
 
             <h2>1. Knots on mainnet</h2>
             <p>Minimal <code>bitcoin.conf</code>:</p>
             <pre><code>server=1
 txindex=1
-blake2b_headline=PLACEHOLDER
 
 rpcbind=127.0.0.1
 rpcallowip=127.0.0.1
@@ -88,13 +85,13 @@ rpcpassword=PASS
 blocknotify=curl -fsS -o /dev/null http://127.0.0.1:7152/NOTIFY</code></pre>
             <p>Default P2P port is <strong>8333</strong>. Forward inbound TCP <strong>8333</strong> on your router to this machine so other nodes can connect to you. Default RPC port is <strong>8332</strong>. Leave RPC on localhost.</p>
             <pre><code>bitcoin-cli getblockchaininfo
-bitcoin-cli getdeploymentinfo   # hardfork.height is the announced mainnet block height</code></pre>
+bitcoin-cli getdeploymentinfo   # hardfork.height == 961640</code></pre>
 
             <h2>2. DATUM Gateway fork</h2>
             <pre><code>git clone https://github.com/innerhat-dev/datum_gateway.git
 cd datum_gateway
 # build per README (cmake + libmicrohttpd, jansson, curl, libsodium, …)</code></pre>
-            <p>Use a build that includes commit <code>56c31f4</code> (<em>pow: Include header-v2 bit in BLAKE2b H1 commitment version</em>) or later. Without that change, share proof of work will not match Knots RC4 <code>GetHash</code>.</p>
+            <p>Use a build that includes commit <code>56c31f4</code> (<em>pow: Include header-v2 bit in BLAKE2b H1 commitment version</em>) or later. Without that change, share proof of work will not match Knots RC5 <code>GetHash</code>.</p>
             <p>Example <code>datum_gateway_config.json</code>:</p>
             <pre><code>{
   "bitcoind": {
@@ -112,7 +109,6 @@ cd datum_gateway
   "mining": {
     "pool_address": "bc1q…your_mainnet_address…",
     "coinbase_tag_primary": "MyTag",
-    "coinbase_tag_secondary": "PLACEHOLDER",
     "pow_algorithm": "auto"
   },
   "datum": { "pool_host": "", "pooled_mining_only": false }
@@ -122,7 +118,7 @@ cd datum_gateway
                 <li>UI: <code>http://HOST:7152</code> (digest auth uses <code>admin_password</code>)</li>
                 <li>Stratum: <code>stratum+tcp://HOST:23334</code></li>
             </ul>
-            <p>Keep <code>"pow_algorithm": "auto"</code>. Do not force <code>"blake2b"</code> before the hardfork block height. When the headline is announced, set <code>coinbase_tag_secondary</code> to that exact string (examples here use <code>PLACEHOLDER</code>). Knots requires the headline bytes in the coinbase. This DATUM build does not copy <code>coinbaseaux.blake2b_headline</code> into the coinbase for you, so the secondary tag is how those bytes get into <code>scriptSig</code>.</p>
+            <p>Keep <code>"pow_algorithm": "auto"</code>. Do not force <code>"blake2b"</code> before block height 961640.</p>
 
             <h2>3. Miners</h2>
             <table>
@@ -135,12 +131,12 @@ cd datum_gateway
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Tip below the hardfork block height</td>
+                        <td>Tip at or below block 961639</td>
                         <td>SHA256d</td>
                         <td>S9 / Bitaxe / similar</td>
                     </tr>
                     <tr>
-                        <td>Tip at or after the hardfork block height</td>
+                        <td>Tip at or after block 961640</td>
                         <td>BLAKE2b (header v2)</td>
                         <td>BLAKE2b and BLAKE2b-sia miners</td>
                     </tr>
@@ -149,23 +145,23 @@ cd datum_gateway
             <p>Point the miner at your stratum URL. The username can be any worker name DATUM accepts. A payout address is a common choice.</p>
             <p>After activation, confirm GBT advertises blake2b:</p>
             <pre><code>bitcoin-cli getblocktemplate '{"rules":["segwit","blake2b"]}'
-# expect "!blake2b" in rules; coinbaseaux.blake2b_headline should be hex for "PLACEHOLDER"</code></pre>
+# expect "!blake2b" in rules</code></pre>
 
             <h2>4. Optional peer</h2>
             <pre><code>addnode=OTHER_HOST:8333</code></pre>
 
             <h2>What working looks like</h2>
-            <h3>Before activation (tip below the hardfork block height)</h3>
+            <h3>Before activation (tip at or below block 961639)</h3>
             <ul>
-                <li>Knots syncs mainnet. <code>getdeploymentinfo</code> shows the announced hardfork block height and <code>active: false</code>.</li>
+                <li>Knots syncs mainnet. <code>getdeploymentinfo</code> shows hardfork block height <strong>961640</strong> and <code>active: false</code>.</li>
                 <li>GBT does not yet require blake2b: no <code>!blake2b</code> in <code>rules</code>. <code>coinbaseaux</code> is typically empty even if the client advertises blake2b support.</li>
                 <li>DATUM with <code>auto</code> serves SHA256d stratum jobs. SHA256d miners connect, get work, and submit shares.</li>
                 <li>BLAKE2b and BLAKE2b-sia miners are not useful yet. They need BLAKE2b jobs after the hardfork.</li>
             </ul>
-            <h3>At and after activation (tip at or after the hardfork block height)</h3>
+            <h3>At and after activation (tip at or after block 961640)</h3>
             <ul>
                 <li><code>getdeploymentinfo</code> reports hardfork <code>active: true</code>.</li>
-                <li>GBT from a client that supports blake2b shows <code>!blake2b</code> and <code>coinbaseaux.blake2b_headline</code> (hex for <code>PLACEHOLDER</code>).</li>
+                <li>GBT from a client that supports blake2b shows <code>!blake2b</code>.</li>
                 <li>DATUM <code>auto</code> switches to BLAKE2b / header v2 jobs (Sia-style notify: commitment <code>coinb1</code>, JSON merkle <code>[]</code>, longer <code>ntime</code> and <code>nonce</code> fields, and related fields).</li>
                 <li>A BLAKE2b or BLAKE2b-sia miner connects, hashes, and submits shares. Hashrate shows up in DATUM stats and the UI.</li>
                 <li>On a real block you should see <code>BLOCK FOUND - &lt;hash&gt;</code>, and the new tip hash should be that same hash.</li>
@@ -177,12 +173,11 @@ cd datum_gateway
                 <li>Miners stay connected and jobs refresh on new tips.</li>
                 <li>Shares are accepted. You are not flooded with unknown-work or high-hash rejects.</li>
                 <li>After the hardfork, the <code>BLOCK FOUND</code> hash equals the new chain tip.</li>
-                <li>The node has <code>blake2b_headline=PLACEHOLDER</code>, DATUM's secondary tag is <code>PLACEHOLDER</code>, and those headline bytes are present in the coinbase.</li>
+                <li>After the hardfork, GBT from a supporting client shows <code>!blake2b</code>.</li>
             </ol>
             <h3>Common mistakes</h3>
             <ul>
-                <li>Forcing <code>"pow_algorithm": "blake2b"</code> before the hardfork block height produces bad templates and rejects.</li>
-                <li>If the node is set to <code>PLACEHOLDER</code> but the coinbase never contains <code>PLACEHOLDER</code>, Knots rejects the block with <code>Headline is wrong</code>.</li>
+                <li>Forcing <code>"pow_algorithm": "blake2b"</code> before block height 961640 produces bad templates and rejects.</li>
                 <li>DATUM older than <code>56c31f4</code> can print <code>BLOCK FOUND</code> and then intermittent or frequent <code>high-hash</code>.</li>
                 <li>Setting <code>chain=testnet4</code> or peering on 48333. Mainnet P2P is 8333.</li>
                 <li>Leaving 8333 closed on the router. The node can still make outbound peers, but inbound peers cannot reach you.</li>
@@ -190,17 +185,16 @@ cd datum_gateway
 
             <h2>Checklist</h2>
             <ol>
-                <li>A mainnet datadir fully synced on published Knots 29.4, then RC4 from the URL above, with <code>blake2b_headline</code> set to the announced string when published (examples use <code>PLACEHOLDER</code>).</li>
-                <li>DATUM fork at <code>56c31f4</code> or later, <code>auto</code>, and secondary tag <code>PLACEHOLDER</code>.</li>
-                <li>Before the hardfork: SHA256d miners. After it: BLAKE2b and BLAKE2b-sia miners on stratum port 23334.</li>
-                <li>Watch the tip reach the announced block height, then start BLAKE2b miners.</li>
+                <li>RC5 from the URL above, using your existing mainnet data directory if you already have one.</li>
+                <li>DATUM fork at <code>56c31f4</code> or later, with <code>auto</code>.</li>
+                <li>Through block 961639: SHA256d miners. From block 961640: BLAKE2b and BLAKE2b-sia miners on stratum port 23334.</li>
+                <li>Watch the tip reach block height <strong>961640</strong>, then start BLAKE2b miners.</li>
                 <li>Confirm the <code>BLOCK FOUND</code> hash matches the tip. Ignore a benign dual-submit <code>duplicate</code>.</li>
             </ol>
 
             <div class="button-row" style="margin-top:1.5rem;">
                 <a class="button button-primary" href="/miners">Miners and DATUM</a>
-                <a class="button button-secondary" href="/testnet4-mining">Testnet4 mining guide</a>
-                <a class="button button-ghost" href="https://test.bitcoinknots.org/~luke-jr/programs/bitcoin/files/bitcoin-knots/29.x/29.4.1.knots20260508/test/rc4/" rel="noopener">Knots RC4 downloads</a>
+                <a class="button button-ghost" href="https://test.bitcoinknots.org/~luke-jr/programs/bitcoin/files/bitcoin-knots/29.x/29.4.1.knots20260508/test/rc5/" rel="noopener">Knots RC5 downloads</a>
             </div>
 
         </article>
@@ -246,7 +240,7 @@ cd datum_gateway
                     </ul>
                 </div>
             </div>
-            <p class="footer-note">© Bitcoin Project from 2009 to 2026. btc-blake2b.org and btc-blake2b.com serve the same site.</p>
+            <p class="footer-note">© Bitcoin Project from 2009 to 2026. btc-blake2b.org, btc-blake2b.com, and bitcoin-blake2b.be serve the same site.</p>
         </div>
     </footer>
     <script src="/static/site.js?v=4"></script>
