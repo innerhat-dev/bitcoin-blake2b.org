@@ -48,7 +48,7 @@
                         <a href="/release">Release notes</a>
                         <a href="/nodes">Node operators</a>
                         <a href="/miners">Miners and DATUM</a>
-                        <a href="https://bitcoinknots.org/" rel="noopener">Bitcoin Knots</a>
+                        <a href="/mining">Bitcoin Knots</a>
                         <a href="https://github.com/bitcoinknots/bitcoin" rel="noopener">Knots source</a>
                     </div>
                 </div>
@@ -63,16 +63,16 @@
             <div class="wrap">
                 <p class="kicker">Resources</p>
                 <h1>What this means for node operators</h1>
-                <p>Keep your existing data folder if you upgrade in time. If you delete old blocks to save space and then switch late, you may have to download the chain again.</p>
+                <p>The hardfork has already happened. Keep your existing data folder if you already upgraded. If you delete old blocks to save space and then switch late, you may have to download the chain again.</p>
             </div>
         </header>
         <article class="wrap prose">
 
             <ul>
-                <li><strong>If you upgrade before the hardfork:</strong> You can continue using your existing Bitcoin data directory normally. No blockchain re-download or movement of funds is required.</li>
-                <li><strong>If you switch from Bitcoin Core or older <a href="https://bitcoinknots.org/" rel="noopener">Bitcoin Knots</a> after the hardfork:</strong> That software may have followed the SHA256d chain. On startup, this release usually notices those extra blocks, walks back to the fork, and then downloads the BLAKE2b chain. That walk-back is only for SHA256d blocks at or after the fork. If a BLAKE2b block itself breaks the data or size rules, run <code>-reindex</code> to rebuild the database from blocks you already have. Knots versions with the BLAKE2b change will be on <a href="https://bitcoinknots.org/" rel="noopener">bitcoinknots.org</a> when published; source is <a href="https://github.com/bitcoinknots/bitcoin" rel="noopener">github.com/bitcoinknots/bitcoin</a>.</li>
+                <li><strong>If you already upgraded:</strong> You can continue using your existing Bitcoin data directory normally. No blockchain re-download or movement of funds is required.</li>
+                <li><strong>If you are switching from Bitcoin Core or older <a href="https://bitcoinknots.org/" rel="noopener">Bitcoin Knots</a>:</strong> That software may have followed the SHA256d chain. On startup, this release usually notices those extra blocks, walks back to the fork, and then downloads the BLAKE2b chain. That walk-back is only for SHA256d blocks at or after the fork. If a BLAKE2b block itself breaks the data or size rules, run <code>-reindex</code> to rebuild the database from blocks you already have. RC5 binaries are in the test directory on the <a href="/mining">mainnet solo mining guide</a>. They are not the published files on bitcoinknots.org. Source is <a href="https://github.com/bitcoinknots/bitcoin" rel="noopener">github.com/bitcoinknots/bitcoin</a>.</li>
                 <li>A <strong>pruned node</strong> deletes old blocks to save disk space. If you waited so long that the walk-back blocks are already gone, or the node followed invalid blocks after a late upgrade, rebuild the node and download the chain again. This release may ask at startup whether that resync is required.</li>
-                <li>You do <strong>not</strong> need to move your bitcoin before the fork. Coins created before the fork remain spendable.</li>
+                <li>You do <strong>not</strong> need to move your bitcoin. Coins created before the fork remain spendable.</li>
                 <li>After the BIP-110 softfork, Bitcoin Core and older <a href="https://bitcoinknots.org/" rel="noopener">Bitcoin Knots</a> still require the legacy SHA256d algorithm and follow a different blockchain.</li>
             </ul>
             <p>See the <a href="/release">release notes</a> for what happened, and the <a href="/faq">FAQ</a> if you are pruned or unsure which software you are running. Miners using their own templates should read <a href="/miners">DATUM and Knots</a>.</p>
@@ -106,7 +106,7 @@
                         <li><a href="/release">Release notes</a></li>
                         <li><a href="/nodes">Node operators</a></li>
                         <li><a href="/miners">Miners and DATUM</a></li>
-                        <li><a href="https://bitcoinknots.org/" rel="noopener">Bitcoin Knots</a></li>
+                        <li><a href="/mining">Bitcoin Knots</a></li>
                         <li><a href="https://github.com/bitcoinknots/bitcoin" rel="noopener">Knots source</a></li>
                         <li><a href="/faq">FAQ</a></li>
                     </ul>
@@ -116,11 +116,11 @@
                     <ul>
                         <li><a href="/privacy">Privacy</a></li>
                         <li><a href="https://bitcoin.org/bitcoin.pdf" rel="noopener">White paper</a></li>
-                        <li><a href="https://github.com/innerhat-dev/datum_gateway" rel="noopener">DATUM Gateway</a></li>
+                        <li><a href="https://github.com/CONVOYMining/datum_gateway" rel="noopener">DATUM Gateway</a></li>
                     </ul>
                 </div>
             </div>
-            <p class="footer-note">© Bitcoin Project from 2009 to 2026. btc-blake2b.org, btc-blake2b.com, and bitcoin-blake2b.be serve the same site.</p>
+            <p class="footer-note">© Bitcoin Project from 2009 to 2026. btc-blake2b.org, btc-blake2b.com, bitcoin-blake2b.be, and bitcoin-blake2b.org serve the same site.</p>
         </div>
     </footer>
     <script src="/static/site.js?v=4"></script>

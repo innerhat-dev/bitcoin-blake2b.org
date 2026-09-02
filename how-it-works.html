@@ -48,7 +48,7 @@
                         <a href="/release">Release notes</a>
                         <a href="/nodes">Node operators</a>
                         <a href="/miners">Miners and DATUM</a>
-                        <a href="https://bitcoinknots.org/" rel="noopener">Bitcoin Knots</a>
+                        <a href="/mining">Bitcoin Knots</a>
                         <a href="https://github.com/bitcoinknots/bitcoin" rel="noopener">Knots source</a>
                     </div>
                 </div>
@@ -70,8 +70,8 @@
 
             <p>Bitcoin is an innovative payment network and a new kind of money, and a node is a copy of the ledger you run yourself. A block only counts if it matches the rules that software enforces: miners can offer work, but they cannot rewrite those rules for people who decline them.</p>
             <p>BIP-110, in alignment with the vast majority of node policy, attempted to reject use of the network for arbitrary data storage while leaving ordinary payments alone. That was a softfork: a tighter rule that old software can still follow, and it is not this hardfork. A hardfork is a break away from abuse of the Bitcoin network. Large mining firms refused those limits and kept producing blocks that used transactions most nodes would not relay as a matter of policy. Anyone can still verify that chain, but following it means accepting use of the network for arbitrary data storage, which every node operator on that chain must store at their own expense and, most importantly, risk.</p>
-            <p>On August 8, 2026, nodes enforcing BIP-110 stopped accepting blocks that did not support it, while most SHA256d mining power kept producing those blocks, so the money-only rules could not activate. This hardfork changes proof of work from the legacy SHA256d algorithm to the stronger BLAKE2b algorithm, so today's SHA256d miners cannot add blocks here. New miners can follow the ledger people chose.</p>
-            <p>Temporary limits on arbitrary data storage begin at the same moment and last until 1 September 2027, 00:00 UTC, using the previous block's median time past. During that time a block is also capped at about 300 kB (800,000 weight units). Continuing those limits after that date is a later choice for node operators; the BLAKE2b algorithm remains.</p>
+            <p>On August 8, 2026, nodes enforcing BIP-110 stopped accepting blocks that did not support it, while most SHA256d mining power kept producing those blocks, so the money-only rules could not activate. Proof of work later changed from SHA256d to BLAKE2b, a different algorithm, so today's SHA256d miners cannot add blocks here. The first BLAKE2b block is 961640 (30 August 2026). New miners can follow the ledger people chose.</p>
+            <p>Temporary limits on arbitrary data storage began at height 961640 with BLAKE2b, not on August 8, and last until 1 September 2027, 00:00 UTC, using the previous block's median time past. During that time a block is also capped at about 300 kB serialized / 800,000 weight units. Continuing those limits after that date is a later choice for node operators; the BLAKE2b algorithm remains.</p>
 
         </article>
     </main>
@@ -102,7 +102,7 @@
                         <li><a href="/release">Release notes</a></li>
                         <li><a href="/nodes">Node operators</a></li>
                         <li><a href="/miners">Miners and DATUM</a></li>
-                        <li><a href="https://bitcoinknots.org/" rel="noopener">Bitcoin Knots</a></li>
+                        <li><a href="/mining">Bitcoin Knots</a></li>
                         <li><a href="https://github.com/bitcoinknots/bitcoin" rel="noopener">Knots source</a></li>
                         <li><a href="/faq">FAQ</a></li>
                     </ul>
@@ -112,11 +112,11 @@
                     <ul>
                         <li><a href="/privacy">Privacy</a></li>
                         <li><a href="https://bitcoin.org/bitcoin.pdf" rel="noopener">White paper</a></li>
-                        <li><a href="https://github.com/innerhat-dev/datum_gateway" rel="noopener">DATUM Gateway</a></li>
+                        <li><a href="https://github.com/CONVOYMining/datum_gateway" rel="noopener">DATUM Gateway</a></li>
                     </ul>
                 </div>
             </div>
-            <p class="footer-note">© Bitcoin Project from 2009 to 2026. btc-blake2b.org, btc-blake2b.com, and bitcoin-blake2b.be serve the same site.</p>
+            <p class="footer-note">© Bitcoin Project from 2009 to 2026. btc-blake2b.org, btc-blake2b.com, bitcoin-blake2b.be, and bitcoin-blake2b.org serve the same site.</p>
         </div>
     </footer>
     <script src="/static/site.js?v=4"></script>

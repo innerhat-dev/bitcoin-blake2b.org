@@ -48,7 +48,7 @@
                         <a href="/release">Release notes</a>
                         <a href="/nodes">Node operators</a>
                         <a href="/miners">Miners and DATUM</a>
-                        <a href="https://bitcoinknots.org/" rel="noopener">Bitcoin Knots</a>
+                        <a href="/mining">Bitcoin Knots</a>
                         <a href="https://github.com/bitcoinknots/bitcoin" rel="noopener">Knots source</a>
                     </div>
                 </div>
@@ -63,43 +63,42 @@
             <div class="wrap">
                 <p class="kicker">Resources</p>
                 <h1>Miners and DATUM</h1>
-                <p>This hardfork changes proof of work from the legacy SHA256d algorithm to the stronger BLAKE2b algorithm, so today's SHA256d miners cannot add blocks here. Purpose-built BLAKE2b machines are supported from the first block. DATUM puts the choice of transactions back on the miner who runs the node.</p>
+                <p>This hardfork changed proof of work from the legacy SHA256d algorithm to BLAKE2b, a different proof-of-work algorithm, so today's SHA256d miners cannot add blocks here. Purpose-built BLAKE2b machines are what this chain uses. DATUM puts the choice of transactions back on the miner who runs the node.</p>
             </div>
         </header>
         <article class="wrap prose">
 
             <h2>RC5 on mainnet</h2>
-            <p>Run Knots 29.4.1 RC5 and the DATUM Gateway fork on mainnet. Block 961639 is checkpointed as the last SHA256d block. The first BLAKE2b block is 961640. RC5 binaries are in the test directory on the <a href="/mining">mainnet solo mining guide</a>. They are not the published files on bitcoinknots.org. SHA256d hardware is useful through block 961639. BLAKE2b and BLAKE2b-sia miners are useful from block 961640.</p>
+            <p>Run Knots 29.4.1 RC5 and the DATUM Gateway fork on mainnet. Block 961639 is the last SHA256d block. The first BLAKE2b block is 961640. This chain is on BLAKE2b now. RC5 binaries are in the test directory on the <a href="/mining">mainnet solo mining guide</a>. They are not the published files on bitcoinknots.org. SHA256d hardware was useful through block 961639. BLAKE2b and BLAKE2b-sia miners are what this chain uses from block 961640.</p>
             <p><a href="/mining">Read the mainnet solo mining guide</a> for Knots config, DATUM settings, GBT checks, and what a working setup looks like.</p>
 
             <h2>Bitcoin Knots</h2>
-            <p>Run a BLAKE2b node if you intend to mine this chain. <a href="https://bitcoinknots.org/" rel="noopener">Bitcoin Knots</a> is highly recommended: it combines a full node and wallet, and it gives miners fine control over how block templates are constructed. Other software that supports <code>getblocktemplate</code> can be used for SHA256d, including Bitcoin Core, but it gives the miner much less control. For this chain you need a Knots version that includes the BLAKE2b change. Source is at <a href="https://github.com/bitcoinknots/bitcoin" rel="noopener">github.com/bitcoinknots/bitcoin</a>.</p>
+            <p>Run a BLAKE2b node if you intend to mine this chain. <a href="/mining">Bitcoin Knots RC5</a> is highly recommended: it combines a full node and wallet, and it gives miners fine control over how block templates are constructed. Other software that supports <code>getblocktemplate</code> can be used for SHA256d, including Bitcoin Core, but it gives the miner much less control. For this chain you need a Knots version that includes the BLAKE2b change. Binaries are on the <a href="/mining">solo mining guide</a>, not the published files on <a href="https://bitcoinknots.org/" rel="noopener">bitcoinknots.org</a>. Source is at <a href="https://github.com/bitcoinknots/bitcoin" rel="noopener">github.com/bitcoinknots/bitcoin</a>.</p>
             <p>After the BIP-110 softfork, Bitcoin Core and older Knots releases still use the legacy SHA256d algorithm and follow a different blockchain. You need a Knots version that includes the BLAKE2b change. See <a href="/nodes">what this means for node operators</a>.</p>
 
             <h2>What DATUM is</h2>
             <p>DATUM stands for <strong>Decentralized Alternative Templates for Universal Mining</strong>. Early Bitcoin treated the person running a node as the miner: that machine chose the payments and submitted the block. Pools later started building the block themselves so many miners could share luck and get steadier pay. The hardware still hashes. The pool decides what goes in the block. When a handful of pools pick every payment, they can stall or drop ones they dislike.</p>
-            <p>DATUM reverses that. The <a href="https://github.com/innerhat-dev/datum_gateway" rel="noopener">DATUM Gateway</a> asks your local node for a block template, sends work to your hardware, and submits a found block to the network from that node. The person running the node is the miner. The gateway and the node can share one machine.</p>
+            <p>DATUM reverses that. Use the <a href="https://github.com/CONVOYMining/datum_gateway" rel="noopener">CONVOY</a> repository for the BLAKE2b and header-v2 gateway. The <a href="https://github.com/CONVOYMining/datum_gateway" rel="noopener">DATUM Gateway</a> asks your local node for a block template, sends work to your hardware, and submits a found block to the network from that node. The person running the node is the miner. The gateway and the node can share one machine.</p>
             <p>You can still smooth income through a DATUM-supporting pool. The pool coordinates how the block reward is split based on work done. It does not create the work or the block template, and the DATUM protocol has no way for the pool to hand you the information needed to build one. The pool does send the generation payout split for a template you construct locally. In the current protocol the pool also checks that a found block is valid, so miners do not accidentally publish a bad block while the software is still in testing; that check is not meant to last. The work your hardware sees comes only from your node, which is why Knots matters: you choose transactions there.</p>
             <ul>
                 <li>Talks to a local node over RPC using <code>getblocktemplate</code>.</li>
-                <li>Talks to hardware over Stratum v1, including version rolling (ASICBoost).</li>
+                <li>Talks to hardware over Stratum v1. BLAKE2b and BLAKE2b-sia miners are supported.</li>
                 <li>Talks to a pool, if you use one, over the DATUM protocol, an encrypted custom link between the Gateway and the pool, not a Stratum v2 add-on.</li>
                 <li>Supports Bitcoin only. Choose transactions on the node; the pool does not hand you a ready-made block.</li>
             </ul>
 
-            <p>While limits on arbitrary data storage are in effect, a block may also be no larger than about 300 kB (800,000 weight units). <code>getblocktemplate</code> reports that as <code>weightlimit</code>. Do not point the gateway at a 4,000,000-weight policy and expect those templates to be valid.</p>
+            <p>While limits on arbitrary data storage are in effect, a block may also be no larger than about 300 kB serialized / 800,000 weight units. <code>getblocktemplate</code> reports that as <code>weightlimit</code>. Do not point the gateway at a 4,000,000-weight policy and expect those templates to be valid. CONVOY's README still suggests <code>blockmaxweight=785000</code>; Knots already enforces 800000 during the window, so that extra cap is not required.</p>
 
             <h2>BLAKE2b mining</h2>
-            <p>SHA256d mining against an ordinary <code>getblocktemplate</code> node needs no node source changes. The Gateway uses standard GBT. BLAKE2b header-v2 mining is supported from the first block, including Antminer A3 and other Sia-style BLAKE2b hashers such as the Goldshell SC5 Pro and SC Lite, and needs a Knots node built with the BLAKE2b proof-of-work change. That node's <code>getblocktemplate</code> still looks like ordinary BIP22 GBT. It advertises BLAKE2b as <code>!blake2b</code> in <code>rules</code>, so the Gateway default (<code>auto</code>) selects blake2b. You can still set <code>mining.pow_algorithm</code> to <code>blake2b</code>. Keep hasher time rolling off:</p>
+            <p>BLAKE2b header-v2 mining is supported from the first block, including Antminer A3 and other Sia-style BLAKE2b hashers such as the Goldshell SC5 Pro and SC Lite, and needs a Knots node built with the BLAKE2b proof-of-work change. That node's <code>getblocktemplate</code> still looks like ordinary BIP22 GBT and advertises BLAKE2b as <code>!blake2b</code> in <code>rules</code>. The Gateway follows GBT. It only serves work when the template rules include blake2b. Keep hasher time rolling off:</p>
             <pre><code>"mining": {
-    "pow_algorithm": "blake2b",
     "allow_hasher_time_rolling": false
 }</code></pre>
-            <p>This software is still in public beta. Build and configuration details are in the <a href="https://github.com/innerhat-dev/datum_gateway" rel="noopener">DATUM Gateway repository</a>.</p>
+            <p>This software is still in public beta. Build and configuration details are in the <a href="https://github.com/CONVOYMining/datum_gateway" rel="noopener">DATUM Gateway repository at CONVOY</a>.</p>
 
             <div class="button-row" style="margin-top:1.5rem;">
                 <a class="button button-primary" href="/mining">Solo mining guide</a>
-                <a class="button button-ghost" href="https://github.com/innerhat-dev/datum_gateway" rel="noopener">DATUM Gateway on GitHub</a>
+                <a class="button button-ghost" href="https://github.com/CONVOYMining/datum_gateway" rel="noopener">DATUM Gateway on GitHub</a>
             </div>
 
         </article>
@@ -131,7 +130,7 @@
                         <li><a href="/release">Release notes</a></li>
                         <li><a href="/nodes">Node operators</a></li>
                         <li><a href="/miners">Miners and DATUM</a></li>
-                        <li><a href="https://bitcoinknots.org/" rel="noopener">Bitcoin Knots</a></li>
+                        <li><a href="/mining">Bitcoin Knots</a></li>
                         <li><a href="https://github.com/bitcoinknots/bitcoin" rel="noopener">Knots source</a></li>
                         <li><a href="/faq">FAQ</a></li>
                     </ul>
@@ -141,11 +140,11 @@
                     <ul>
                         <li><a href="/privacy">Privacy</a></li>
                         <li><a href="https://bitcoin.org/bitcoin.pdf" rel="noopener">White paper</a></li>
-                        <li><a href="https://github.com/innerhat-dev/datum_gateway" rel="noopener">DATUM Gateway</a></li>
+                        <li><a href="https://github.com/CONVOYMining/datum_gateway" rel="noopener">DATUM Gateway</a></li>
                     </ul>
                 </div>
             </div>
-            <p class="footer-note">© Bitcoin Project from 2009 to 2026. btc-blake2b.org, btc-blake2b.com, and bitcoin-blake2b.be serve the same site.</p>
+            <p class="footer-note">© Bitcoin Project from 2009 to 2026. btc-blake2b.org, btc-blake2b.com, bitcoin-blake2b.be, and bitcoin-blake2b.org serve the same site.</p>
         </div>
     </footer>
     <script src="/static/site.js?v=4"></script>

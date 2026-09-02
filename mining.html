@@ -4,20 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Solo mining on mainnet</title>
-    <meta name="description" content="Run Bitcoin Knots 29.4.1 RC5 and the DATUM Gateway fork on mainnet, then mine SHA256d through block 961639 and BLAKE2b from block 961640.">
+    <meta name="description" content="Run Bitcoin Knots 29.4.1 RC5 and the CONVOY DATUM Gateway on mainnet. This chain is on BLAKE2b from block 961640.">
     <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="theme-color" content="#f7931a">
     <link rel="canonical" href="https://btc-blake2b.org/mining">
     <meta property="og:title" content="Solo mining on mainnet">
-    <meta property="og:description" content="Run Bitcoin Knots 29.4.1 RC5 and the DATUM Gateway fork on mainnet, then mine SHA256d through block 961639 and BLAKE2b from block 961640.">
+    <meta property="og:description" content="Run Bitcoin Knots 29.4.1 RC5 and the CONVOY DATUM Gateway on mainnet. This chain is on BLAKE2b from block 961640.">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Bitcoin">
     <meta property="og:url" content="https://btc-blake2b.org/mining">
     <meta property="og:image" content="https://btc-blake2b.org/media/og-image.png?v=2">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Solo mining on mainnet">
-    <meta name="twitter:description" content="Run Bitcoin Knots 29.4.1 RC5 and the DATUM Gateway fork on mainnet, then mine SHA256d through block 961639 and BLAKE2b from block 961640.">
+    <meta name="twitter:description" content="Run Bitcoin Knots 29.4.1 RC5 and the CONVOY DATUM Gateway on mainnet. This chain is on BLAKE2b from block 961640.">
     <meta name="twitter:image" content="https://btc-blake2b.org/media/og-image.png?v=2">
     <link rel="icon" href="/media/logo.svg" type="image/svg+xml">
     <link rel="stylesheet" href="/static/style.css?v=8">
@@ -48,7 +48,7 @@
                         <a href="/release">Release notes</a>
                         <a href="/nodes">Node operators</a>
                         <a href="/miners">Miners and DATUM</a>
-                        <a href="https://bitcoinknots.org/" rel="noopener">Bitcoin Knots</a>
+                        <a href="/mining">Bitcoin Knots</a>
                         <a href="https://github.com/bitcoinknots/bitcoin" rel="noopener">Knots source</a>
                     </div>
                 </div>
@@ -63,7 +63,7 @@
             <div class="wrap">
                 <p class="kicker">Resources</p>
                 <h1>Solo mining on mainnet</h1>
-                <p>Run Bitcoin Knots 29.4.1 RC5 and the <a href="https://github.com/innerhat-dev/datum_gateway" rel="noopener">DATUM Gateway</a> fork on mainnet. Block 961639 is checkpointed as the last SHA256d block. The first BLAKE2b block is 961640. RC5 binaries are in the test directory linked below. They are not the published files on bitcoinknots.org.</p>
+                <p>Run Bitcoin Knots 29.4.1 RC5 and the <a href="https://github.com/CONVOYMining/datum_gateway" rel="noopener">DATUM Gateway</a> on mainnet. CONVOY is the BLAKE2b and header-v2 DATUM. Block 961639 is the last SHA256d block. The first BLAKE2b block is 961640. This chain is on BLAKE2b now. RC5 binaries are in the test directory linked below. They are not the published files on bitcoinknots.org.</p>
             </div>
         </header>
         <article class="wrap prose">
@@ -73,9 +73,8 @@
             <p>Check the build against <code>SHA256SUMS</code> and <code>SHA256SUMS.asc</code> in that directory. Do not set <code>chain=testnet4</code>. Keep the same data directory if you already have a mainnet node.</p>
 
             <h2>1. Knots on mainnet</h2>
-            <p>Minimal <code>bitcoin.conf</code>:</p>
+            <p>Minimal <code>bitcoin.conf</code>. <code>txindex=1</code> is not required for DATUM or <code>getblocktemplate</code>. Working nodes often add extra knobs such as <code>consensusrules=rdts</code>, <code>blake2b_headline</code>, <code>maxtipage</code>, and a larger mempool. <code>blocknotify</code> via <code>/NOTIFY</code> or <code>killall -USR1</code> both work:</p>
             <pre><code>server=1
-txindex=1
 
 rpcbind=127.0.0.1
 rpcallowip=127.0.0.1
@@ -85,10 +84,13 @@ rpcpassword=PASS
 blocknotify=curl -fsS -o /dev/null http://127.0.0.1:7152/NOTIFY</code></pre>
             <p>Default P2P port is <strong>8333</strong>. Forward inbound TCP <strong>8333</strong> on your router to this machine so other nodes can connect to you. Default RPC port is <strong>8332</strong>. Leave RPC on localhost.</p>
             <pre><code>bitcoin-cli getblockchaininfo
-bitcoin-cli getdeploymentinfo   # hardfork.height == 961640</code></pre>
+bitcoin-cli getdeploymentinfo
+# blake2b.height == 961640 and blake2b.active == true
+# deployments.reduced_data.height == 961640 and active == true</code></pre>
 
-            <h2>2. DATUM Gateway fork</h2>
-            <pre><code>git clone https://github.com/innerhat-dev/datum_gateway.git
+            <h2>2. DATUM Gateway</h2>
+            <p>Clone the BLAKE2b and header-v2 gateway from <a href="https://github.com/CONVOYMining/datum_gateway" rel="noopener">CONVOY</a>:</p>
+            <pre><code>git clone https://github.com/CONVOYMining/datum_gateway.git
 cd datum_gateway
 # build per README (cmake + libmicrohttpd, jansson, curl, libsodium, …)</code></pre>
             <p>Use a build that includes commit <code>56c31f4</code> (<em>pow: Include header-v2 bit in BLAKE2b H1 commitment version</em>) or later. Without that change, share proof of work will not match Knots RC5 <code>GetHash</code>.</p>
@@ -109,7 +111,7 @@ cd datum_gateway
   "mining": {
     "pool_address": "bc1q…your_mainnet_address…",
     "coinbase_tag_primary": "MyTag",
-    "pow_algorithm": "auto"
+    "allow_hasher_time_rolling": false
   },
   "datum": { "pool_host": "", "pooled_mining_only": false }
 }</code></pre>
@@ -118,32 +120,13 @@ cd datum_gateway
                 <li>UI: <code>http://HOST:7152</code> (digest auth uses <code>admin_password</code>)</li>
                 <li>Stratum: <code>stratum+tcp://HOST:23334</code></li>
             </ul>
-            <p>Keep <code>"pow_algorithm": "auto"</code>. Do not force <code>"blake2b"</code> before block height 961640.</p>
+            <p>CONVOY serves BLAKE2b / header-v2 jobs when GBT advertises !blake2b. There is no pow_algorithm setting.</p>
+            <p>Solo needs <code>pool_host</code> empty and <code>pooled_mining_only</code> false. CONVOY's built-in defaults turn pooled mining on and point at a CONVOY pool host. If you empty the host and leave pooled mining on, the process exits. Their example config is a pool example; do not use it as the solo recipe. Solo can omit <code>abw_verify_all_shares_on_disclosure</code>.</p>
 
             <h2>3. Miners</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>When</th>
-                        <th>Work</th>
-                        <th>Useful hardware</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Tip at or below block 961639</td>
-                        <td>SHA256d</td>
-                        <td>S9 / Bitaxe / similar</td>
-                    </tr>
-                    <tr>
-                        <td>Tip at or after block 961640</td>
-                        <td>BLAKE2b (header v2)</td>
-                        <td>BLAKE2b and BLAKE2b-sia miners</td>
-                    </tr>
-                </tbody>
-            </table>
+            <p>This chain is on BLAKE2b now. CONVOY only serves BLAKE2b and BLAKE2b-sia header-v2 jobs. It will not mine SHA256d. If GBT does not advertise blake2b, it serves no work. SHA256d hardware was useful through block 961639 and cannot add blocks here.</p>
             <p>Point the miner at your stratum URL. The username can be any worker name DATUM accepts. A payout address is a common choice.</p>
-            <p>After activation, confirm GBT advertises blake2b:</p>
+            <p>Confirm GBT advertises blake2b:</p>
             <pre><code>bitcoin-cli getblocktemplate '{"rules":["segwit","blake2b"]}'
 # expect "!blake2b" in rules</code></pre>
 
@@ -151,18 +134,10 @@ cd datum_gateway
             <pre><code>addnode=OTHER_HOST:8333</code></pre>
 
             <h2>What working looks like</h2>
-            <h3>Before activation (tip at or below block 961639)</h3>
             <ul>
-                <li>Knots syncs mainnet. <code>getdeploymentinfo</code> shows hardfork block height <strong>961640</strong> and <code>active: false</code>.</li>
-                <li>GBT does not yet require blake2b: no <code>!blake2b</code> in <code>rules</code>. <code>coinbaseaux</code> is typically empty even if the client advertises blake2b support.</li>
-                <li>DATUM with <code>auto</code> serves SHA256d stratum jobs. SHA256d miners connect, get work, and submit shares.</li>
-                <li>BLAKE2b and BLAKE2b-sia miners are not useful yet. They need BLAKE2b jobs after the hardfork.</li>
-            </ul>
-            <h3>At and after activation (tip at or after block 961640)</h3>
-            <ul>
-                <li><code>getdeploymentinfo</code> reports hardfork <code>active: true</code>.</li>
+                <li><code>getdeploymentinfo</code> reports <code>blake2b.height</code> <strong>961640</strong> and <code>blake2b.active</code> true, plus <code>deployments.reduced_data</code> at the same height and active.</li>
                 <li>GBT from a client that supports blake2b shows <code>!blake2b</code>.</li>
-                <li>DATUM <code>auto</code> switches to BLAKE2b / header v2 jobs (Sia-style notify: commitment <code>coinb1</code>, JSON merkle <code>[]</code>, longer <code>ntime</code> and <code>nonce</code> fields, and related fields).</li>
+                <li>DATUM serves BLAKE2b / header v2 jobs (Sia-style notify: commitment <code>coinb1</code>, JSON merkle <code>[]</code>, longer <code>ntime</code> and <code>nonce</code> fields, and related fields). It waits for a BLAKE2b anti-withholding assignment before using a template.</li>
                 <li>A BLAKE2b or BLAKE2b-sia miner connects, hashes, and submits shares. Hashrate shows up in DATUM stats and the UI.</li>
                 <li>On a real block you should see <code>BLOCK FOUND - &lt;hash&gt;</code>, and the new tip hash should be that same hash.</li>
                 <li>Knots accepts the block via <code>submitblock</code>. A second log line saying <code>duplicate</code> is normal. DATUM submits twice; one path wins.</li>
@@ -172,13 +147,13 @@ cd datum_gateway
             <ol>
                 <li>Miners stay connected and jobs refresh on new tips.</li>
                 <li>Shares are accepted. You are not flooded with unknown-work or high-hash rejects.</li>
-                <li>After the hardfork, the <code>BLOCK FOUND</code> hash equals the new chain tip.</li>
-                <li>After the hardfork, GBT from a supporting client shows <code>!blake2b</code>.</li>
+                <li>The <code>BLOCK FOUND</code> hash equals the new chain tip.</li>
+                <li>GBT from a supporting client shows <code>!blake2b</code>.</li>
             </ol>
             <h3>Common mistakes</h3>
             <ul>
-                <li>Forcing <code>"pow_algorithm": "blake2b"</code> before block height 961640 produces bad templates and rejects.</li>
                 <li>DATUM older than <code>56c31f4</code> can print <code>BLOCK FOUND</code> and then intermittent or frequent <code>high-hash</code>.</li>
+                <li>Leaving CONVOY's pooled-mining defaults on, or emptying <code>pool_host</code> while <code>pooled_mining_only</code> is still true.</li>
                 <li>Setting <code>chain=testnet4</code> or peering on 48333. Mainnet P2P is 8333.</li>
                 <li>Leaving 8333 closed on the router. The node can still make outbound peers, but inbound peers cannot reach you.</li>
             </ul>
@@ -186,9 +161,8 @@ cd datum_gateway
             <h2>Checklist</h2>
             <ol>
                 <li>RC5 from the URL above, using your existing mainnet data directory if you already have one.</li>
-                <li>DATUM fork at <code>56c31f4</code> or later, with <code>auto</code>.</li>
-                <li>Through block 961639: SHA256d miners. From block 961640: BLAKE2b and BLAKE2b-sia miners on stratum port 23334.</li>
-                <li>Watch the tip reach block height <strong>961640</strong>, then start BLAKE2b miners.</li>
+                <li>DATUM from CONVOY at <code>56c31f4</code> or later.</li>
+                <li>BLAKE2b and BLAKE2b-sia miners on stratum port 23334.</li>
                 <li>Confirm the <code>BLOCK FOUND</code> hash matches the tip. Ignore a benign dual-submit <code>duplicate</code>.</li>
             </ol>
 
@@ -226,7 +200,7 @@ cd datum_gateway
                         <li><a href="/release">Release notes</a></li>
                         <li><a href="/nodes">Node operators</a></li>
                         <li><a href="/miners">Miners and DATUM</a></li>
-                        <li><a href="https://bitcoinknots.org/" rel="noopener">Bitcoin Knots</a></li>
+                        <li><a href="/mining">Bitcoin Knots</a></li>
                         <li><a href="https://github.com/bitcoinknots/bitcoin" rel="noopener">Knots source</a></li>
                         <li><a href="/faq">FAQ</a></li>
                     </ul>
@@ -236,11 +210,11 @@ cd datum_gateway
                     <ul>
                         <li><a href="/privacy">Privacy</a></li>
                         <li><a href="https://bitcoin.org/bitcoin.pdf" rel="noopener">White paper</a></li>
-                        <li><a href="https://github.com/innerhat-dev/datum_gateway" rel="noopener">DATUM Gateway</a></li>
+                        <li><a href="https://github.com/CONVOYMining/datum_gateway" rel="noopener">DATUM Gateway</a></li>
                     </ul>
                 </div>
             </div>
-            <p class="footer-note">© Bitcoin Project from 2009 to 2026. btc-blake2b.org, btc-blake2b.com, and bitcoin-blake2b.be serve the same site.</p>
+            <p class="footer-note">© Bitcoin Project from 2009 to 2026. btc-blake2b.org, btc-blake2b.com, bitcoin-blake2b.be, and bitcoin-blake2b.org serve the same site.</p>
         </div>
     </footer>
     <script src="/static/site.js?v=4"></script>

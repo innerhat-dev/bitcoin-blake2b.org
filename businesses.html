@@ -48,7 +48,7 @@
                         <a href="/release">Release notes</a>
                         <a href="/nodes">Node operators</a>
                         <a href="/miners">Miners and DATUM</a>
-                        <a href="https://bitcoinknots.org/" rel="noopener">Bitcoin Knots</a>
+                        <a href="/mining">Bitcoin Knots</a>
                         <a href="https://github.com/bitcoinknots/bitcoin" rel="noopener">Knots source</a>
                     </div>
                 </div>
@@ -68,11 +68,11 @@
         </header>
         <article class="wrap prose">
 
-            <p>After the BIP-110 softfork, software that still uses the legacy SHA256d algorithm follows a different blockchain. If you intend to support this chain, run a <a href="https://bitcoinknots.org/" rel="noopener">Bitcoin Knots</a> version that includes the BLAKE2b change and say so publicly. Bitcoin with the BLAKE2b algorithm keeps Bitcoin as money only by rejecting use of the network for arbitrary data storage.</p>
+            <p>After the BIP-110 softfork, software that still uses the legacy SHA256d algorithm follows a different blockchain. If you intend to support this chain, run a <a href="/mining">Bitcoin Knots RC5</a> node that includes the BLAKE2b change and say so publicly. Bitcoin with the BLAKE2b algorithm keeps Bitcoin as money only by rejecting use of the network for arbitrary data storage.</p>
             <h2>Exchanges and custodians</h2>
             <ul>
-                <li>Halt deposits and withdrawals across the fork until your node is on the intended chain and your accounting is settled.</li>
-                <li>Announce which chain you will credit. Do not assume tickers will stay unambiguous.</li>
+                <li>If deposits and withdrawals are still open, halt them until your node is on the intended chain and your accounting is settled.</li>
+                <li>Announce which chain you credit. Do not assume tickers stay unambiguous.</li>
                 <li>Treat pre-fork balances as valid on the BLAKE2b chain you support. Post-fork coins on the other chain are a separate asset.</li>
                 <li>A payment made with pre-fork coins can be copied onto the other chain (replay). Wallets that spend on both chains should use the opt-in <code>SIGHASH_UNIFIED</code> format so that copy does not happen by default.</li>
             </ul>
@@ -109,7 +109,7 @@
                         <li><a href="/release">Release notes</a></li>
                         <li><a href="/nodes">Node operators</a></li>
                         <li><a href="/miners">Miners and DATUM</a></li>
-                        <li><a href="https://bitcoinknots.org/" rel="noopener">Bitcoin Knots</a></li>
+                        <li><a href="/mining">Bitcoin Knots</a></li>
                         <li><a href="https://github.com/bitcoinknots/bitcoin" rel="noopener">Knots source</a></li>
                         <li><a href="/faq">FAQ</a></li>
                     </ul>
@@ -119,11 +119,11 @@
                     <ul>
                         <li><a href="/privacy">Privacy</a></li>
                         <li><a href="https://bitcoin.org/bitcoin.pdf" rel="noopener">White paper</a></li>
-                        <li><a href="https://github.com/innerhat-dev/datum_gateway" rel="noopener">DATUM Gateway</a></li>
+                        <li><a href="https://github.com/CONVOYMining/datum_gateway" rel="noopener">DATUM Gateway</a></li>
                     </ul>
                 </div>
             </div>
-            <p class="footer-note">© Bitcoin Project from 2009 to 2026. btc-blake2b.org, btc-blake2b.com, and bitcoin-blake2b.be serve the same site.</p>
+            <p class="footer-note">© Bitcoin Project from 2009 to 2026. btc-blake2b.org, btc-blake2b.com, bitcoin-blake2b.be, and bitcoin-blake2b.org serve the same site.</p>
         </div>
     </footer>
     <script src="/static/site.js?v=4"></script>

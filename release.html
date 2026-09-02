@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proof-of-work hardfork release notes</title>
-    <meta name="description" content="Why the BLAKE2b hardfork exists after BIP-110 was blocked, and what node operators should do.">
+    <title>Bitcoin Knots 29.4.1 release notes</title>
+    <meta name="description" content="Release notes for Bitcoin Knots 29.4.1.knots20260508: the BLAKE2b hardfork build, how to upgrade, and what changed.">
     <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="theme-color" content="#f7931a">
     <link rel="canonical" href="https://btc-blake2b.org/release">
-    <meta property="og:title" content="Proof-of-work hardfork release notes">
-    <meta property="og:description" content="Why the BLAKE2b hardfork exists after BIP-110 was blocked, and what node operators should do.">
+    <meta property="og:title" content="Bitcoin Knots 29.4.1 release notes">
+    <meta property="og:description" content="Release notes for Bitcoin Knots 29.4.1.knots20260508: the BLAKE2b hardfork build, how to upgrade, and what changed.">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Bitcoin">
     <meta property="og:url" content="https://btc-blake2b.org/release">
     <meta property="og:image" content="https://btc-blake2b.org/media/og-image.png?v=2">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Proof-of-work hardfork release notes">
-    <meta name="twitter:description" content="Why the BLAKE2b hardfork exists after BIP-110 was blocked, and what node operators should do.">
+    <meta name="twitter:title" content="Bitcoin Knots 29.4.1 release notes">
+    <meta name="twitter:description" content="Release notes for Bitcoin Knots 29.4.1.knots20260508: the BLAKE2b hardfork build, how to upgrade, and what changed.">
     <meta name="twitter:image" content="https://btc-blake2b.org/media/og-image.png?v=2">
     <link rel="icon" href="/media/logo.svg" type="image/svg+xml">
     <link rel="stylesheet" href="/static/style.css?v=8">
@@ -48,7 +48,7 @@
                         <a href="/release">Release notes</a>
                         <a href="/nodes">Node operators</a>
                         <a href="/miners">Miners and DATUM</a>
-                        <a href="https://bitcoinknots.org/" rel="noopener">Bitcoin Knots</a>
+                        <a href="/mining">Bitcoin Knots</a>
                         <a href="https://github.com/bitcoinknots/bitcoin" rel="noopener">Knots source</a>
                     </div>
                 </div>
@@ -62,27 +62,95 @@
         <header class="page-header">
             <div class="wrap">
                 <p class="kicker">Resources</p>
-                <h1>Proof-of-work hardfork, inspired by BIP-110</h1>
-                <p>What happened, and what you should do.</p>
+                <h1>Bitcoin Knots 29.4.1.knots20260508</h1>
+                <p>Release notes for the BLAKE2b hardfork build.</p>
             </div>
         </header>
         <article class="wrap prose">
 
+            <p>Bitcoin Knots version 29.4.1.knots20260508 includes the BLAKE2b proof-of-work change, the reduced-data flag day, and a few spam-filter updates. Source is <a href="https://github.com/bitcoinknots/bitcoin" rel="noopener">bitcoinknots/bitcoin</a>. The files folder at <a href="https://bitcoinknots.org/files/29.x/29.4.1.knots20260508/" rel="noopener">bitcoinknots.org/files/29.x/29.4.1.knots20260508/</a> currently holds test builds only. Use the RC5 binaries linked from the <a href="/mining">mainnet solo mining guide</a> until a final set is published at the top of that folder.</p>
+            <p>Report bugs on the <a href="https://github.com/bitcoinknots/bitcoin/issues" rel="noopener">Knots issue tracker</a>. Security and update notices: <a href="https://bitcoinknots.org/list/announcements/join/" rel="noopener">bitcoinknots.org/list/announcements/join</a>.</p>
+
+            <h2>How to upgrade</h2>
+            <p>If you are running an older version, shut it down. Wait until it has completely shut down, then run the installer on Windows, or copy over <code>/Applications/Bitcoin-Qt</code> on macOS, or <code>bitcoind</code> / <code>bitcoin-qt</code> on Linux.</p>
+            <p>Upgrading directly from very old Bitcoin Core or Knots is possible, but a data-directory migration can take time. Old Knots wallets are generally supported.</p>
+            <p>If your node was old, pruned, and followed invalid blocks, you may need to download the chain again. This release may ask at startup whether that resync is required.</p>
+
+            <h2>What happened</h2>
             <p>BIP-110, in alignment with the vast majority of node policy, attempted to reject use of the network for arbitrary data storage while leaving ordinary payments alone. It was a user-activated softfork: a tighter rule that old software can still follow, and that nodes could enforce even if miners did not want it. It is not this hardfork. A hardfork is a break away from abuse of the Bitcoin network. The change to the BLAKE2b algorithm exists because that softfork was blocked, and because the reason it was blocked still matters.</p>
             <p>Industrial mining groups that answer to shareholders, not node operators, rejected the cap and kept producing blocks that used transactions most nodes would not relay as a matter of policy. Anyone can still verify that history, but following it means accepting use of the network for arbitrary data storage, which every node operator on that chain must store at their own expense and, most importantly, risk.</p>
             <p>On August 8, 2026, nodes enforcing BIP-110 stopped accepting blocks that did not support it, while most SHA256d mining power kept producing those blocks, so the money-only rules could not activate.</p>
-            <p>This hardfork changes proof of work from the legacy SHA256d algorithm to the stronger BLAKE2b algorithm, so today's SHA256d miners cannot add blocks here. The pools that buried BIP-110 lose their lock on this chain. In that sense the hardfork "fires" the incumbent miners and lets a new market form around a ledger that is money only.</p>
+            <p>Proof of work later changed from SHA256d to BLAKE2b, a different algorithm, so today's SHA256d miners cannot add blocks here. The first BLAKE2b block is 961640 (30 August 2026). The pools that buried BIP-110 lose their lock on this chain. In that sense the hardfork "fires" the incumbent miners and lets a new market form around a ledger that is money only.</p>
             <div class="callout">
                 <p>People asked for Bitcoin as money only. The mining power that refused them also stalled the chain. A new proof-of-work algorithm takes that mining power off the board.</p>
             </div>
-            <p>Temporary limits on arbitrary data storage begin at the same block height as BLAKE2b. They are not a leftover BIP-110 miner-vote schedule. They apply to the new-style blocks until 1 September 2027, 00:00 UTC, using the previous block's median time past. That clock only moves forward, so the cutoff cannot flicker. While those limits are on, a block may also be no larger than about 300 kB (800,000 weight units). Coins created before the fork can still be spent under the old script rules. Continuing those limits after that date is a later choice for node operators; the BLAKE2b algorithm remains.</p>
+            <p>Temporary limits on arbitrary data storage began at height 961640 with BLAKE2b, not on August 8. They are not a leftover BIP-110 miner-vote schedule. They apply to the new-style blocks until 1 September 2027, 00:00 UTC, using the previous block's median time past. That clock only moves forward, so the cutoff cannot flicker. While those limits are on, a block may also be no larger than about 300 kB serialized / 800,000 weight units. Coins created before the fork can still be spent under the old script rules. Continuing those limits after that date is a later choice for node operators; the BLAKE2b algorithm remains.</p>
+
+            <h2>What this release changes</h2>
+            <p>This build is a backward-incompatible protocol change. Other software, including third-party wallets, may need an upgrade to stay compatible. This release lists these items together:</p>
+            <ul>
+                <li>Fix poison blocks (CVE-2013-2292)</li>
+                <li>Fix unintentional fees (CVE-2020-14199)</li>
+                <li>Fix block transaction-count mutation (CVE-2017-12842)</li>
+                <li>Fix for block-withholding attacks</li>
+                <li>Minor changes to BIP-110 (Reduced Data Temporary Softfork) activation and expiry</li>
+                <li>Temporary 800,000 weight-unit cap, about 300 kB serialized</li>
+                <li>BLAKE2b proof of work</li>
+                <li>Efficiency improvements for mining hardware</li>
+                <li>Future-proofing for merge-mined sidechains</li>
+                <li>Future-proofing for 40-bit block times</li>
+            </ul>
+            <p>If you also spend on the SHA256d chain, use the opt-in <code>SIGHASH_UNIFIED</code> format and send the coins to yourself first. A pre-fork spend can otherwise be copied onto the other chain. Wait for confirmation as usual. See <a href="https://github.com/bitcoinknots/bitcoin/pull/357" rel="noopener">Knots PR 357</a>.</p>
+
+            <h2>Notable changes</h2>
+            <p>The <code>rejecttokens</code> spam filter is on by default, and it now also detects Counterparty transactions.</p>
+            <p><code>getblockheader</code> and <code>getblock</code> now include v2 header fields: <code>txcount</code> (when known; it replaces the deprecated <code>nTx</code> key), <code>header_version</code>, <code>nonce2</code>, <code>nonce3</code>, <code>extranonce</code>, <code>time_offset</code>, <code>header_flags</code>, <code>xor_key</code>, <code>xor_key_mask_clear_bits</code>, and <code>mm_rhs</code>.</p>
+            <h3>Validation</h3>
+            <ul>
+                <li><a href="https://github.com/bitcoinknots/bitcoin/pull/357" rel="noopener">knots#357</a> Consensus: Unified opt-in sighash for all transaction types</li>
+                <li><a href="https://github.com/bitcoinknots/bitcoin/pull/358" rel="noopener">knots#358</a> Consensus: Activate RDTS at the PoW-change hardfork (flag day)</li>
+                <li><a href="https://github.com/bitcoinknots/bitcoin/pull/359" rel="noopener">knots#359</a> Hardfork: New BLAKE2b proof-of-work algorithm</li>
+                <li><a href="https://github.com/bitcoinknots/bitcoin/pull/360" rel="noopener">knots#360</a> validation: check the block index after InvalidateBlock repairs it</li>
+                <li><a href="https://github.com/bitcoinknots/bitcoin/pull/385" rel="noopener">knots#385</a> HARDFORK: BLAKE2b parameters (mainnet and testnet4), including checkpoints for 961632 (first BIP-110), 961639 (last SHA256d), and 961640 (first BLAKE2b)</li>
+            </ul>
+            <h3>Net</h3>
+            <ul>
+                <li><a href="https://github.com/bitcoinknots/bitcoin/pull/368" rel="noopener">knots#368</a> p2p: Prefer NODE_BLAKE2B peers instead of NODE_REDUCED_DATA</li>
+                <li><a href="https://github.com/bitcoinknots/bitcoin/pull/375" rel="noopener">knots#375</a> net: add Léo Haf testnet4 seed</li>
+                <li><a href="https://github.com/bitcoinknots/bitcoin/pull/386" rel="noopener">knots#386</a> net: base DNS-seed cadence on NODE_BLAKE2B peer count</li>
+            </ul>
+            <h3>Policy</h3>
+            <ul>
+                <li><a href="https://github.com/bitcoinknots/bitcoin/pull/349" rel="noopener">knots#349</a> policy: reject Counterparty messages under <code>-rejecttokens</code></li>
+                <li><a href="https://github.com/bitcoinknots/bitcoin/pull/354" rel="noopener">knots#354</a> defaults: Enable rejecttokens by default</li>
+            </ul>
+            <h3>GUI</h3>
+            <ul>
+                <li><a href="https://github.com/bitcoinknots/bitcoin/pull/377" rel="noopener">knots#377</a> qt: Fix MSVC C4305 in MempoolStats::drawChart</li>
+            </ul>
+            <h3>RPC</h3>
+            <ul>
+                <li><a href="https://github.com/bitcoinknots/bitcoin/pull/363" rel="noopener">knots#363</a> rpc: expose v2 header fields in blockheaderToJSON</li>
+            </ul>
+            <h3>Misc</h3>
+            <ul>
+                <li><a href="https://github.com/bitcoinknots/bitcoin/pull/362" rel="noopener">knots#362</a> Remove the RDTS consent requirement</li>
+            </ul>
+
+            <h2>Compatibility</h2>
+            <p>Bitcoin Knots is supported on Linux, macOS 13+, and Windows 10+. It is not recommended on unsupported systems.</p>
+
+            <h2>Known bugs</h2>
+            <p>In several places, including the GUI transaction-details dialog and the <code>vsize</code> field in many RPC results, transaction virtual size may omit an unusually high sigop count (<code>-bytespersigop</code>) or datacarrier penalties (<code>-datacarriercost</code>). That can report a lower virtual size than mempool or mining actually uses.</p>
+            <p>This release still does not include updated translations. The shared Bitcoin Transifex repository is disrupted, and Knots may be unable to refresh translations until that is resolved.</p>
+
             <h2>What this means for node operators</h2>
             <ul>
-                <li><strong>If you upgrade before the hardfork:</strong> You can continue using your existing Bitcoin data directory normally. No blockchain re-download or movement of funds is required.</li>
-                <li><strong>If you switch from Bitcoin Core or an older <a href="https://bitcoinknots.org/" rel="noopener">Bitcoin Knots</a> after the hardfork:</strong> That software may have followed the SHA256d chain. On startup, this release usually notices those extra blocks, walks back to the fork, and then downloads the BLAKE2b chain. That automatic walk-back is only for SHA256d blocks at or after the fork. If a BLAKE2b block itself breaks the data or size rules, you still need <code>-reindex</code> to rebuild the database from blocks you already have.</li>
+                <li><strong>If you already upgraded:</strong> You can continue using your existing Bitcoin data directory normally. No blockchain re-download or movement of funds is required.</li>
+                <li><strong>If you are switching from Bitcoin Core or an older <a href="https://bitcoinknots.org/" rel="noopener">Bitcoin Knots</a> release:</strong> That software may have followed the SHA256d chain. On startup, this release usually notices those extra blocks, walks back to the fork, and then downloads the BLAKE2b chain. That automatic walk-back is only for SHA256d blocks at or after the fork. If a BLAKE2b block itself breaks the data or size rules, you still need <code>-reindex</code> to rebuild the database from blocks you already have.</li>
                 <li>A <strong>pruned node</strong> deletes old blocks to save disk space. If you waited so long that the walk-back blocks are already gone, or the node followed invalid blocks after a late upgrade, rebuild the node and download the chain again. This release may ask at startup whether that resync is required.</li>
-                <li>You do <strong>not</strong> need to move your bitcoin before the fork. Coins created before the fork remain spendable.</li>
-                <li>After the BIP-110 softfork, Bitcoin Core and older <a href="https://bitcoinknots.org/" rel="noopener">Bitcoin Knots</a> still require SHA256d and follow a different blockchain. You need a Knots version that includes the BLAKE2b change, published at <a href="https://bitcoinknots.org/" rel="noopener">bitcoinknots.org</a> when it is available. Source: <a href="https://github.com/bitcoinknots/bitcoin" rel="noopener">github.com/bitcoinknots/bitcoin</a>.</li>
+                <li>You do <strong>not</strong> need to move your bitcoin. Coins created before the fork remain spendable.</li>
+                <li>After the BIP-110 softfork, Bitcoin Core and older <a href="https://bitcoinknots.org/" rel="noopener">Bitcoin Knots</a> still require SHA256d and follow a different blockchain. You need a Knots version that includes the BLAKE2b change. Source: <a href="https://github.com/bitcoinknots/bitcoin" rel="noopener">github.com/bitcoinknots/bitcoin</a>. RC5 binaries are in the test directory on the <a href="/mining">mainnet solo mining guide</a>.</li>
             </ul>
             <p>For background on BIP-110, why this hardfork is not BIP-110, frequently asked questions, and guidance for miners, wallets, exchanges, and other users, see the <a href="/faq">common questions</a> and <a href="/miners">miners and DATUM</a>.</p>
 
@@ -115,7 +183,7 @@
                         <li><a href="/release">Release notes</a></li>
                         <li><a href="/nodes">Node operators</a></li>
                         <li><a href="/miners">Miners and DATUM</a></li>
-                        <li><a href="https://bitcoinknots.org/" rel="noopener">Bitcoin Knots</a></li>
+                        <li><a href="/mining">Bitcoin Knots</a></li>
                         <li><a href="https://github.com/bitcoinknots/bitcoin" rel="noopener">Knots source</a></li>
                         <li><a href="/faq">FAQ</a></li>
                     </ul>
@@ -125,11 +193,11 @@
                     <ul>
                         <li><a href="/privacy">Privacy</a></li>
                         <li><a href="https://bitcoin.org/bitcoin.pdf" rel="noopener">White paper</a></li>
-                        <li><a href="https://github.com/innerhat-dev/datum_gateway" rel="noopener">DATUM Gateway</a></li>
+                        <li><a href="https://github.com/CONVOYMining/datum_gateway" rel="noopener">DATUM Gateway</a></li>
                     </ul>
                 </div>
             </div>
-            <p class="footer-note">© Bitcoin Project from 2009 to 2026. btc-blake2b.org, btc-blake2b.com, and bitcoin-blake2b.be serve the same site.</p>
+            <p class="footer-note">© Bitcoin Project from 2009 to 2026. btc-blake2b.org, btc-blake2b.com, bitcoin-blake2b.be, and bitcoin-blake2b.org serve the same site.</p>
         </div>
     </footer>
     <script src="/static/site.js?v=4"></script>

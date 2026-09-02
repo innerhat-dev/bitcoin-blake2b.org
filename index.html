@@ -34,7 +34,7 @@
         "name": "Bitcoin",
         "url": "https://btc-blake2b.org/",
         "description": "Bitcoin is an innovative payment network and a new kind of money. Bitcoin with the BLAKE2b algorithm keeps Bitcoin as money only by rejecting arbitrary data storage.",
-        "alternateName": ["btc-blake2b.org", "btc-blake2b.com", "bitcoin-blake2b.be"]
+        "alternateName": ["btc-blake2b.org", "btc-blake2b.com", "bitcoin-blake2b.be", "bitcoin-blake2b.org"]
     }
     </script>
 </head>
@@ -64,7 +64,7 @@
                         <a href="/release">Release notes</a>
                         <a href="/nodes">Node operators</a>
                         <a href="/miners">Miners and DATUM</a>
-                        <a href="https://bitcoinknots.org/" rel="noopener">Bitcoin Knots</a>
+                        <a href="/mining">Bitcoin Knots</a>
                         <a href="https://github.com/bitcoinknots/bitcoin" rel="noopener">Knots source</a>
                     </div>
                 </div>
@@ -107,7 +107,7 @@
                     <article class="audience-card">
                         <svg class="icon-mark" viewBox="0 0 48 48" aria-hidden="true"><path d="M10 34l8-20 8 20M14 28h8M30 14h8l-4 20h-4z" fill="none" stroke="currentColor" stroke-width="2"/></svg>
                         <h3>Developers</h3>
-                        <p>After the hardfork, new blocks must use the BLAKE2b algorithm. That keeps Bitcoin as money only by rejecting arbitrary data storage. Miners should use Knots and DATUM.</p>
+                        <p>New blocks use the BLAKE2b algorithm. That keeps Bitcoin as money only by rejecting arbitrary data storage. Miners should use Knots and DATUM.</p>
                         <a href="/developers">Learn more</a> · <a href="/miners">Miners</a>
                     </article>
                 </div>
@@ -119,7 +119,7 @@
                 <h2>Why this hardfork exists</h2>
                 <p>Bitcoin is an innovative payment network and a new kind of money, and running a full node is how anyone can participate and verify for themselves. BIP-110, in alignment with the vast majority of node policy, attempted to reject use of the network for arbitrary data storage while leaving ordinary payments alone. That was a softfork: a tighter rule that old software can still follow, and it is not this hardfork. A hardfork is a break away from abuse of the Bitcoin network, and software that does not upgrade will not accept the new blocks.</p>
                 <p>Large mining firms refused those limits and kept producing blocks that used transactions most nodes would not relay as a matter of policy. Anyone can still verify that chain, but following it means accepting use of the network for arbitrary data storage, which every node operator on that chain must store at their own expense and most importantly, risk.</p>
-                <p>On August 8, 2026, nodes enforcing BIP-110 stopped accepting blocks that did not support it, while most SHA256d mining power kept producing those blocks, so the money-only rules could not activate. This hardfork changes proof of work from the legacy SHA256d algorithm to the stronger BLAKE2b algorithm, so today's SHA256d miners cannot add blocks here. Temporary limits on arbitrary data storage begin at the same moment and last until 1 September 2027, 00:00 UTC (when nodes vote to continue enforcement), using the previous block's median time past; the BLAKE2b algorithm remains after those limits end.</p>
+                <p>On August 8, 2026, nodes enforcing BIP-110 stopped accepting blocks that did not support it, while most SHA256d mining power kept producing those blocks, so the money-only rules could not activate. Proof of work later changed from SHA256d to BLAKE2b, a different algorithm, so today's SHA256d miners cannot add blocks here. The first BLAKE2b block is 961640 (30 August 2026). Temporary limits on arbitrary data storage began at that height as a flag day, together with BLAKE2b, and last until 1 September 2027, 00:00 UTC (when nodes vote to continue enforcement), using the previous block's median time past; the BLAKE2b algorithm remains after those limits end.</p>
                 <div class="button-row" style="margin-top:1.5rem;">
                     <a class="button button-primary" href="/release">Read the release notes</a>
                     <a class="button button-ghost" href="/how-it-works">How it works</a>
@@ -135,7 +135,7 @@
                     </div>
                     <div class="fact">
                         <dt>Block size while limits last</dt>
-                        <dd>~300 kB (800,000 weight)</dd>
+                        <dd>about 300 kB serialized / 800,000 weight</dd>
                     </div>
                 </dl>
             </div>
@@ -189,7 +189,7 @@
                         <li><a href="/release">Release notes</a></li>
                         <li><a href="/nodes">Node operators</a></li>
                         <li><a href="/miners">Miners and DATUM</a></li>
-                        <li><a href="https://bitcoinknots.org/" rel="noopener">Bitcoin Knots</a></li>
+                        <li><a href="/mining">Bitcoin Knots</a></li>
                         <li><a href="https://github.com/bitcoinknots/bitcoin" rel="noopener">Knots source</a></li>
                         <li><a href="/faq">FAQ</a></li>
                     </ul>
@@ -199,11 +199,11 @@
                     <ul>
                         <li><a href="/privacy">Privacy</a></li>
                         <li><a href="https://bitcoin.org/bitcoin.pdf" rel="noopener">White paper</a></li>
-                        <li><a href="https://github.com/innerhat-dev/datum_gateway" rel="noopener">DATUM Gateway</a></li>
+                        <li><a href="https://github.com/CONVOYMining/datum_gateway" rel="noopener">DATUM Gateway</a></li>
                     </ul>
                 </div>
             </div>
-            <p class="footer-note">© Bitcoin Project from 2009 to 2026. btc-blake2b.org, btc-blake2b.com, and bitcoin-blake2b.be serve the same site.</p>
+            <p class="footer-note">© Bitcoin Project from 2009 to 2026. btc-blake2b.org, btc-blake2b.com, bitcoin-blake2b.be, and bitcoin-blake2b.org serve the same site.</p>
         </div>
     </footer>
     <script src="/static/site.js?v=4"></script>

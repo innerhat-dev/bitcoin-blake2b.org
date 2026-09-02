@@ -48,7 +48,7 @@
                         <a href="/release">Release notes</a>
                         <a href="/nodes">Node operators</a>
                         <a href="/miners">Miners and DATUM</a>
-                        <a href="https://bitcoinknots.org/" rel="noopener">Bitcoin Knots</a>
+                        <a href="/mining">Bitcoin Knots</a>
                         <a href="https://github.com/bitcoinknots/bitcoin" rel="noopener">Knots source</a>
                     </div>
                 </div>
@@ -68,8 +68,8 @@
         </header>
         <article class="wrap prose">
 
-            <p>This hardfork is not BIP-110. BIP-110, in alignment with the vast majority of node policy, was a softfork, later rejected, that would have rejected use of the network for arbitrary data storage. A hardfork is a break away from abuse of the Bitcoin network. This hardfork changes proof of work from the legacy SHA256d algorithm to the stronger BLAKE2b algorithm, so today's SHA256d miners cannot produce valid blocks here.</p>
-            <p>Limits on arbitrary data storage start at that same block height as a flag day, not a leftover versionbits vote, and apply to v2-header blocks until the previous block's median time past reaches 1 September 2027, 00:00 UTC. During that window, blocks are also limited to 800,000 weight units, about 300 kB of typical payments. Inputs that spend coins created before the fork are exempt from the new script and data rules.</p>
+            <p>This hardfork is not BIP-110. BIP-110, in alignment with the vast majority of node policy, was a softfork, later rejected, that would have rejected use of the network for arbitrary data storage. A hardfork is a break away from abuse of the Bitcoin network. This hardfork changed proof of work from SHA256d to BLAKE2b, a different algorithm, so today's SHA256d miners cannot produce valid blocks here. The first BLAKE2b block is 961640 (30 August 2026).</p>
+            <p>Limits on arbitrary data storage began at height 961640 as a flag day, together with BLAKE2b, not on August 8 and not as a leftover versionbits vote. They apply to v2-header blocks until the previous block's median time past reaches 1 September 2027, 00:00 UTC. During that window, blocks are also limited to 800,000 weight units, about 300 kB serialized. Inputs that spend coins created before the fork are exempt from the new script and data rules.</p>
             <p>Each BLAKE2b block uses a 164-byte header v2, not the classic 80-byte SHA256d header. Light-client protocols that hash an 80-byte header with SHA256d will not validate this chain until they learn the new format and BLAKE2b.</p>
             <h2>Integration checklist</h2>
             <ul>
@@ -79,7 +79,7 @@
                 <li><code>getdeploymentinfo</code> reports <code>reduced_data</code> as a flag-day deployment. <code>getblocktemplate</code> advertises BLAKE2b as <code>!blake2b</code> in <code>rules</code>, and lists <code>reduced_data</code> there only while the window is open. There is no miner signaling bit.</li>
                 <li>Wallets that spend on both this chain and the SHA256d chain should use the opt-in <code>SIGHASH_UNIFIED</code> format so a payment is not copied across by default. Ordinary signatures stay valid. See <a href="https://github.com/bitcoinknots/bitcoin/pull/357" rel="noopener">Knots PR 357</a>.</li>
             </ul>
-            <p>Miners constructing their own templates should use the <a href="https://github.com/innerhat-dev/datum_gateway" rel="noopener">DATUM Gateway</a> with Knots. See <a href="/miners">miners and DATUM</a>.</p>
+            <p>Miners constructing their own templates should use the <a href="https://github.com/CONVOYMining/datum_gateway" rel="noopener">DATUM Gateway</a> with Knots. See <a href="/miners">miners and DATUM</a>.</p>
             <p>The proof-of-work change is specified in <a href="https://github.com/bitcoinknots/bitcoin/pull/359" rel="noopener">Knots PR 359</a>. The reduced-data flag day and MTP expiry ride that block height in <a href="https://github.com/bitcoinknots/bitcoin/pull/358" rel="noopener">PR 358</a>. The opt-in unified signature hash is <a href="https://github.com/bitcoinknots/bitcoin/pull/357" rel="noopener">PR 357</a>.</p>
             <p>Read the <a href="/release">release notes</a>, <a href="/nodes">node operator guide</a>, and <a href="/faq">FAQ</a>.</p>
 
@@ -112,7 +112,7 @@
                         <li><a href="/release">Release notes</a></li>
                         <li><a href="/nodes">Node operators</a></li>
                         <li><a href="/miners">Miners and DATUM</a></li>
-                        <li><a href="https://bitcoinknots.org/" rel="noopener">Bitcoin Knots</a></li>
+                        <li><a href="/mining">Bitcoin Knots</a></li>
                         <li><a href="https://github.com/bitcoinknots/bitcoin" rel="noopener">Knots source</a></li>
                         <li><a href="/faq">FAQ</a></li>
                     </ul>
@@ -122,11 +122,11 @@
                     <ul>
                         <li><a href="/privacy">Privacy</a></li>
                         <li><a href="https://bitcoin.org/bitcoin.pdf" rel="noopener">White paper</a></li>
-                        <li><a href="https://github.com/innerhat-dev/datum_gateway" rel="noopener">DATUM Gateway</a></li>
+                        <li><a href="https://github.com/CONVOYMining/datum_gateway" rel="noopener">DATUM Gateway</a></li>
                     </ul>
                 </div>
             </div>
-            <p class="footer-note">© Bitcoin Project from 2009 to 2026. btc-blake2b.org, btc-blake2b.com, and bitcoin-blake2b.be serve the same site.</p>
+            <p class="footer-note">© Bitcoin Project from 2009 to 2026. btc-blake2b.org, btc-blake2b.com, bitcoin-blake2b.be, and bitcoin-blake2b.org serve the same site.</p>
         </div>
     </footer>
     <script src="/static/site.js?v=4"></script>
