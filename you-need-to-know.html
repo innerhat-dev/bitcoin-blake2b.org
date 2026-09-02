@@ -45,7 +45,7 @@
                 <div class="nav-item" data-dropdown>
                     <button type="button" data-dropdown-button aria-expanded="false">Resources</button>
                     <div class="dropdown-menu">
-                        <a href="/release">Release notes</a>
+                        <a href="https://github.com/bitcoinknots/bitcoin/blob/v29.4.1.knots20260508/doc/release-notes.md" rel="noopener">Release notes</a>
                         <a href="/nodes">Node operators</a>
                         <a href="/miners">Miners and DATUM</a>
                         <a href="/mining">Bitcoin Knots</a>
@@ -71,7 +71,7 @@
             <ul>
                 <li><strong>This is still Bitcoin.</strong> The history, coins, and keys through the fork are the same ledger. Running a node is how anyone can participate and verify for themselves. Bitcoin with the BLAKE2b algorithm keeps Bitcoin as money only by rejecting use of the network for arbitrary data storage.</li>
                 <li><strong>You do not need to move coins</strong> to keep them. Coins you already have remain spendable. If you spend the same coins on both chains, that payment can be copied across unless the wallet uses the opt-in <code>SIGHASH_UNIFIED</code> format; see the <a href="/faq#q11">FAQ</a>.</li>
-                <li><strong>Staying on Core is a different chain.</strong> After the BIP-110 softfork, Bitcoin Core and older <a href="https://bitcoinknots.org/" rel="noopener">Bitcoin Knots</a> still use the legacy SHA256d algorithm. You need a Knots version with the BLAKE2b change. RC5 binaries are in the test directory on the <a href="/mining">mainnet solo mining guide</a>. They are not the published files on bitcoinknots.org.</li>
+                <li><strong>Staying on Core is a different chain.</strong> After the BIP-110 softfork, Bitcoin Core and older <a href="https://bitcoinknots.org/" rel="noopener">Bitcoin Knots</a> still use the legacy SHA256d algorithm. You need Knots 29.4.1. Download it from <a href="https://bitcoinknots.org/?29.4.1.20260508?twitter" rel="noopener">bitcoinknots.org</a>. Other options are on the <a href="/mining">mainnet solo mining guide</a>.</li>
                 <li><strong>BIP-110 is not the hardfork.</strong> BIP-110 was a softfork, in alignment with the vast majority of node policy, and it was later rejected. A hardfork is a break away from abuse of the Bitcoin network. This hardfork is the switch to the BLAKE2b algorithm.</li>
                 <li><strong>Data limits are temporary. BLAKE2b is not.</strong> Limits on arbitrary data storage, and the 800,000-weight cap (about 300 kB serialized), last until 1 September 2027, 00:00 UTC (previous block's median time past). Continuing those limits after that date is a later choice for node operators. The BLAKE2b algorithm does not revert to SHA256d.</li>
                 <li><strong>Pruned nodes can get stuck</strong> if they delete old blocks to save space and then switch late, or if they followed invalid blocks after a late upgrade. You may have to download the chain again. This release may ask at startup whether that resync is required.</li>
@@ -105,7 +105,7 @@
                 <div>
                     <h2>Resources</h2>
                     <ul>
-                        <li><a href="/release">Release notes</a></li>
+                        <li><a href="https://github.com/bitcoinknots/bitcoin/blob/v29.4.1.knots20260508/doc/release-notes.md" rel="noopener">Release notes</a></li>
                         <li><a href="/nodes">Node operators</a></li>
                         <li><a href="/miners">Miners and DATUM</a></li>
                         <li><a href="/mining">Bitcoin Knots</a></li>

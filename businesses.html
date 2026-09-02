@@ -45,7 +45,7 @@
                 <div class="nav-item" data-dropdown>
                     <button type="button" data-dropdown-button aria-expanded="false">Resources</button>
                     <div class="dropdown-menu">
-                        <a href="/release">Release notes</a>
+                        <a href="https://github.com/bitcoinknots/bitcoin/blob/v29.4.1.knots20260508/doc/release-notes.md" rel="noopener">Release notes</a>
                         <a href="/nodes">Node operators</a>
                         <a href="/miners">Miners and DATUM</a>
                         <a href="/mining">Bitcoin Knots</a>
@@ -68,7 +68,7 @@
         </header>
         <article class="wrap prose">
 
-            <p>After the BIP-110 softfork, software that still uses the legacy SHA256d algorithm follows a different blockchain. If you intend to support this chain, run a <a href="/mining">Bitcoin Knots RC5</a> node that includes the BLAKE2b change and say so publicly. Bitcoin with the BLAKE2b algorithm keeps Bitcoin as money only by rejecting use of the network for arbitrary data storage.</p>
+            <p>After the BIP-110 softfork, software that still uses the legacy SHA256d algorithm follows a different blockchain. If you intend to support this chain, run a <a href="https://bitcoinknots.org/?29.4.1.20260508?twitter" rel="noopener">Bitcoin Knots 29.4.1</a> node that includes the BLAKE2b change and say so publicly. Bitcoin with the BLAKE2b algorithm keeps Bitcoin as money only by rejecting use of the network for arbitrary data storage.</p>
             <h2>Exchanges and custodians</h2>
             <ul>
                 <li>If deposits and withdrawals are still open, halt them until your node is on the intended chain and your accounting is settled.</li>
@@ -78,7 +78,7 @@
             </ul>
             <h2>Wallets and merchants</h2>
             <p>Wallets and processors that only understand the old 80-byte SHA256d block header will not see this chain. The new header is 164 bytes and is hashed with BLAKE2b. Point your software at a BLAKE2b node. A device that only signs payments does not need new keys. Anything that checks proof of work or the header, including Electrum-style light clients, must understand the new format.</p>
-            <p>See <a href="/faq">What should exchanges do?</a> and the <a href="/release">release notes</a>.</p>
+            <p>See <a href="/faq">What should exchanges do?</a> and <a href="/how-it-works">how it works</a>.</p>
 
         </article>
     </main>
@@ -106,7 +106,7 @@
                 <div>
                     <h2>Resources</h2>
                     <ul>
-                        <li><a href="/release">Release notes</a></li>
+                        <li><a href="https://github.com/bitcoinknots/bitcoin/blob/v29.4.1.knots20260508/doc/release-notes.md" rel="noopener">Release notes</a></li>
                         <li><a href="/nodes">Node operators</a></li>
                         <li><a href="/miners">Miners and DATUM</a></li>
                         <li><a href="/mining">Bitcoin Knots</a></li>

@@ -4,20 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Solo mining on mainnet</title>
-    <meta name="description" content="Run Bitcoin Knots 29.4.1 RC5 and the CONVOY DATUM Gateway on mainnet. This chain is on BLAKE2b from block 961640.">
+    <meta name="description" content="Run Bitcoin Knots 29.4.1 and the CONVOY DATUM Gateway on mainnet. This chain is on BLAKE2b from block 961640.">
     <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="theme-color" content="#f7931a">
     <link rel="canonical" href="https://btc-blake2b.org/mining">
     <meta property="og:title" content="Solo mining on mainnet">
-    <meta property="og:description" content="Run Bitcoin Knots 29.4.1 RC5 and the CONVOY DATUM Gateway on mainnet. This chain is on BLAKE2b from block 961640.">
+    <meta property="og:description" content="Run Bitcoin Knots 29.4.1 and the CONVOY DATUM Gateway on mainnet. This chain is on BLAKE2b from block 961640.">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Bitcoin">
     <meta property="og:url" content="https://btc-blake2b.org/mining">
     <meta property="og:image" content="https://btc-blake2b.org/media/og-image.png?v=2">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Solo mining on mainnet">
-    <meta name="twitter:description" content="Run Bitcoin Knots 29.4.1 RC5 and the CONVOY DATUM Gateway on mainnet. This chain is on BLAKE2b from block 961640.">
+    <meta name="twitter:description" content="Run Bitcoin Knots 29.4.1 and the CONVOY DATUM Gateway on mainnet. This chain is on BLAKE2b from block 961640.">
     <meta name="twitter:image" content="https://btc-blake2b.org/media/og-image.png?v=2">
     <link rel="icon" href="/media/logo.svg" type="image/svg+xml">
     <link rel="stylesheet" href="/static/style.css?v=8">
@@ -45,7 +45,7 @@
                 <div class="nav-item" data-dropdown>
                     <button type="button" data-dropdown-button aria-expanded="false">Resources</button>
                     <div class="dropdown-menu">
-                        <a href="/release">Release notes</a>
+                        <a href="https://github.com/bitcoinknots/bitcoin/blob/v29.4.1.knots20260508/doc/release-notes.md" rel="noopener">Release notes</a>
                         <a href="/nodes">Node operators</a>
                         <a href="/miners">Miners and DATUM</a>
                         <a href="/mining">Bitcoin Knots</a>
@@ -63,17 +63,21 @@
             <div class="wrap">
                 <p class="kicker">Resources</p>
                 <h1>Solo mining on mainnet</h1>
-                <p>Run Bitcoin Knots 29.4.1 RC5 and the <a href="https://github.com/CONVOYMining/datum_gateway" rel="noopener">DATUM Gateway</a> on mainnet. CONVOY is the BLAKE2b and header-v2 DATUM. Block 961639 is the last SHA256d block. The first BLAKE2b block is 961640. This chain is on BLAKE2b now. RC5 binaries are in the test directory linked below. They are not the published files on bitcoinknots.org.</p>
+                <p>Run Bitcoin Knots 29.4.1 and the <a href="https://github.com/CONVOYMining/datum_gateway" rel="noopener">DATUM Gateway</a> on mainnet. CONVOY is the BLAKE2b and header-v2 DATUM. Block 961639 is the last SHA256d block. The first BLAKE2b block is 961640. This chain is on BLAKE2b now.</p>
             </div>
         </header>
         <article class="wrap prose">
 
-            <p>Download <strong>v29.4.1.knots20260508rc5</strong> for your architecture (for example <code>x86_64-linux-gnu</code> or <code>aarch64-linux-gnu</code>) from the test directory. These are not the published files on <a href="https://bitcoinknots.org/" rel="noopener">bitcoinknots.org</a>:</p>
-            <p><a href="https://test.bitcoinknots.org/~luke-jr/programs/bitcoin/files/bitcoin-knots/29.x/29.4.1.knots20260508/test/rc5/" rel="noopener">test.bitcoinknots.org RC5 directory</a></p>
-            <p>Check the build against <code>SHA256SUMS</code> and <code>SHA256SUMS.asc</code> in that directory. Do not set <code>chain=testnet4</code>. Keep the same data directory if you already have a mainnet node.</p>
+            <p>Download <strong>29.4.1.knots20260508</strong> for your architecture (for example <code>x86_64-linux-gnu</code> or <code>aarch64-linux-gnu</code>):</p>
+            <ul>
+                <li>Official builds: <a href="https://bitcoinknots.org/?29.4.1.20260508?twitter" rel="noopener">bitcoinknots.org</a></li>
+                <li>GitHub release: <a href="https://github.com/bitcoinknots/bitcoin/releases/tag/v29.4.1.knots20260508" rel="noopener">v29.4.1.knots20260508</a></li>
+                <li>Source: <a href="https://github.com/bitcoinknots/bitcoin" rel="noopener">github.com/bitcoinknots/bitcoin</a></li>
+            </ul>
+            <p>Check the build against <code>SHA256SUMS</code> and <code>SHA256SUMS.asc</code> in the <a href="https://bitcoinknots.org/files/29.x/29.4.1.knots20260508/" rel="noopener">files folder</a>. Do not set <code>chain=testnet4</code>. Keep the same data directory if you already have a mainnet node.</p>
 
             <h2>1. Knots on mainnet</h2>
-            <p>Minimal <code>bitcoin.conf</code>. <code>txindex=1</code> is not required for DATUM or <code>getblocktemplate</code>. Working nodes often add extra knobs such as <code>consensusrules=rdts</code>, <code>blake2b_headline</code>, <code>maxtipage</code>, and a larger mempool. <code>blocknotify</code> via <code>/NOTIFY</code> or <code>killall -USR1</code> both work:</p>
+            <p>Minimal <code>bitcoin.conf</code>. <code>txindex=1</code> is not required for DATUM or <code>getblocktemplate</code>. Working nodes often add extra knobs such as <code>consensusrules=rdts</code>, <code>maxtipage</code>, and a larger mempool. <code>blocknotify</code> via <code>/NOTIFY</code> or <code>killall -USR1</code> both work:</p>
             <pre><code>server=1
 
 rpcbind=127.0.0.1
@@ -93,7 +97,7 @@ bitcoin-cli getdeploymentinfo
             <pre><code>git clone https://github.com/CONVOYMining/datum_gateway.git
 cd datum_gateway
 # build per README (cmake + libmicrohttpd, jansson, curl, libsodium, …)</code></pre>
-            <p>Use a build that includes commit <code>56c31f4</code> (<em>pow: Include header-v2 bit in BLAKE2b H1 commitment version</em>) or later. Without that change, share proof of work will not match Knots RC5 <code>GetHash</code>.</p>
+            <p>Use a build that includes commit <code>56c31f4</code> (<em>pow: Include header-v2 bit in BLAKE2b H1 commitment version</em>) or later. Without that change, share proof of work will not match Knots 29.4.1 <code>GetHash</code>.</p>
             <p>Example <code>datum_gateway_config.json</code>:</p>
             <pre><code>{
   "bitcoind": {
@@ -160,7 +164,7 @@ cd datum_gateway
 
             <h2>Checklist</h2>
             <ol>
-                <li>RC5 from the URL above, using your existing mainnet data directory if you already have one.</li>
+                <li>Knots 29.4.1 from the links above, using your existing mainnet data directory if you already have one.</li>
                 <li>DATUM from CONVOY at <code>56c31f4</code> or later.</li>
                 <li>BLAKE2b and BLAKE2b-sia miners on stratum port 23334.</li>
                 <li>Confirm the <code>BLOCK FOUND</code> hash matches the tip. Ignore a benign dual-submit <code>duplicate</code>.</li>
@@ -168,7 +172,7 @@ cd datum_gateway
 
             <div class="button-row" style="margin-top:1.5rem;">
                 <a class="button button-primary" href="/miners">Miners and DATUM</a>
-                <a class="button button-ghost" href="https://test.bitcoinknots.org/~luke-jr/programs/bitcoin/files/bitcoin-knots/29.x/29.4.1.knots20260508/test/rc5/" rel="noopener">Knots RC5 downloads</a>
+                <a class="button button-ghost" href="https://bitcoinknots.org/?29.4.1.20260508?twitter" rel="noopener">Knots 29.4.1 downloads</a>
             </div>
 
         </article>
@@ -197,7 +201,7 @@ cd datum_gateway
                 <div>
                     <h2>Resources</h2>
                     <ul>
-                        <li><a href="/release">Release notes</a></li>
+                        <li><a href="https://github.com/bitcoinknots/bitcoin/blob/v29.4.1.knots20260508/doc/release-notes.md" rel="noopener">Release notes</a></li>
                         <li><a href="/nodes">Node operators</a></li>
                         <li><a href="/miners">Miners and DATUM</a></li>
                         <li><a href="/mining">Bitcoin Knots</a></li>
