@@ -37,7 +37,7 @@ Skip to content
 Open source P2P money. Bitcoin with the BLAKE2b algorithm keeps Bitcoin as money only.
 
 [shared.footer_note]
-© Bitcoin Project from 2009 to 2026. btc-blake2b.org, btc-blake2b.com, and bitcoin-blake2b.be serve the same site.
+© Bitcoin Project from 2009 to 2026. btc-blake2b.org, btc-blake2b.com, bitcoin-blake2b.be, and bitcoin-blake2b.org serve the same site.
 
 [shared.footer_intro_heading]
 Introduction
@@ -808,7 +808,7 @@ FILE: privacy.html
 Privacy Policy
 
 [privacy.description]
-Privacy policy for the informational Bitcoin site at btc-blake2b.org, btc-blake2b.com, and bitcoin-blake2b.be.
+Privacy policy for the informational Bitcoin site at btc-blake2b.org, btc-blake2b.com, bitcoin-blake2b.be, and bitcoin-blake2b.org.
 
 [privacy.kicker]
 Legal
@@ -823,7 +823,7 @@ This is a static informational site. It does not create accounts, take payments,
 Effective August 20, 2026. Last updated August 20, 2026.
 
 [privacy.p1]
-btc-blake2b.org, btc-blake2b.com, and bitcoin-blake2b.be serve the same pages. They explain Bitcoin with the BLAKE2b algorithm, and the BIP-110 events that inspired this hardfork.
+btc-blake2b.org, btc-blake2b.com, bitcoin-blake2b.be, and bitcoin-blake2b.org serve the same pages. They explain Bitcoin with the BLAKE2b algorithm, and the BIP-110 events that inspired this hardfork.
 
 [privacy.h2_1]
 1. Information we collect

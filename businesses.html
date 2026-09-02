@@ -74,7 +74,7 @@
                 <li>If deposits and withdrawals are still open, halt them until your node is on the intended chain and your accounting is settled.</li>
                 <li>Announce which chain you credit. Do not assume tickers stay unambiguous.</li>
                 <li>Treat pre-fork balances as valid on the BLAKE2b chain you support. Post-fork coins on the other chain are a separate asset.</li>
-                <li>A payment made with pre-fork coins can be copied onto the other chain (replay). Wallets that spend on both chains should use the opt-in <code>SIGHASH_UNIFIED</code> format so that copy does not happen by default.</li>
+                <li>A payment made with pre-fork coins can be copied onto the other chain (replay). Ordinary signatures stay valid. Wallets that spend on both chains should use the opt-in <code>SIGHASH_UNIFIED</code> format so that copy does not happen by default. If a customer intends to sell, gift, or spend the fake “bitcoins” on the SHA256d altcoin launched by former miners, they should first send their bitcoins to themselves with that format on this chain and wait for the payment to confirm.</li>
             </ul>
             <h2>Wallets and merchants</h2>
             <p>Wallets and processors that only understand the old 80-byte SHA256d block header will not see this chain. The new header is 164 bytes and is hashed with BLAKE2b. Point your software at a BLAKE2b node. A device that only signs payments does not need new keys. Anything that checks proof of work or the header, including Electrum-style light clients, must understand the new format.</p>
@@ -120,6 +120,7 @@
                         <li><a href="/privacy">Privacy</a></li>
                         <li><a href="https://bitcoin.org/bitcoin.pdf" rel="noopener">White paper</a></li>
                         <li><a href="https://github.com/CONVOYMining/datum_gateway" rel="noopener">DATUM Gateway</a></li>
+                        <li><a href="https://github.com/innerhat-dev/bitcoin-blake2b.org" rel="noopener">Site source</a></li>
                     </ul>
                 </div>
             </div>

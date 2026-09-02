@@ -72,7 +72,8 @@
             <p>BIP-110, in alignment with the vast majority of node policy, attempted to reject use of the network for arbitrary data storage while leaving ordinary payments alone. That was a softfork: a tighter rule that old software can still follow, and it is not this hardfork. A hardfork is a break away from abuse of the Bitcoin network. Industrial mining firms blocked BIP-110 so they could keep selling block space for that use, then kept mining with those same transactions. Bitcoin with the BLAKE2b algorithm keeps Bitcoin as money only.</p>
             <h2>What you should do</h2>
             <ul>
-                <li>You do not need to move your bitcoin. Coins created before the fork remain spendable.</li>
+                <li>You do not need to move your bitcoin to keep it. Coins created before the fork remain spendable.</li>
+                <li>If you intend to sell, gift, or spend the fake “bitcoins” on the SHA256d altcoin launched by former miners, use a wallet that supports the opt-in <code>SIGHASH_UNIFIED</code> format and send your bitcoins to yourself with that format on this chain first. Wait for the payment to confirm. See <a href="/faq#q-sighash">What is SIGHASH_UNIFIED?</a></li>
                 <li>If you use a hosted wallet or exchange, ask which chain they credit.</li>
                 <li>If you run your own node, <a href="/getting-started">upgrade now</a>.</li>
                 <li>After the BIP-110 softfork, Bitcoin Core and older <a href="https://bitcoinknots.org/" rel="noopener">Bitcoin Knots</a> follow a different blockchain. You need Knots 29.4.1. Download it from <a href="https://bitcoinknots.org/?29.4.1.20260508?twitter" rel="noopener">bitcoinknots.org</a>. Other options are on the <a href="/mining">mainnet solo mining guide</a>.</li>
@@ -119,6 +120,7 @@
                         <li><a href="/privacy">Privacy</a></li>
                         <li><a href="https://bitcoin.org/bitcoin.pdf" rel="noopener">White paper</a></li>
                         <li><a href="https://github.com/CONVOYMining/datum_gateway" rel="noopener">DATUM Gateway</a></li>
+                        <li><a href="https://github.com/innerhat-dev/bitcoin-blake2b.org" rel="noopener">Site source</a></li>
                     </ul>
                 </div>
             </div>

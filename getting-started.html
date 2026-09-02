@@ -75,7 +75,8 @@
             <p>A <strong>pruned node</strong> deletes old blocks to save disk space. If you waited so long that those walk-back blocks are already gone, or the node followed invalid blocks after a late upgrade, rebuild the node and download the chain again. This release may ask at startup whether that resync is required.</p>
             <h2>Everyone</h2>
             <ul>
-                <li>You do <strong>not</strong> need to move your bitcoin. Coins created before the fork remain spendable.</li>
+                <li>You do <strong>not</strong> need to move your bitcoin to keep it. Coins created before the fork remain spendable.</li>
+                <li>If you intend to sell, gift, or spend the fake “bitcoins” on the SHA256d altcoin launched by former miners, use a wallet that supports the opt-in <code>SIGHASH_UNIFIED</code> format and send your bitcoins to yourself with that format on this chain first. Wait for the payment to confirm. See <a href="/faq#q-sighash">What is SIGHASH_UNIFIED?</a></li>
                 <li>After the BIP-110 softfork, Bitcoin Core and older <a href="https://bitcoinknots.org/" rel="noopener">Bitcoin Knots</a> still use the legacy SHA256d algorithm and follow a different blockchain. Today's ordinary Knots download is not enough; you need the BLAKE2b version.</li>
                 <li>Miners should use <a href="/miners">DATUM</a> against a Knots node. Wallets and exchanges have additional work; see the <a href="/faq">FAQ</a> and <a href="/businesses">businesses</a> page.</li>
             </ul>
@@ -120,6 +121,7 @@
                         <li><a href="/privacy">Privacy</a></li>
                         <li><a href="https://bitcoin.org/bitcoin.pdf" rel="noopener">White paper</a></li>
                         <li><a href="https://github.com/CONVOYMining/datum_gateway" rel="noopener">DATUM Gateway</a></li>
+                        <li><a href="https://github.com/innerhat-dev/bitcoin-blake2b.org" rel="noopener">Site source</a></li>
                     </ul>
                 </div>
             </div>

@@ -77,7 +77,7 @@
                 <li>If a node followed post-fork SHA256d blocks, this release usually walks back to the fork and downloads the BLAKE2b chain. That pass uses headers only. A BLAKE2b-era block that breaks the weight cap, output sizes, or script rules still needs <code>-reindex</code>. A pruned node that has already deleted the walk-back blocks must resync.</li>
                 <li>After the previous block's median time past reaches 1 September 2027, 00:00 UTC, the data limits and the weight cap are removed unless node operators later choose to continue them. BLAKE2b proof of work is not temporary.</li>
                 <li><code>getdeploymentinfo</code> reports <code>reduced_data</code> as a flag-day deployment. <code>getblocktemplate</code> advertises BLAKE2b as <code>!blake2b</code> in <code>rules</code>, and lists <code>reduced_data</code> there only while the window is open. There is no miner signaling bit.</li>
-                <li>Wallets that spend on both this chain and the SHA256d chain should use the opt-in <code>SIGHASH_UNIFIED</code> format so a payment is not copied across by default. Ordinary signatures stay valid. See <a href="https://github.com/bitcoinknots/bitcoin/pull/357" rel="noopener">Knots PR 357</a>.</li>
+                <li>Wallets that spend on both this chain and the SHA256d chain should use the opt-in <code>SIGHASH_UNIFIED</code> format so a payment is not copied across by default. Ordinary signatures stay valid. If a holder intends to sell, gift, or spend the fake “bitcoins” on the SHA256d altcoin launched by former miners, the intended action is a send-to-self on this chain with that format, then wait for the payment to confirm, before spending the same coins on the other chain. See <a href="https://github.com/bitcoinknots/bitcoin/pull/357" rel="noopener">Knots PR 357</a>.</li>
             </ul>
             <p>Miners constructing their own templates should use the <a href="https://github.com/CONVOYMining/datum_gateway" rel="noopener">DATUM Gateway</a> with Knots. See <a href="/miners">miners and DATUM</a>.</p>
             <p>The proof-of-work change is specified in <a href="https://github.com/bitcoinknots/bitcoin/pull/359" rel="noopener">Knots PR 359</a>. The reduced-data flag day and MTP expiry ride that block height in <a href="https://github.com/bitcoinknots/bitcoin/pull/358" rel="noopener">PR 358</a>. The opt-in unified signature hash is <a href="https://github.com/bitcoinknots/bitcoin/pull/357" rel="noopener">PR 357</a>.</p>
@@ -123,6 +123,7 @@
                         <li><a href="/privacy">Privacy</a></li>
                         <li><a href="https://bitcoin.org/bitcoin.pdf" rel="noopener">White paper</a></li>
                         <li><a href="https://github.com/CONVOYMining/datum_gateway" rel="noopener">DATUM Gateway</a></li>
+                        <li><a href="https://github.com/innerhat-dev/bitcoin-blake2b.org" rel="noopener">Site source</a></li>
                     </ul>
                 </div>
             </div>
