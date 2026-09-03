@@ -79,7 +79,7 @@
                 <li><code>getdeploymentinfo</code> reports <code>reduced_data</code> as a flag-day deployment. <code>getblocktemplate</code> advertises BLAKE2b as <code>!blake2b</code> in <code>rules</code>, and lists <code>reduced_data</code> there only while the window is open. There is no miner signaling bit.</li>
                 <li>Wallets should implement the opt-in <code>SIGHASH_UNIFIED</code> sighash from <a href="https://github.com/bitcoinknots/bitcoin/pull/357" rel="noopener">Knots PR 357</a>: one BIP341-shaped message, bit <code>0x20</code>, tagged <code>UnifiedSighash</code>. That removes CVE-2013-2292 and CVE-2020-14199 for inputs that opt in. Replay protection is a consequence of the distinct message, one-way, and only for signatures that set the bit. Ordinary signatures stay valid and still replay. If a holder intends to sell, gift, or spend the fake “bitcoins” on the SHA256d altcoin launched by former miners, the intended action is a send-to-self on this chain with that format, then wait for the payment to confirm, before spending the same coins on the other chain. See <a href="https://github.com/bitcoinknots/bitcoin/blob/v29.4.1.knots20260508/doc/unified-sighash.md" rel="noopener">doc/unified-sighash.md</a>.</li>
             </ul>
-            <p>Miners constructing their own templates should use the <a href="https://github.com/innerhat-dev/datum_gateway" rel="noopener">DATUM Gateway</a> with Knots. See <a href="/miners">miners and DATUM</a>.</p>
+            <p>Miners constructing their own templates should use the <a href="https://github.com/CONVOYMining/datum_gateway" rel="noopener">DATUM Gateway</a> with Knots. See <a href="/miners">miners and DATUM</a>.</p>
             <p>The proof-of-work change is specified in <a href="https://github.com/bitcoinknots/bitcoin/pull/359" rel="noopener">Knots PR 359</a>. The reduced-data flag day and MTP expiry ride that block height in <a href="https://github.com/bitcoinknots/bitcoin/pull/358" rel="noopener">PR 358</a>. The opt-in unified signature hash is <a href="https://github.com/bitcoinknots/bitcoin/pull/357" rel="noopener">PR 357</a>.</p>
             <p>Read the <a href="https://github.com/bitcoinknots/bitcoin/blob/v29.4.1.knots20260508/doc/release-notes.md" rel="noopener">release notes</a>, <a href="/nodes">node operator guide</a>, and <a href="/faq">FAQ</a>.</p>
 
@@ -122,7 +122,7 @@
                     <ul>
                         <li><a href="/privacy">Privacy</a></li>
                         <li><a href="https://bitcoin.org/bitcoin.pdf" rel="noopener">White paper</a></li>
-                        <li><a href="https://github.com/innerhat-dev/datum_gateway" rel="noopener">DATUM Gateway</a></li>
+                        <li><a href="https://github.com/CONVOYMining/datum_gateway" rel="noopener">DATUM Gateway</a></li>
                         <li><a href="https://github.com/innerhat-dev/bitcoin-blake2b.org" rel="noopener">Site source</a></li>
                     </ul>
                 </div>
